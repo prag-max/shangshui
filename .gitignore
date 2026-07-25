@@ -1,0 +1,14 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Local env / build leftovers
+node_modules/
+.env
+.env.local
+dist/
+build/
+.cache/

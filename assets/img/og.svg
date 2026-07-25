@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f3a"/><stop offset="1" stop-color="#0e2c52"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M0 470 Q300 410 600 460 T1200 450 V630 H0 Z" fill="#0891b2" fill-opacity=".18"/>
+  <text x="80" y="250" fill="#fff" font-size="74" font-weight="800" font-family="PingFang SC,Microsoft YaHei,sans-serif">供水营收系统</text>
+  <text x="80" y="320" fill="#7dd3fc" font-size="34" font-family="PingFang SC,Microsoft YaHei,sans-serif">从抄表到收费，一站式营收中枢</text>
+  <rect x="80" y="380" width="260" height="64" rx="32" fill="url(#g)"/>
+  <text x="210" y="420" fill="#fff" font-size="28" font-weight="700" text-anchor="middle" font-family="PingFang SC,Microsoft YaHei,sans-serif">预约产品演示</text>
+</svg>

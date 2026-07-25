@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 登录页不收录
+Disallow: /login.html
+
+Sitemap: https://www.example.com/sitemap.xml
