@@ -196,6 +196,30 @@ table.tbl .m{font-weight:700;background:#f1f6ff}
 .prose ul{margin:0 0 14px 20px;color:#33405a}
 .prose li{margin:6px 0}
 
+/* ---------- 产品页：功能/流程/优势 ---------- */
+.feature-grid{grid-template-columns:repeat(3,1fr)}
+.feature-card{position:relative;padding-top:58px}
+.feature-num{position:absolute;top:18px;left:22px;font-size:34px;font-weight:800;line-height:1;color:#e2e8f0}
+.feature-card h3{margin-bottom:10px;color:var(--primary-d)}
+.feature-card p{font-size:14px;color:#33405a}
+
+.core-flow-wrap{max-width:960px;margin:0 auto}
+.flow-position,.flow-goal{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;box-shadow:0 2px 12px rgba(20,40,80,.05);margin-bottom:24px}
+.flow-position .flow-badge{background:linear-gradient(135deg,#ef4444,#dc2626)}
+.flow-goal .flow-badge{background:linear-gradient(135deg,#334155,#1e293b)}
+.flow-badge{display:inline-block;color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.flow-mini{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px 18px}
+.flow-mini li{font-size:14px;color:#33405a}
+.flow-mini li b{color:var(--text);font-weight:700}
+
+.core-flow-svg{width:100%;height:auto;display:block;margin:18px 0 22px}
+
+.advantage-grid{grid-template-columns:repeat(2,1fr)}
+.advantage-card{display:flex;gap:18px;align-items:flex-start;padding:26px}
+.adv-icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#eaf1ff,#e0f5fb);display:flex;align-items:center;justify-content:center;font-size:26px;flex:0 0 56px}
+.adv-body h3{margin-bottom:6px}
+.adv-body p{color:#33405a;font-size:14px}
+
 /* 案例卡片 */
 .case-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;display:flex;flex-direction:column}
 .case-card .top{padding:24px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#f7faff,#eef6ff)}
@@ -224,10 +248,12 @@ table.tbl .m{font-weight:700;background:#f1f6ff}
   .hamburger{display:block}
   .nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:14px 20px;border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
   .nav-links.open a{padding:12px 8px}
-  .grid-2,.grid-3,.grid-4,.mod-grid,.price-grid,.statbar,.footer-grid{grid-template-columns:1fr}
+  .grid-2,.grid-3,.grid-4,.mod-grid,.price-grid,.statbar,.footer-grid,.feature-grid,.advantage-grid{grid-template-columns:1fr}
   .hero h1{font-size:30px}
   .hero p.lead{font-size:16px}
   .section-title{font-size:24px}
   .cta-band{padding:32px 22px}
   .price-card.featured{transform:none}
+  .flow-mini{grid-template-columns:1fr}
+  .advantage-card{flex-direction:column;gap:14px}
 }
