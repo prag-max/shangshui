@@ -35,6 +35,7 @@ return [
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+        Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
