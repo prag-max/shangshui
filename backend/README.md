@@ -25,7 +25,7 @@ backend/
 
 ## 部署步骤（目标服务器）
 
-1. 安装 PHP 8.2+ 与 Composer，扩展：`pdo_mysql`、`mbstring`、`openssl`、`tokenizer`、`xml`、`ctype`、`json`、`bcmath`。
+1. 安装 PHP 8.2+ 与 Composer，扩展：`pdo_mysql`、`mbstring`、`openssl`、`tokenizer`、`xml`、`ctype`、`json`、`bcmath`、`zip`。
 2. 拉取代码：
    ```bash
    cd /path/to/backend
@@ -92,6 +92,25 @@ composer update
 - 将 `APP_ENV=production`、`APP_DEBUG=false`。
 - 数据库连接使用独立账号并限制权限。
 - 定期执行 `composer audit` 与框架升级。
+
+### `composer install` 提示 "The zip extension and unzip/7z commands are both missing"
+
+说明当前 PHP 没有启用 `zip` 扩展，且系统找不到 `unzip`/`7z` 命令。Windows 下最快的修复是启用 PHP zip 扩展：
+
+1. 打开命令行输出的 `php.ini`（如 `G:\xxx\php\php.ini`）。
+2. 找到 `;extension=zip`，去掉前导分号改为 `extension=zip`。
+3. 确认同目录 `ext\php_zip.dll` 存在；若不存在，需下载对应 PHP 版本的 zip DLL 放到 `ext\` 下。
+4. 保存配置，**重新打开命令行窗口**。
+5. 验证：`php -m | findstr zip`（Windows）或 `php -m | grep zip`（Linux/macOS）。
+6. 重新执行 `composer install --no-dev --optimize-autoloader`。
+
+Linux 服务器上也可直接安装系统包解决，例如：
+```bash
+# Debian/Ubuntu
+sudo apt-get install php-zip unzip
+# CentOS/RHEL
+sudo yum install php-zip unzip
+```
 
 ## 接口说明
 
