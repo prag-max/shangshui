@@ -65,10 +65,77 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
     </div>
   </section>
 
-  <section>
+
+  <section class="guide-nav-sec">
     <div class="container">
-      <h2 class="section-title">七大系统功能</h2>
-      <p class="section-sub">覆盖用户建档、抄表计量、阶梯计费、收费到数据分析的全链路能力，专为中小自来水公司设计。</p>
+      <ul class="guide-steps">
+        <li><a href="#step1"><span class="gs-num">1</span>核心主线</a></li>
+        <li><a href="#step2"><span class="gs-num">2</span>使用场景</a></li>
+        <li><a href="#step3"><span class="gs-num">3</span>实际价值</a></li>
+        <li><a href="#step4"><span class="gs-num">4</span>完整功能</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="step1" class="section-soft">
+    <div class="container">
+      <h2 class="section-title">一条主线，跑通抄表到收费</h2>
+      <p class="section-sub">从现场抄表到财务入账，四个环节自动衔接、步步可追溯。</p>
+      <div class="flow-main">
+        <div class="flow-node">
+          <div class="fn-icon">📋</div>
+          <h3>抄表</h3>
+          <ul><li>移动 App 现场录入</li><li>异常用水自动预警</li><li>抄表痕迹全程留痕</li></ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon">🧮</div>
+          <h3>计费</h3>
+          <ul><li>阶梯水价自动算</li><li>污水费 / 附加费合并</li><li>损耗分摊透明</li></ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon">💳</div>
+          <h3>收费</h3>
+          <ul><li>柜台 / 银行 / 扫码多渠道</li><li>欠费实时核销</li><li>电子票据一键开</li></ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon">📊</div>
+          <h3>财务</h3>
+          <ul><li>已销 / 未销账清晰</li><li>分账调正规范</li><li>报表实时统计</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="step2" class="section-soft">
+    <div class="container">
+      <h2 class="section-title">在哪些场景用</h2>
+      <p class="section-sub">一套平台，覆盖不同规模自来水公司的抄表收费需求。</p>
+      <div class="grid grid-3">
+        <div class="card"><div class="ic">🏢</div><h3>单体水司</h3><p>标准化营业收费能力，开箱即用，覆盖建档、抄表、计费、收费、票据、报表全部环节，适配县城及乡镇水厂。</p></div>
+        <div class="card"><div class="ic">🏛️</div><h3>集团化水务</h3><p>多分公司统一参数与报表视图，区域权限隔离，集团层面集中监管与数据汇总，支撑规模化运营。</p></div>
+        <div class="card"><div class="ic">📱</div><h3>移动作业</h3><p>抄表 App 现场录入、欠费查询、单据打印，营业厅窗口与户外抄表一体化协同，提升抄表到位率。</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="step3" class="section-soft">
+    <div class="container">
+      <h2 class="section-title">用了能得到什么</h2>
+      <p class="section-sub">把营收“管得清、收得回、算得准”——营业厅少跑腿，管理层看得明。</p>
+      <div class="value-grid">
+        <div class="value-card"><div class="vc-icon">✅</div><h3>抄表到位率提升</h3><p>移动抄表替代纸质台账，漏抄错抄明显减少。</p></div>
+        <div class="value-card"><div class="vc-icon">💰</div><h3>水费回收加快</h3><p>多渠道缴费 + 自动核销，欠费周期明显缩短。</p></div>
+        <div class="value-card"><div class="vc-icon">🎯</div><h3>人工差错降低</h3><p>计费收费自动化，月度对账工作量大幅下降。</p></div>
+        <div class="value-card"><div class="vc-icon">📈</div><h3>经营看得清</h3><p>应收实收实时报表，高损片区与异常缴费一目了然。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="step4">
+    <div class="container">
+      <h2 class="section-title">完整功能清单</h2>
+      <p class="section-sub">七大系统能力，覆盖营收管理全链路，专为中小自来水公司设计。</p>
       <div class="grid grid-3 feature-grid">
         <div class="card feature-card">
           <div class="feature-num">01</div>
@@ -109,139 +176,6 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
     </div>
   </section>
 
-  <section class="section-soft">
-    <div class="container">
-      <h2 class="section-title">核心流程</h2>
-      <p class="section-sub">以「核心流程」为中枢，串联定位、抄表、开账、收费销账、财务五大环节，最终达成系统协同与标准化服务的目标。</p>
-      <div class="core-flow-wrap">
-        <div class="flow-position">
-          <div class="flow-badge red">定位</div>
-          <ul class="flow-mini">
-            <li><b>报装</b>：服务起源</li>
-            <li><b>营收</b>：计量收费</li>
-            <li><b>热线</b>：服务窗口</li>
-            <li><b>表务</b>：计量管控</li>
-            <li><b>接口</b>：信息互通</li>
-            <li><b>流程</b>：服务梳理</li>
-          </ul>
-        </div>
-
-        <svg class="core-flow-svg" viewBox="0 0 820 440" role="img" aria-label="核心流程图：中心为核心流程，四周分布抄表管理、开账管理、收费销账管理、财务管理四大模块">
-          <defs>
-            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8" />
-            </marker>
-            <linearGradient id="gCenter" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#0891b2"/></linearGradient>
-            <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#16a34a"/><stop offset="100%" stop-color="#22c55e"/></linearGradient>
-            <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ea580c"/><stop offset="100%" stop-color="#f97316"/></linearGradient>
-            <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
-            <linearGradient id="gNavy" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient>
-          </defs>
-
-          <!-- 中心圆 -->
-          <circle cx="410" cy="220" r="60" fill="url(#gCenter)" />
-          <text x="410" y="216" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">核心流程</text>
-          <text x="410" y="236" text-anchor="middle" fill="#bfdbfe" font-size="11">Core Process</text>
-
-          <!-- 左上 抄表管理 -->
-          <rect x="40" y="55" width="250" height="115" rx="14" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1" />
-          <rect x="40" y="55" width="76" height="26" rx="13" fill="url(#gGreen)" />
-          <text x="78" y="73" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">抄表管理</text>
-          <text x="56" y="100" fill="#14532d" font-size="13">· 用水数据采集形式多样化</text>
-          <text x="56" y="122" fill="#14532d" font-size="13">· 抄表数据自动验证，提升准确率</text>
-          <text x="56" y="144" fill="#14532d" font-size="13">· 为营收监管提供基础</text>
-          <line x1="290" y1="112" x2="355" y2="175" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)" />
-
-          <!-- 右上 开账管理 -->
-          <rect x="530" y="55" width="250" height="115" rx="14" fill="#fff7ed" stroke="#fed7aa" stroke-width="1" />
-          <rect x="530" y="55" width="76" height="26" rx="13" fill="url(#gOrange)" />
-          <text x="568" y="73" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">开账管理</text>
-          <text x="546" y="100" fill="#7c2d12" font-size="13">· 支持自动/手动/批量开账</text>
-          <text x="546" y="122" fill="#7c2d12" font-size="13">· 水价/污水价规则灵活配置</text>
-          <text x="546" y="144" fill="#7c2d12" font-size="13">· 账单生成与异常预警</text>
-          <line x1="530" y1="112" x2="465" y2="175" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)" />
-
-          <!-- 左下 收费销账管理 -->
-          <rect x="40" y="270" width="250" height="115" rx="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
-          <rect x="40" y="270" width="108" height="26" rx="13" fill="url(#gBlue)" />
-          <text x="94" y="288" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">收费销账管理</text>
-          <text x="56" y="315" fill="#1e3a8a" font-size="13">· 柜台/银行/支付宝多渠道收费</text>
-          <text x="56" y="337" fill="#1e3a8a" font-size="13">· 自动对账并实时核销欠费</text>
-          <text x="56" y="359" fill="#1e3a8a" font-size="13">· 提高回收率与客户满意度</text>
-          <line x1="290" y1="327" x2="355" y2="265" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)" />
-
-          <!-- 右下 财务管理 -->
-          <rect x="530" y="270" width="250" height="115" rx="14" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1" />
-          <rect x="530" y="270" width="76" height="26" rx="13" fill="url(#gNavy)" />
-          <text x="568" y="288" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">财务管理</text>
-          <text x="546" y="315" fill="#172554" font-size="13">· 按财务规范处理已销/未销账</text>
-          <text x="546" y="337" fill="#172554" font-size="13">· 支持分账、调正等账务处理</text>
-          <text x="546" y="359" fill="#172554" font-size="13">· 财务报表统计实时高效</text>
-          <line x1="530" y1="327" x2="465" y2="265" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)" />
-        </svg>
-
-        <div class="flow-goal">
-          <div class="flow-badge dark">目标</div>
-          <ul class="flow-mini">
-            <li>各系统紧密结合</li>
-            <li>严格权限管理</li>
-            <li>数据整合</li>
-            <li>业务流程标准化</li>
-            <li>统一对外服务接口</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2 class="section-title">四大系统优势</h2>
-      <p class="section-sub">通过本系统，中小自来水公司可显著降低运营成本、提升服务质量，同时为用户提供透明、便捷的水费缴纳体验。</p>
-      <div class="grid grid-2 advantage-grid">
-        <div class="card advantage-card">
-          <div class="adv-icon">⚡</div>
-          <div class="adv-body">
-            <h3>高效精准</h3>
-            <p>自动化计费减少人工误差，提升结算速度，账单生成与收款核销全程可控。</p>
-          </div>
-        </div>
-        <div class="card advantage-card">
-          <div class="adv-icon">🧩</div>
-          <div class="adv-body">
-            <h3>灵活扩展</h3>
-            <p>模块化设计支持功能扩展，适配不同规模水司，可随用户量与营业网点增长平滑扩容。</p>
-          </div>
-        </div>
-        <div class="card advantage-card">
-          <div class="adv-icon">😊</div>
-          <div class="adv-body">
-            <h3>体验优化</h3>
-            <p>多渠道缴费、实时账单推送与穿透查询，提高用户满意度，降低营业厅服务压力。</p>
-          </div>
-        </div>
-        <div class="card advantage-card">
-          <div class="adv-icon">📈</div>
-          <div class="adv-body">
-            <h3>智能决策</h3>
-            <p>数据报表助力企业优化资源管理和服务策略，快速定位高损片区与异常缴费行为。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-soft">
-    <div class="container">
-      <h2 class="section-title">适用场景</h2>
-      <p class="section-sub">一套平台，覆盖不同规模自来水公司的抄表收费需求。</p>
-      <div class="grid grid-3">
-        <div class="card"><div class="ic">🏢</div><h3>单体水司</h3><p>标准化营业收费能力，开箱即用，覆盖建档、抄表、计费、收费、票据、报表全部环节，适配县城及乡镇水厂。</p></div>
-        <div class="card"><div class="ic">🏛️</div><h3>集团化水务</h3><p>多分公司统一参数与报表视图，区域权限隔离，集团层面集中监管与数据汇总，支撑规模化运营。</p></div>
-        <div class="card"><div class="ic">📱</div><h3>移动作业</h3><p>抄表 App 现场录入、欠费查询、单据打印，营业厅窗口与户外抄表一体化协同，提升抄表到位率。</p></div>
-      </div>
-    </div>
-  </section>
 
   <section>
     <div class="container">
