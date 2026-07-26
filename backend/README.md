@@ -25,6 +25,8 @@ backend/
 
 ## 部署步骤（目标服务器）
 
+> 🚀 **Ubuntu 24.04 生产环境请直接使用一键部署脚本**：见 [`deploy/DEPLOY.md`](deploy/DEPLOY.md)（含备案前 IP 访问 / 备案后域名+HTTPS 两阶段方案）。以下为通用手动步骤。
+
 1. 安装 PHP 8.2+ 与 Composer，扩展：`pdo_mysql`、`mbstring`、`openssl`、`tokenizer`、`xml`、`ctype`、`json`、`bcmath`、`zip`。
 2. 拉取代码：
    ```bash
