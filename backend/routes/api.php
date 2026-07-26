@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\InquiryController;
-use Illuminate\Foundation\Http\Middleware\HandleCors;
+use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/inquiries', [InquiryController::class, 'store'])
