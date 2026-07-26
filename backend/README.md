@@ -61,6 +61,38 @@ docker compose exec app sh -c "cp .env.example .env && php artisan key:generate 
 官网 `website/contact.html` 表单已改为 `fetch` 提交到 `https://admin.shanwater.com/api/inquiries`，
 并包含隐藏 honeypot 字段。如后台部署在其他域名，请修改 `contact.html` 中 `API` 常量。
 
+## 常见问题
+
+### `composer install` 被安全公告阻断
+
+当前仓库未提交 `composer.lock`。首次部署时，如果 Laravel 11 的某个版本被 Packagist 安全公告标记，Composer 2.7+ 默认会阻止安装。已在 `composer.json` 中设置：
+
+```json
+"config": {
+    "policy": {
+        "advisories": {
+            "block": false
+        }
+    }
+}
+```
+
+这允许继续安装，但建议部署后立即执行：
+
+```bash
+composer audit
+composer update
+```
+
+并在测试通过后把生成的 `composer.lock` 提交到仓库，后续生产环境使用 `composer install --no-dev`（不再做依赖解析，也不会被安全公告阻断）。
+
+### 生产环境建议
+
+- 使用 HTTPS。
+- 将 `APP_ENV=production`、`APP_DEBUG=false`。
+- 数据库连接使用独立账号并限制权限。
+- 定期执行 `composer audit` 与框架升级。
+
 ## 接口说明
 
 `POST /api/inquiries`（表单 `multipart/form-data` 或 `application/x-www-form-urlencoded`）
