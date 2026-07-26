@@ -63,15 +63,16 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
         <!-- 表单 -->
         <div class="card" style="padding:30px">
           <h3 style="margin-bottom:18px">预约演示 / 咨询表单</h3>
-          <form onsubmit="return false;">
-            <div class="field"><label>姓名 *</label><input type="text" placeholder="请输入您的称呼"></div>
-            <div class="field"><label>单位名称 *</label><input type="text" placeholder="供水公司 / 水务集团名称"></div>
-            <div class="field"><label>联系电话 *</label><input type="tel" placeholder="手机号码"></div>
-            <div class="field"><label>邮箱</label><input type="email" placeholder="name@company.com"></div>
-            <div class="field"><label>用水用户规模</label><input type="text" placeholder="如：约 5 万用户 / 未知"></div>
-            <div class="field"><label>需求描述</label><input type="text" placeholder="如：想了解抄表到收费一体化方案"></div>
+          <form id="inquiry-form">
+            <div class="field"><label>姓名 *</label><input type="text" name="name" required></div>
+            <div class="field"><label>单位名称 *</label><input type="text" name="company" required></div>
+            <div class="field"><label>联系电话 *</label><input type="tel" name="phone" required></div>
+            <div class="field"><label>邮箱</label><input type="email" name="email"></div>
+            <div class="field"><label>用水用户规模</label><input type="text" name="user_scale" placeholder="如：约 5 万用户 / 未知"></div>
+            <div class="field"><label>需求描述</label><input type="text" name="requirement" placeholder="如：想了解抄表到收费一体化方案"></div>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
             <button class="btn btn-primary" style="width:100%" type="submit">提交咨询</button>
-            <p class="tier-note">提示：当前为静态演示站点，表单提交需后端支持，正式上线后由您的服务器或第三方表单服务接收。</p>
+            <p id="form-msg" class="tier-note" style="display:none"></p>
           </form>
         </div>
         <!-- 联系方式 -->
@@ -98,5 +99,40 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
     </div>
   </footer>
   <script src="assets/js/main.js"></script>
+  <script>
+  (function () {
+    var form = document.getElementById('inquiry-form');
+    var msg = document.getElementById('form-msg');
+    var API = 'https://admin.shanwater.com';
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      msg.style.display = 'block';
+      msg.style.color = '';
+      msg.textContent = '提交中…';
+      var fd = new FormData(form);
+      fetch(API + '/api/inquiries', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (res.ok) {
+            msg.style.color = '#1a7f37';
+            msg.textContent = (res.d && res.d.message) ? res.d.message : '提交成功，我们会尽快与您联系。';
+            form.reset();
+          } else {
+            msg.style.color = '#b42318';
+            msg.textContent = (res.d && res.d.message) ? res.d.message : '提交失败，请稍后重试。';
+          }
+        })
+        .catch(function () { msg.style.color = '#b42318'; msg.textContent = '网络错误，请稍后重试。'; })
+        .finally(function () { btn.disabled = false; });
+    });
+  })();
+  </script>
 </body>
 </html>
