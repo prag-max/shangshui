@@ -1,0 +1,29 @@
+# =====================================================================
+#  frps.toml —— 云服务器（公网 IP）服务端配置
+#  放在云服务器，运行：  ./frps -c frps.toml
+#  建议用 systemd 常驻（见 DEPLOY-WINDOWS-FRP.md）。
+# =====================================================================
+
+# frpc 连接用的控制端口（非 80/443，备案不限制；需在安全组/防火墙放行）
+bindAddr = "0.0.0.0"
+bindPort = 7000
+
+# 鉴权：必须与 frpc.toml 的 token 完全一致
+auth.method = "token"
+auth.token = "3ffdd987107b10e3d739b9d44bc993762c5fd0bfc5b6ca50"
+
+# 允许 frpc 申请开放的远程端口范围（对应 frpc 的 remotePort）
+allowPorts = [
+  { start = 18000, end = 18010 },
+]
+
+# 代理端口绑定地址：
+#   Phase 1（验证链路）：保持 0.0.0.0，可从外网直接 curl http://43.139.72.9:18000 测试
+#   Phase 2（正式上线）：改为 127.0.0.1，只让本机 Caddy 反代，端口不对外裸奔
+proxyBindAddr = "127.0.0.1"
+
+# 管理面板（可选，方便看隧道是否在线）；端口也需放行，账号密码请修改
+webServer.addr = "0.0.0.0"
+webServer.port = 7500
+webServer.user = "admin"
+webServer.password = "NjG0FaCLCV09sMcx"

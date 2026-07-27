@@ -103,8 +103,14 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
   (function () {
     var form = document.getElementById('inquiry-form');
     var msg = document.getElementById('form-msg');
-    // 同域提交：表单与接口在同一源，无需跨域
-    var API = location.origin;
+    // 后端接口地址（跨域）：官网静态页在 EdgeOne，后端经 frp 穿透到本机 Windows。
+    // 说明：官网是 HTTPS，浏览器要求这里必须是 https:// 的公网地址（否则被 Mixed Content 拦截）。
+    // Phase 1（仅验证链路，用 curl 直接打云端高端口）：线上表单先不通，属正常。
+    // Phase 2（上线）：把子域名 + 证书配好后，改成下面的 https 地址即可。
+    // 本机同源自测时会自动用当前源，无需改动。
+    var API = (location.hostname === '127.0.0.1' || location.hostname === 'localhost')
+      ? location.origin
+      : 'https://api.shanwater.com:8443';
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -119,18 +125,32 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
         headers: { 'Accept': 'application/json' },
         body: fd
       })
-        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (r) {
+          // 先按文本读取：后端 500/502 常返回非 JSON，若直接 r.json() 抛错会被误判为“网络错误”
+          return r.text().then(function (text) {
+            var d = null;
+            try { d = text ? JSON.parse(text) : null; } catch (e) { d = null; }
+            return { ok: r.ok, status: r.status, d: d };
+          });
+        })
         .then(function (res) {
-          if (res.ok) {
+          if (res.ok && res.d) {
             msg.style.color = '#1a7f37';
-            msg.textContent = (res.d && res.d.message) ? res.d.message : '提交成功，我们会尽快与您联系。';
+            msg.textContent = res.d.message ? res.d.message : '提交成功，我们会尽快与您联系。';
             form.reset();
+          } else if (res.status === 0 || res.d === null) {
+            // 后端/隧道未启动、或 CORS 被拦：浏览器拿不到合法响应
+            msg.style.color = '#b42318';
+            msg.textContent = '提交服务暂时无法连接，请稍后重试；紧急情况请直接致电 13860642706。';
           } else {
             msg.style.color = '#b42318';
             msg.textContent = (res.d && res.d.message) ? res.d.message : '提交失败，请稍后重试。';
           }
         })
-        .catch(function () { msg.style.color = '#b42318'; msg.textContent = '网络错误，请稍后重试。'; })
+        .catch(function () {
+          msg.style.color = '#b42318';
+          msg.textContent = '网络连接失败，请检查网络后重试；或直接致电 13860642706 / 13110520413。';
+        })
         .finally(function () { btn.disabled = false; });
     });
   })();

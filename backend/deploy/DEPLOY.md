@@ -4,10 +4,10 @@
 
 由于域名**备案尚未完成**，部署分两个阶段：
 
-| 阶段 | 访问方式 | 状态 |
-|---|---|---|
-| 阶段一（现在） | `http://服务器IP/admin/login` | 后台可用；官网表单暂不联通（见下方"混合内容"说明） |
-| 阶段二（备案通过后） | `https://admin.shanwater.com` | 全部联通，正式上线 |
+| 阶段         | 访问方式                          | 状态                         |
+| ---------- | ----------------------------- | -------------------------- |
+| 阶段一（现在）    | `http://服务器IP/admin/login`    | 后台可用；官网表单暂不联通（见下方"混合内容"说明） |
+| 阶段二（备案通过后） | `https://admin.shanwater.com` | 全部联通，正式上线                  |
 
 ---
 
@@ -18,6 +18,7 @@
 私有仓库，二选一：
 
 **方式 A — git clone（推荐，便于后续更新）**
+
 ```bash
 sudo mkdir -p /var/www && cd /var/www
 sudo git clone https://<你的GitHub用户名>:<PAT>@github.com/prag-max/shangshui.git shanwater
@@ -26,6 +27,7 @@ cd shanwater && sudo git remote set-url origin https://github.com/prag-max/shang
 ```
 
 **方式 B — 本机 scp 上传**
+
 ```powershell
 scp -r C:\Users\lenovo\WorkBuddy\2026-07-15-15-40-07\website root@<服务器IP>:/var/www/shanwater
 ```
@@ -65,6 +67,7 @@ curl -X POST http://<服务器IP>/api/inquiries \
 ## 阶段二：备案通过后（正式上线）
 
 ### 1. DNS 解析
+
 在域名服务商添加记录：`admin.shanwater.com` → A 记录 → 服务器公网 IP。
 
 ### 2. 一键切换域名 + HTTPS
@@ -77,6 +80,7 @@ sudo bash enable-https.sh
 自动完成：切换 nginx 到域名配置 → certbot 签发 Let's Encrypt 免费证书（自动续期）→ 强制 HTTPS 跳转 → 更新 APP_URL。
 
 ### 3. 确认前端联通
+
 `contact.html` 的 API 常量已是 `https://admin.shanwater.com`，无需修改；`.env` 的 `CORS_ALLOWED_ORIGINS` 已包含 `https://www.shanwater.com,https://shanwater.com`。在官网提交一次表单验证闭环。
 
 ---
@@ -84,21 +88,26 @@ sudo bash enable-https.sh
 ## 日常运维
 
 ### 更新代码
+
 ```bash
 sudo bash /var/www/shanwater/backend/deploy/update.sh
 ```
 
 ### 用 Navicat 连生产数据库（推荐 SSH 通道，勿开放 3306 公网）
+
 Navicat Premium 12 新建 MySQL 连接：
+
 - 「常规」页：主机 `127.0.0.1`，端口 `3306`，用户 `shanwater`，密码为部署时设置的数据库密码
 - 「SSH」页：勾选"使用 SSH 通道"，填服务器 IP / SSH 端口 22 / 服务器登录用户和密码（或私钥）
 
 ### 数据备份（建议加 crontab）
+
 ```bash
 mysqldump -ushanwater -p shanwater > /var/backups/shanwater_$(date +%F).sql
 ```
 
 ### 常见问题
+
 - **502 Bad Gateway**：`systemctl status php8.3-fpm`，多为 fpm 未启动或 sock 路径不符。
 - **500 错误**：`tail -50 /var/www/shanwater/backend/storage/logs/laravel.log`。
 - **改了 .env 不生效**：执行 `php artisan config:cache`。

@@ -1,0 +1,28 @@
+# =====================================================================
+#  Caddyfile —— 云服务器上的 HTTPS 终结（Phase 2 正式上线用）
+#  作用：对外提供 https://api.shanwater.com:8443，反代到 frps 暴露的本地端口。
+#  监听 8443（非 443），规避国内未备案对 80/443 的拦截。
+#
+#  运行： caddy run --config Caddyfile
+#  证书：因未备案、80 端口不可用，走 DNS-01 方式签发（见指南 Phase 2 第 3 步），
+#        证书文件由 acme.sh 签好后放到下方 tls 指定的路径。
+# =====================================================================
+
+# 禁用 Caddy 自动 HTTPS（不监听 80/443，不自签，只用我们提供的证书）
+{
+	auto_https off
+}
+
+api.shanwater.com:8443 {
+	# 使用 acme.sh 通过 DNS-01 签发好的证书（不依赖 80 端口/备案）
+	tls /etc/caddy/certs/api.shanwater.com.cer /etc/caddy/certs/api.shanwater.com.key
+
+	# 反代到 frps 暴露的隧道端口（frpc 的 remotePort）
+	# Phase 2 建议把 frps 的 proxyBindAddr 改成 127.0.0.1，这里保持 127.0.0.1:18000
+	reverse_proxy 127.0.0.1:18000 {
+		# 传递真实来源信息给 Laravel
+		header_up X-Forwarded-Proto https
+	}
+
+	encode gzip
+}
