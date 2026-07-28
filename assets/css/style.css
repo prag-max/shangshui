@@ -186,6 +186,40 @@ table.tbl .m{font-weight:700;background:#f1f6ff}
 /* 报价筛选说明 */
 .tier-note{font-size:14px;color:var(--muted);margin-top:6px}
 
+/* ===== 报价页优化补充样式 ===== */
+.price-card .tier-name{font-size:21px;font-weight:800;color:var(--text);margin-bottom:2px}
+.price-card .scale{display:inline-block;font-size:13px;font-weight:600;color:var(--primary);background:#eef4ff;border:1px solid #d8e6ff;padding:4px 12px;border-radius:20px;margin:2px 0 4px}
+.price-card .diff-label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:1px;margin:6px 0 2px}
+.price-card .price-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px;margin:2px 0}
+.price-card .price-row .cur{font-size:20px;font-weight:800;color:var(--primary)}
+.price-card .price-row .num{font-size:34px;font-weight:800;color:var(--primary);line-height:1}
+.price-card .price-row .old{font-size:13px;color:var(--muted);text-decoration:line-through}
+.price-card .maint{font-size:13.5px;color:var(--muted);background:var(--bg-soft);border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-bottom:16px}
+.price-card ul li{font-size:14.5px;line-height:1.5}
+.block-h{font-size:20px;font-weight:800;margin:42px 0 14px;text-align:center;color:var(--text)}
+
+/* 增值系统 / 增值服务 分组卡片 */
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px}
+.value-grid .scene{font-size:14px;color:var(--muted);background:var(--bg-soft);border-radius:8px;padding:8px 10px;margin:10px 0;line-height:1.6}
+.value-grid .v-list{list-style:none;display:grid;gap:8px;margin:0}
+.value-grid .v-list li{padding-left:20px;position:relative;font-size:14.5px;color:#33405a;line-height:1.5}
+.value-grid .v-list li:before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:var(--primary)}
+
+/* 部署方案：适合规模标签 */
+.deploy-grid .suit{display:inline-block;font-size:13px;font-weight:600;color:var(--primary);background:#eef4ff;padding:4px 12px;border-radius:20px;margin:6px 0 12px}
+
+/* 报价规则说明：分段 + 关键条款高亮 */
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+.rule{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+.rule h4{font-size:16px;margin-bottom:12px;color:var(--primary-d)}
+.rule ul{list-style:none;display:grid;gap:10px;margin:0}
+.rule ul li{font-size:14.5px;color:#33405a;line-height:1.7;padding-left:20px;position:relative}
+.rule ul li:before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--primary)}
+.rule .hl{color:var(--primary);font-weight:700}
+
+/* 完整功能对比表展开 / 收起 */
+#full-compare[hidden]{display:none}
+
 /* 面包屑 */
 .breadcrumb{font-size:14px;color:var(--muted);padding:18px 0 0}
 .breadcrumb a{color:var(--muted)}
@@ -262,7 +296,7 @@ table.tbl .m{font-weight:700;background:#f1f6ff}
   .hamburger{display:block}
   .nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:14px 20px;border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
   .nav-links.open a{padding:12px 8px}
-  .grid-2,.grid-3,.grid-4,.mod-grid,.price-grid,.statbar,.footer-grid,.feature-grid,.advantage-grid{grid-template-columns:1fr}
+  .grid-2,.grid-3,.grid-4,.mod-grid,.price-grid,.statbar,.footer-grid,.feature-grid,.advantage-grid,.value-grid,.rule-grid,.deploy-grid{grid-template-columns:1fr}
   .hero{padding:40px 0 48px}
   .hero-grid{grid-template-columns:1fr;gap:28px;text-align:center}
   .hero-copy{margin:0 auto}

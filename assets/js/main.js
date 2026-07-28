@@ -32,6 +32,25 @@
     });
   });
 
+  // 报价页：展开 / 收起完整功能对比表
+  document.querySelectorAll('[data-expand]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-expand');
+      var el = document.getElementById(id);
+      if (!el) return;
+      var hidden = el.hasAttribute('hidden');
+      if (hidden) {
+        el.removeAttribute('hidden');
+        btn.textContent = btn.getAttribute('data-text-less') || '收起完整功能对比';
+      } else {
+        el.setAttribute('hidden', '');
+        btn.textContent = btn.getAttribute('data-text-more') || '查看完整全部功能对比';
+        // 收起后让按钮保持在视野内
+        btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+
   // 首页内锚点导航高亮（scroll-spy）：滚动到 #product 时“产品介绍”高亮
   var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
   if (navAnchors.length) {
