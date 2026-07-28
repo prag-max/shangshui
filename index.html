@@ -78,7 +78,7 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
       <a class="brand" href="index.html"><img src="assets/img/logo-icon.png" alt="尚水数字" class="logo-img"><span>尚水数字<small>智慧水务解决方案</small></span></a>
       <nav class="nav-links" id="navlinks">
         <a href="index.html" class="active">首页</a>
-        <a href="product.html">产品介绍</a>
+        <a href="#product">产品介绍</a>
         <a href="features.html">功能展示</a>
         <a href="solutions.html">解决方案</a>
         <a href="pricing.html">报价方案</a>
@@ -130,18 +130,36 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
     </div>
   </section>
 
-  <!-- ============ ③ 业务闭环流程：开户→抄表→计费→收费→票据报表 ============ -->
-  <section>
+  <!-- ============ ③ 产品介绍：一条主线，跑通抄表到收费 ============ -->
+  <section id="product">
     <div class="container">
-      <h2 class="section-title">从开户到缴费，一条完整业务闭环</h2>
-      <div class="steps" style="max-width:760px;margin:0 auto">
-        <div class="step"><div class="num"></div><div><h4>开户建档：统一居民用水档案，便于长期管理</h4><p>用户档案管理完成立户、过户、资料录入，生成唯一用户与水表档案。</p></div></div>
-        <div class="step"><div class="num"></div><div><h4>抄表计量：多方式录入水量，自动识别异常读数</h4><p>按月抄表录入（人工/表格/远传），校验水量审核后形成有效读数。</p></div></div>
-        <div class="step"><div class="num"></div><div><h4>开账计费：自动套用阶梯水价规则，减少人工计算失误</h4><p>按水价、阶梯、加价、附加费规则自动出账，生成应收账单。</p></div></div>
-        <div class="step"><div class="num"></div><div><h4>多渠道收费：线上线下缴费并行，提升回款效率</h4><p>柜台、扫码、收银端、银行代扣并行收款，支持预存与减免。</p></div></div>
-        <div class="step"><div class="num"></div><div><h4>票据与报表：自动生成统计报表，财务对账更轻松</h4><p>电子发票开具、票据管理，报表中心输出回收率与欠费分析。</p></div></div>
+      <h2 class="section-title">一条主线，跑通抄表到收费</h2>
+      <p class="section-sub">从现场抄表到财务入账，四个环节自动衔接、步步可追溯。</p>
+      <div class="flow-main">
+        <div class="flow-node">
+          <div class="fn-icon"><svg class="ico" aria-hidden="true" title="抄表管理" role="img"><use href="#ph-clipboard-text"></use></svg></div>
+          <h3>抄表</h3>
+          <ul><li>移动端现场录入</li><li>异常用水自动预警</li><li>抄表痕迹全程留痕</li></ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon"><svg class="ico" aria-hidden="true" title="计费透明" role="img"><use href="#ph-calculator"></use></svg></div>
+          <h3>计费</h3>
+          <ul><li>阶梯水价自动算</li><li>污水费 / 附加费合并</li><li>损耗分摊透明</li></ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon"><svg class="ico" aria-hidden="true" title="收款渠道" role="img"><use href="#ph-credit-card"></use></svg></div>
+          <h3>收费</h3>
+          <ul><li>柜台 / 银行 / 扫码多渠道</li><li>欠费实时核销</li><li>电子票据一键开</li></ul>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon"><svg class="ico" aria-hidden="true" title="报表中心" role="img"><use href="#ph-chart-bar"></use></svg></div>
+          <h3>财务</h3>
+          <ul><li>已销 / 未销账清晰</li><li>分账调正规范</li><li>报表实时统计</li></ul>
+        </div>
       </div>
-      <div class="block-cta"><a href="product.html">想看系统如何打通全流程？查看产品介绍 →</a></div>
     </div>
   </section>
 
@@ -187,7 +205,7 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
         </div>
         <div>
           <h4>产品</h4>
-          <a href="product.html">产品介绍</a>
+          <a href="#product">产品介绍</a>
           <a href="features.html">功能展示</a>
           <a href="pricing.html">报价方案</a>
         </div>
