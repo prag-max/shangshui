@@ -76,12 +76,14 @@ ul,ol{margin:0 0 1.1em}
 .hero-chips li{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:#c6d6ec;font-weight:500}
 .hero-chips .ck{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:rgba(125,211,252,.18);color:#7dd3fc;font-size:11px;font-weight:800}
 
-/* ---------- 信任条 ---------- */
-.trust-strip{background:var(--bg-soft);border-top:1px solid var(--border);padding:22px 0}
-.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:center}
-.t-item{display:flex;flex-direction:column;gap:4px;text-align:center;padding:0 8px}
-.t-label{display:block;font-size:14px;letter-spacing:1.5px;color:var(--muted);font-weight:700}
-.t-val{font-size:14px;color:var(--text);font-weight:500}
+/* ---------- 实力数据：数字指标 ---------- */
+.trust-strip{background:var(--bg-soft);border-top:1px solid var(--border);padding:30px 0}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:center}
+.t-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:4px 8px}
+.t-item + .t-item{border-left:1px solid var(--border)}
+.t-num{font-size:46px;font-weight:800;line-height:1;letter-spacing:-1px;color:var(--primary)}
+.t-num .t-unit{font-size:20px;font-weight:700;color:var(--primary-d);margin-left:2px}
+.t-label{display:block;font-size:15px;color:var(--muted);font-weight:600}
 
 /* ---------- 通用区块 ---------- */
 section{padding:72px 0}
@@ -268,7 +270,10 @@ table.tbl .m{font-weight:700;background:#f1f6ff}
   .hero h1{font-size:32px}
   .hero p.lead{font-size:17px}
   .hero-btns,.hero-chips{justify-content:center}
-  .trust-grid{grid-template-columns:1fr;gap:12px}
+  .trust-grid{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .t-num{font-size:27px}
+  .t-num .t-unit{font-size:13px}
+  .t-label{font-size:12px}
   .section-title{font-size:24px}
   .cta-band{padding:32px 22px}
   .price-card.featured{transform:none}
