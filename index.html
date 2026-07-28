@@ -103,7 +103,15 @@ var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s)
         </div>
       </div>
       <div class="hero-visual">
-        <img src="assets/img/hero.png" alt="供水营收系统智能看板与水务数据可视化" width="1216" height="832" loading="eager" fetchpriority="high">
+        <picture>
+          <source type="image/avif"
+                  srcset="assets/img/hero-640.avif 640w, assets/img/hero-960.avif 960w, assets/img/hero-1216.avif 1216w"
+                  sizes="(max-width: 980px) 92vw, 540px">
+          <source type="image/webp"
+                  srcset="assets/img/hero-640.webp 640w, assets/img/hero-960.webp 960w, assets/img/hero-1216.webp 1216w"
+                  sizes="(max-width: 980px) 92vw, 540px">
+          <img src="assets/img/hero-1216.webp" alt="供水营收系统智能看板与水务数据可视化" width="1216" height="832" loading="eager" fetchpriority="high">
+        </picture>
       </div>
     </div>
   </section>
