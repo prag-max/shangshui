@@ -205,6 +205,7 @@ table.tbl .m{font-weight:700;background:#f1f6ff}
 .value-block .card .ic{margin-inline:auto}
 .value-block .card .v-list{display:inline-block;text-align:left}
 .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px}
+.value-block .value-grid{grid-template-columns:repeat(3,minmax(0,360px));justify-content:center}
 .value-grid .scene{font-size:14px;color:var(--muted);background:var(--bg-soft);border-radius:8px;padding:8px 10px;margin:10px 0;line-height:1.6}
 .value-grid .v-list{list-style:none;display:grid;gap:8px;margin:0}
 .value-grid .v-list li{padding-left:20px;position:relative;font-size:14.5px;color:#33405a;line-height:1.5}
