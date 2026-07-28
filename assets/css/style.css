@@ -35,6 +35,9 @@ ul,ol{margin:0 0 1.1em}
 .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 .muted{color:var(--muted)}
 .center{text-align:center}
+.wx-qrs{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.wx-qrs>div{flex:1 1 140px;min-width:140px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.wx-qrs>div img{display:block}
 
 /* ---------- 顶部导航 ---------- */
 .site-header{
