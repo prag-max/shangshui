@@ -31,4 +31,36 @@
       });
     });
   });
+
+  // 首页内锚点导航高亮（scroll-spy）：滚动到 #product 时“产品介绍”高亮
+  var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  if (navAnchors.length) {
+    var homeLink = document.querySelector('.nav-links a[href="index.html"]');
+    var map = {}, secs = [];
+    navAnchors.forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      var sec = document.getElementById(id);
+      if (sec) { map[id] = a; secs.push(sec); }
+    });
+    if (secs.length) {
+      var visible = {};
+      function applySpy() {
+        var activeId = null;
+        for (var i = 0; i < secs.length; i++) {
+          if (visible[secs[i].id]) { activeId = secs[i].id; break; }
+        }
+        document.querySelectorAll('.nav-links a').forEach(function (a) { a.classList.remove('active'); });
+        if (activeId && map[activeId]) {
+          map[activeId].classList.add('active');
+        } else if (homeLink) {
+          homeLink.classList.add('active');
+        }
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+        applySpy();
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      secs.forEach(function (s) { obs.observe(s); });
+    }
+  }
 })();
