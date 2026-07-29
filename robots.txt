@@ -1,4 +1,8 @@
+# robots.txt for 尚水数字供水营收系统官网
+# 面向百度等搜索引擎爬虫的配置
+
 User-agent: *
 Allow: /
 
+# 站点地图：便于爬虫快速发现全部可收录页面
 Sitemap: https://www.shanwater.com/sitemap.xml

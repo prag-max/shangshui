@@ -1,0 +1,46 @@
+# ============================================================
+#  尚水数字官网 · 静态资源性能优化 (.htaccess)
+#  适用：Apache / LiteSpeed 托管。若由 EdgeOne / Nginx 托管，
+#  请在控制台或对应配置中开启等价规则（见报告说明）。
+# ============================================================
+
+# ---------- 1) 启用压缩：Brotli 优先，回退 Gzip ----------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# ---------- 2) 浏览器缓存策略 ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML：短缓存，便于内容更新（每次向服务器协商）
+  ExpiresByType text/html "access plus 1 hour"
+  # CSS / JS：一周（更新后用户最迟一周内生效；生产建议加文件哈希版本号实现 immutable）
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  # 图片：一个月（内容相对稳定）
+  ExpiresByType image/jpeg  "access plus 1 month"
+  ExpiresByType image/png   "access plus 1 month"
+  ExpiresByType image/webp  "access plus 1 month"
+  ExpiresByType image/avif  "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # 静态资源：强缓存 + 不可变提示（配合 1 周/1 月过期）
+  <FilesMatch "\.(css|js|jpg|jpeg|png|webp|avif|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # HTML：要求每次重新校验，保证更新即时可见
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # 已压缩资源不再二次压缩
+  <FilesMatch "\.(br|gz)$">
+    Header set Cache-Control "no-transform"
+  </FilesMatch>
+</IfModule>

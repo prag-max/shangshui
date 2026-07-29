@@ -82,4 +82,40 @@
       secs.forEach(function (s) { obs.observe(s); });
     }
   }
+
+  // 功能卡片截图弹窗（Lightbox）
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  if (lb && lbImg) {
+    function openLightbox(src, cap) {
+      lbImg.src = src;
+      lbImg.alt = (cap || '系统界面大图');
+      var capEl = lb.querySelector('.lightbox-cap');
+      if (capEl) capEl.textContent = cap || '';
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lb-lock');
+    }
+    function closeLightbox() {
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lb-lock');
+      // 延迟清空，避免关闭动画时图片闪烁
+      setTimeout(function () { if (!lb.classList.contains('open')) lbImg.src = ''; }, 300);
+    }
+    document.querySelectorAll('.mod-shot').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var src = btn.getAttribute('data-zoom');
+        if (src) openLightbox(src, btn.getAttribute('data-cap'));
+      });
+    });
+    // 点击遮罩空白处关闭（点击图片本身不关闭）
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb || e.target.classList.contains('lightbox-cap')) closeLightbox();
+    });
+    lb.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+    });
+  }
 })();
