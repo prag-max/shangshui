@@ -87,17 +87,28 @@
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lightboxImg');
   if (lb && lbImg) {
+    // 预加载：鼠标悬停 / 触摸即提前缓存大图，点击时秒出
+    document.querySelectorAll('.mod-shot').forEach(function (btn) {
+      var src = btn.getAttribute('data-zoom');
+      function prefetch() {
+        if (src && !btn._pre) { btn._pre = new Image(); btn._pre.src = src; }
+      }
+      btn.addEventListener('mouseenter', prefetch, { once: true });
+      btn.addEventListener('touchstart', prefetch, { once: true, passive: true });
+    });
     function openLightbox(src, cap) {
-      lbImg.src = src;
+      lb.classList.add('loading');
+      lbImg.onload = function () { lb.classList.remove('loading'); };
       lbImg.alt = (cap || '系统界面大图');
       var capEl = lb.querySelector('.lightbox-cap');
       if (capEl) capEl.textContent = cap || '';
+      lbImg.src = src;
       lb.classList.add('open');
       lb.setAttribute('aria-hidden', 'false');
       document.body.classList.add('lb-lock');
     }
     function closeLightbox() {
-      lb.classList.remove('open');
+      lb.classList.remove('open', 'loading');
       lb.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('lb-lock');
       // 延迟清空，避免关闭动画时图片闪烁
