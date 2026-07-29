@@ -24,7 +24,7 @@ fi
 echo "==> 切换 nginx 到域名配置"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 sed "s|__APP_DIR__|${APP_DIR}|g; s|__PHP_VER__|${PHP_VER}|g" \
-  "$SCRIPT_DIR/nginx-domain.conf" > /etc/nginx/sites-available/shanwater-admin
+  "$SCRIPT_DIR/nginx/nginx-domain.conf" > /etc/nginx/sites-available/shanwater-admin
 nginx -t && systemctl reload nginx
 
 echo "==> 安装 certbot 并签发证书（自动续期）"
