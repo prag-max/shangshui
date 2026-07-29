@@ -1,0 +1,19 @@
+# CSS、JS静态资源 30天缓存
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+# 图片资源7天缓存
+/images/*
+  Cache-Control: public, max-age=604800
+
+# HTML页面：缓存5分钟，SWR后台异步刷新，SEO最优
+/*.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=60
+
+# 首页根路径 / 单独配置
+/
+  Cache-Control: public, max-age=300, stale-while-revalidate=60
+
+# API接口禁止缓存
+/api/*
+  Cache-Control: no-store
