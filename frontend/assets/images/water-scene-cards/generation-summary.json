@@ -1,0 +1,62 @@
+{
+  "skillProvenance": {
+    "name": "solo-design",
+    "version": "2026.07.22.00.00.00",
+    "version_source": "skill-release-manifest.json",
+    "runtime_skill_dir": "c:\\Users\\lenovo\\.trae-cn\\builtin\\design\\hebe\\skills\\solo-design",
+    "recorded_at": "2026-07-31T00:15:00+08:00"
+  },
+  "operation": "append-image-asset",
+  "assetCount": 7,
+  "assets": [
+    {
+      "filename": "card-standardization.jpg",
+      "title": "单体水司标准化",
+      "deliverableType": "card-banner",
+      "intendedAspect": "landscape 16:9",
+      "status": "regenerated-chinese"
+    },
+    {
+      "filename": "card-group-management.jpg",
+      "title": "集团化统一管控",
+      "deliverableType": "card-banner",
+      "intendedAspect": "landscape 16:9",
+      "status": "regenerated-chinese"
+    },
+    {
+      "filename": "card-dma-loss-reduction.jpg",
+      "title": "降产销差（分区计量）",
+      "deliverableType": "card-banner",
+      "intendedAspect": "landscape 16:9",
+      "status": "regenerated-chinese"
+    },
+    {
+      "filename": "card-mobile-meter-reading.jpg",
+      "title": "移动抄表作业",
+      "deliverableType": "card-banner",
+      "intendedAspect": "landscape 16:9",
+      "status": "regenerated-chinese"
+    },
+    {
+      "filename": "card-multi-channel-payment.jpg",
+      "title": "多渠道自助缴费",
+      "deliverableType": "card-banner",
+      "intendedAspect": "landscape 16:9",
+      "status": "regenerated-chinese"
+    },
+    {
+      "filename": "card-e-invoice-compliance.jpg",
+      "title": "电子发票与合规",
+      "deliverableType": "card-banner",
+      "intendedAspect": "landscape 16:9",
+      "status": "regenerated-chinese"
+    },
+    {
+      "filename": "delivery-roadmap.jpg",
+      "title": "方案交付路径",
+      "deliverableType": "section-illustration",
+      "intendedAspect": "landscape 16:9",
+      "status": "generated"
+    }
+  ]
+}

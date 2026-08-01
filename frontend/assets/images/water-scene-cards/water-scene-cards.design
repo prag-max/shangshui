@@ -1,0 +1,136 @@
+{
+  "data": [
+    {
+      "id": "image-001",
+      "title": "单体水司标准化",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785475200000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/card-standardization.jpg"
+      }
+    },
+    {
+      "id": "image-002",
+      "title": "集团化统一管控",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785475200000,
+      "canvasData": {
+        "x": 620,
+        "y": 0,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/card-group-management.jpg"
+      }
+    },
+    {
+      "id": "image-003",
+      "title": "降产销差（分区计量）",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785475200000,
+      "canvasData": {
+        "x": 1240,
+        "y": 0,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/card-dma-loss-reduction.jpg"
+      }
+    },
+    {
+      "id": "image-004",
+      "title": "移动抄表作业",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785475200000,
+      "canvasData": {
+        "x": 1860,
+        "y": 0,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/card-mobile-meter-reading.jpg"
+      }
+    },
+    {
+      "id": "image-005",
+      "title": "多渠道自助缴费",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785475200000,
+      "canvasData": {
+        "x": 2480,
+        "y": 0,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/card-multi-channel-payment.jpg"
+      }
+    },
+    {
+      "id": "image-006",
+      "title": "电子发票与合规",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785475200000,
+      "canvasData": {
+        "x": 3100,
+        "y": 0,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/card-e-invoice-compliance.jpg"
+      }
+    },
+    {
+      "id": "image-007",
+      "title": "方案交付路径",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785475200000,
+      "canvasData": {
+        "x": 3720,
+        "y": 0,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/delivery-roadmap.jpg"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "freeSize",
+    "projectName": "供水营收系统场景卡片装饰图",
+    "visualEditorEnabled": true
+  }
+}
