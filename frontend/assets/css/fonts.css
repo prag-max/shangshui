@@ -31,12 +31,3 @@
   src: local('Noto Sans SC'),
        url('../fonts/noto-sans-sc-chinese-simplified-700-normal.woff2') format('woff2');
 }
-
-@font-face {
-  font-family: 'Noto Sans SC';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: local('Noto Sans SC'),
-       url('../fonts/noto-sans-sc-chinese-simplified-900-normal.woff2') format('woff2');
-}
