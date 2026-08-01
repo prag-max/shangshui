@@ -1,0 +1,42 @@
+/* 自托管中文字体：Noto Sans SC（简体中文子集）
+   来源：@fontsource/noto-sans-sc，文件已下载至 assets/fonts/
+   目的：彻底移除对外部 Google Fonts CDN（fonts.googleapis.cn / fonts.gstatic.cn）的依赖，
+         使线上部署与本地直接打开 index.html 的字体渲染完全一致。
+   说明：字体文件为“简体中文”子集（约 1.1MB/字重），覆盖站点全部中文与标点字形；
+         拉丁字符（数字、英文）不在子集内，会自动回退到 --font-sans 中的系统字体，不影响观感。 */
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Noto Sans SC'),
+       url('../fonts/noto-sans-sc-chinese-simplified-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Noto Sans SC'),
+       url('../fonts/noto-sans-sc-chinese-simplified-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Noto Sans SC'),
+       url('../fonts/noto-sans-sc-chinese-simplified-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Noto Sans SC'),
+       url('../fonts/noto-sans-sc-chinese-simplified-900-normal.woff2') format('woff2');
+}

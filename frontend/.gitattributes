@@ -1,2 +1,8 @@
 *.sh text eol=lf
 backend/deploy/*.conf text eol=lf
+
+# 字体二进制文件：禁止行尾/编码转换，避免被当作文本处理而损坏
+*.woff2 binary
+*.woff binary
+*.ttf binary
+*.otf binary
