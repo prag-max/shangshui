@@ -75,7 +75,7 @@ def minify(css):
 
 
 # ---------- 3) 注入 HTML（幂等，同步加载） ----------
-MAIN_LINK_RE = re.compile(r'<link rel="(?:stylesheet|preload)" href="assets/css/style\.css"[^>]*>')
+MAIN_LINK_RE = re.compile(r'<link rel="(?:stylesheet|preload)" href="assets/css/style(?:\.[0-9a-f]{8})?\.css"[^>]*>')
 STYLE_RE = re.compile(r'<style id="critical-css">[\s\S]*?</style>\s*')
 NS_RE = re.compile(r'<noscript><link rel="stylesheet" href="assets/css/style\.css"></noscript>\s*')
 
@@ -91,7 +91,7 @@ def inject(html_path, mini):
         return None, None
     block = (
         '<style id="critical-css">' + mini + "</style>\n"
-        '<link rel="stylesheet" href="assets/css/style.css">\n'
+        + m.group(0) + "\n"
     )
     html = html[: m.start()] + block + html[m.end():]
     with open(html_path, "w", encoding="utf-8") as f:
@@ -107,13 +107,9 @@ if __name__ == "__main__":
     if css.count(START) == 0:
         raise RuntimeError("未在 src partial 中找到 @critical 锚点，请先运行 scripts/mark_critical.py")
     raw = extract_critical(css)
-    with open(CRIT, "w", encoding="utf-8") as f:
-        f.write("/* ============================================================\n")
-        f.write("   尚水数字 · Critical CSS（首屏内联，由 build_critical.py 生成）\n")
-        f.write("   源 = assets/css/src/*.css 中 /* @critical */ 锚定区段\n")
-        f.write("   ============================================================ */\n\n")
-        f.write(raw)
     mini = minify(raw)
+    with open(CRIT, "w", encoding="utf-8") as f:
+        f.write(mini)
     print(f"✅ 抽取 critical.css: 源 {len(raw.encode('utf-8'))} bytes / 压缩内联 {len(mini.encode('utf-8'))} bytes")
     for fn in HTMLS:
         p = os.path.join(ROOT, fn)

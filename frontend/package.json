@@ -6,15 +6,14 @@
   "scripts": {
     "split": "python scripts/split_css.py",
     "mark": "python scripts/mark_critical.py",
-    "build": "python scripts/build_critical.py",
+    "build": "python scripts/build_critical.py && python scripts/hash_assets.py",
+    "hash": "python scripts/hash_assets.py",
     "push:baidu": "python scripts/baidu_push.py",
     "push:baidu:dry": "python scripts/baidu_push.py --dry-run",
     "serve": "python -m http.server 8099",
-    "lint": "eslint assets/js",
     "format": "prettier --write \"assets/**/*.{css,js,html}\""
   },
   "devDependencies": {
-    "eslint": "^9.0.0",
     "prettier": "^3.3.0"
   }
 }

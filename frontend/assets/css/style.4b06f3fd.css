@@ -1,5 +1,5 @@
 /* @critical */
-/* 源 partial —— 由 scripts/split_css.py 从 style.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.css */
+/* 源 partial —— 由 scripts/split_css.py 从 style.4b06f3fd.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.4b06f3fd.css */
 
 /* ============================================================
    尚水数字 · 供水营收系统官网
@@ -115,7 +115,7 @@
 /* @endcritical */
 
 /* @critical */
-/* 源 partial —— 由 scripts/split_css.py 从 style.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.css */
+/* 源 partial —— 由 scripts/split_css.py 从 style.4b06f3fd.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.4b06f3fd.css */
 
 /* ---------- Reset & Base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -271,7 +271,7 @@ ul, ol { margin: 0 0 1em; padding-left: 1.5em; }
 
 /* @endcritical */
 
-/* 源 partial —— 由 scripts/split_css.py 从 style.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.css */
+/* 源 partial —— 由 scripts/split_css.py 从 style.4b06f3fd.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.4b06f3fd.css */
 
 /* @critical */
 /* ---------- Header ---------- */
@@ -855,7 +855,7 @@ body.lb-lock { overflow: hidden; }
   .skeleton-box { animation: none; background: var(--bg-alt); }
 }
 
-/* 源 partial —— 由 scripts/split_css.py 从 style.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.css */
+/* 源 partial —— 由 scripts/split_css.py 从 style.4b06f3fd.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.4b06f3fd.css */
 
 /* ================================================================
    PRICING PAGE STYLES
