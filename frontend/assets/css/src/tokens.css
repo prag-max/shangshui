@@ -1,0 +1,115 @@
+/* @critical */
+/* 源 partial —— 由 scripts/split_css.py 从 style.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.css */
+
+/* ============================================================
+   尚水数字 · 供水营收系统官网
+   设计系统: Water Theme / Modern SaaS / Clean Professional
+   版本: 2.0 — 全站统一样式
+   ============================================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Brand */
+  --brand: #0284C7;
+  --brand-dark: #0369A1;
+  --brand-deep: #0C4A6E;
+  --brand-light: #E0F2FE;
+  --brand-glow: #BAE6FD;
+
+  /* Accent */
+  --cyan: #06B6D4;
+  --cyan-dark: #0891B2;
+  --emerald: #10B981;
+  --emerald-dark: #059669;
+  --amber: #F59E0B;
+  --red: #EF4444;
+
+  /* Neutral */
+  --white: #FFFFFF;
+  --bg: #FFFFFF;
+  --bg-soft: #F0F9FF;
+  --bg-alt: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-footer: #0F172A;
+
+  /* Text */
+  --text: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #5B6678;
+  --text-on-dark: #E2E8F0;
+  --text-on-dark-muted: #94A3B8;
+
+  /* Border */
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.08);
+  --shadow-xl: 0 20px 60px rgba(15, 23, 42, 0.12);
+  --shadow-blue: 0 8px 30px rgba(2, 132, 199, 0.15);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 100px;
+
+  /* Typography */
+  --font-sans: "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "WenQuanYi Micro Hei", sans-serif;
+  --font-cjk: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "WenQuanYi Micro Hei", sans-serif;
+  --font-num: "SF Pro Display", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Type scale */
+  --text-xs: 0.75rem;    /* 12px — 最小标签/徽章底线 */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px — 正文基准 */
+  --text-md: 0.9375rem;  /* 15px — 卡片正文 */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+
+  /* Heading scale */
+  --h1: clamp(2.2rem, 4.5vw, 3.6rem);    /* 35.2–57.6 — 首页 Hero */
+  --h1-page: clamp(1.9rem, 4vw, 2.9rem); /* 30.4–46.4 — 子页 Hero（联系/价格统一） */
+  --h2: clamp(1.7rem, 3vw, 2.4rem);      /* 27.2–38.4 */
+  --h2-card: 1.5rem;                      /* 24 — 卡片内区块标题（如联系表单） */
+  --h3: 1.25rem;                          /* 20 — 区块标题（含 .block-h） */
+  --h3-card: 1.1rem;                      /* 17.6 — 卡片标题统一档 */
+  --h4: 1rem;                             /* 16 — 小标题统一档 */
+
+  /* Line Height Scale */
+  --leading-tight: 1.2;    /* 大标题 */
+  --leading-snug: 1.35;    /* 小标题 */
+  --leading-normal: 1.5;   /* 正文 */
+  --leading-relaxed: 1.7;  /* 长文本 */
+  --leading-loose: 1.8;    /* 辅助文本/引文 */
+
+  /* Layout */
+  --maxw: 1200px;
+  --header-h: 72px;
+  --section-gap: 100px;
+  --section-gap-mobile: 64px;
+
+  /* Spacing Scale (8px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 100px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration: 0.4s;
+  --duration-slow: 0.7s;
+}
+
+/* @endcritical */

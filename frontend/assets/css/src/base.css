@@ -1,0 +1,156 @@
+/* @critical */
+/* 源 partial —— 由 scripts/split_css.py 从 style.css 切分；修改请编辑本目录文件，再运行 build_critical.py 重新生成 style.css */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: var(--header-h); }
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+  overflow-wrap: anywhere;
+  overflow-x: hidden;
+}
+a { color: var(--brand); text-decoration: none; transition: color var(--duration-fast); }
+a:hover { color: var(--brand-dark); }
+img { max-width: 100%; display: block; height: auto; }
+h1, h2, h3, h4 { line-height: var(--leading-snug); color: var(--text); font-weight: 700; }
+h1 { font-size: var(--h1); letter-spacing: normal; }
+h2 { font-size: var(--h2); letter-spacing: normal; }
+h3 { font-size: var(--h3); }
+h4 { font-size: var(--h4); }
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+ul, ol { margin: 0 0 1em; padding-left: 1.5em; }
+
+/* ---------- Utility ---------- */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+.text-center, .center { text-align: center; }
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.muted { color: var(--text-muted); }
+.hl { color: var(--brand); font-weight: 700; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 28px; border-radius: var(--radius-md); font-size: var(--text-md);
+  font-weight: 600; line-height: 1; text-decoration: none; cursor: pointer;
+  border: none; transition: all var(--duration-fast) var(--ease-out); white-space: nowrap;
+  font-family: inherit;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand), var(--cyan-dark));
+  color: #fff; box-shadow: var(--shadow-blue);
+}
+.btn-primary:hover {
+  transform: translateY(-2px); box-shadow: 0 12px 36px rgba(2, 132, 199, 0.25);
+  color: #fff;
+}
+.btn-outline {
+  background: transparent; color: var(--brand); border: 2px solid var(--brand);
+}
+.btn-outline:hover {
+  background: var(--brand); color: #fff; transform: translateY(-2px);
+}
+.btn-white {
+  background: var(--white); color: var(--brand); box-shadow: var(--shadow-sm);
+}
+.btn-white:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--text-secondary); border: 1px solid var(--border);
+  padding: 8px 18px; border-radius: var(--radius-sm); font-size: var(--text-sm);
+  cursor: pointer; font-weight: 500; font-family: inherit;
+  transition: all var(--duration-fast);
+}
+.btn-ghost:hover { color: var(--brand); border-color: var(--brand); background: var(--brand-light); }
+.btn-lg { padding: 16px 36px; font-size: 1.05rem; border-radius: var(--radius-lg); }
+.btn-sm { padding: 8px 18px; font-size: var(--text-sm); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+.btn:active:not(:disabled) { transform: translateY(0) scale(0.98); box-shadow: var(--shadow-sm); }
+.btn-primary:active:not(:disabled) { box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2); }
+
+/* Touch target minimum size for interactive elements */
+@media (pointer: coarse) {
+  .btn { min-height: 44px; }
+  .nav-links a { min-height: 44px; display: flex; align-items: center; }
+  .hamburger { min-width: 44px; min-height: 44px; }
+  .lightbox-close { width: 56px; height: 56px; }
+  .back-to-top { width: 52px; height: 52px; }
+}
+
+/* ---------- Section Common ---------- */
+.section {
+  padding: var(--section-gap) 0;
+}
+.section-soft {
+  padding: var(--section-gap) 0;
+  background: var(--bg-soft);
+}
+.section-alt {
+  padding: var(--section-gap) 0;
+  background: var(--bg-alt);
+}
+.section-label {
+  display: inline-block; font-size: var(--text-sm); font-weight: 700; color: var(--brand-dark);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;
+  padding: 4px 12px; background: var(--brand-light); border-radius: var(--radius-pill);
+}
+.section-title {
+  margin-bottom: 16px; font-weight: 700;
+}
+.section-sub {
+  color: var(--text-secondary); font-size: 1.125rem; max-width: 640px;
+  margin: 0 auto 48px; line-height: var(--leading-relaxed);
+}
+.section-sub.left { margin-left: 0; }
+
+/* Eyebrow (hero label) */
+.eyebrow {
+  display: inline-block; font-size: var(--text-sm); font-weight: 700; color: var(--brand-dark);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;
+  padding: 4px 12px; background: var(--brand-light); border-radius: var(--radius-pill);
+}
+.lead {
+  font-size: 1.15rem; color: var(--text-secondary); max-width: 720px;
+  margin: 0 auto; line-height: var(--leading-loose);
+}
+
+/* ---------- Grid Helpers ---------- */
+.grid { display: grid; gap: 24px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+/* ---------- Icon Helpers ---------- */
+.ic {
+  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  background: var(--brand-light); border-radius: var(--radius-md);
+  margin-bottom: 16px; color: var(--brand); flex-shrink: 0;
+}
+.ico { width: 24px; height: 24px; flex-shrink: 0; }
+.ico-inline { width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 6px; margin-top: -2px; }
+
+/* ---------- Tag ---------- */
+.tag {
+  display: inline-block; font-size: var(--text-sm); font-weight: 500; color: var(--brand);
+  background: var(--brand-light); padding: 3px 10px; border-radius: var(--radius-pill);
+  margin-top: 8px; letter-spacing: 0.02em;
+}
+
+/* @endcritical */

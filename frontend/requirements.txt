@@ -1,0 +1,4 @@
+# 前端构建/字体子集化依赖（构建脚本本身仅用 Python 标准库；
+# 以下用于可选的字体子集化流水线 scripts/subset_fonts.py）
+fonttools==4.63.0
+brotli==1.1.0
