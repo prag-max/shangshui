@@ -9,7 +9,10 @@ hash_assets.py — 为静态资源文件名注入内容哈希，消除强缓存�
 
 本脚本做法：
   1. 计算每个可版本化资源的 sha256 内容哈希（取前 8 位）；
-  2. 原地重命名为 name.<hash>.ext（如 style.ab12cd.css）；
+  2. 资源落盘为 name.<hash>.ext（如 style.ab12cd.css / main.ab12cd.js）：
+     - 默认「原子改名」消耗源文件（CSS / 字体 / 图片等）；
+     - COPY_EXTS 中的扩展名（当前仅 .js）改为「复制」，保留可编辑源
+       （如 main.js），便于后续直接改源、重新构建，无需先恢复被改名的源；
   3. 在 6 个 HTML 与 fonts.css 中，把旧引用（根相对 assets/... 与 css 内相对 ../...）
      全部改写为带哈希的新名；
   4. 被绝对 URL / meta 引用的“品牌资产”不哈希，保持原文件名。
@@ -27,6 +30,7 @@ import argparse
 import hashlib
 import os
 import re
+import shutil
 import sys
 
 # ---- 路径 ----
@@ -36,6 +40,11 @@ FRONTEND = os.path.dirname(HERE)
 # 待哈希的资源扩展名
 HASH_EXTS = {".css", ".js", ".woff2", ".png", ".jpg", ".jpeg",
              ".svg", ".webp", ".avif", ".ico", ".gif"}
+
+# 复制而非重命名的扩展名：源文件保留，便于后续直接改源重新构建，
+# 而无需先恢复被改名消耗的源。当前仅 JS 需要保留可编辑源 main.js。
+# 其余资源（CSS / 字体 / 图片）用改名（消耗源），引用会被一并改写。
+COPY_EXTS = {".js"}
 
 # 明确排除（被绝对 URL 或 <meta>/<link> 引用，改名会破坏外部引用）
 EXCLUDE_FILES = {
@@ -259,9 +268,13 @@ def apply(operations: list, rewrites: dict, dry_run: bool):
         if dry_run:
             print(f"  [hash] {src.logical_name} -> {op['new_name']}")
             continue
-        # os.replace 为原子改名（非删除操作），目标已存在则覆盖，保证多次运行幂等。
+        # 资源落盘：默认原子改名（消耗源文件）；COPY_EXTS（如 .js）改为复制，
+        # 使可编辑源文件（main.js 等）在构建后持续存在，改源即可重新构建。
         if os.path.abspath(src_abs) != os.path.abspath(dst_abs) and os.path.exists(src_abs):
-            os.replace(src_abs, dst_abs)
+            if src.ext in COPY_EXTS:
+                shutil.copy2(src_abs, dst_abs)   # 保留源文件
+            else:
+                os.replace(src_abs, dst_abs)      # 消耗源文件（改名）
             renamed += 1
         # 【P1 修复】删除内容变更后产生的旧哈希副本，避免仓库/产物中堆积孤儿文件。
         for old_a in op["old_hashed"]:
@@ -278,7 +291,7 @@ def apply(operations: list, rewrites: dict, dry_run: bool):
         print(f"  改写引用的文件: {len(changed_files)}")
         for t in sorted(changed_files):
             print(f"    - {os.path.relpath(t, FRONTEND)}")
-        print(f"  重命名资源: {renamed}；删除旧哈希副本: {deleted}")
+        print(f"  处理资源（改名/复制）: {renamed}；删除旧哈希副本: {deleted}")
 
 
 def main():
