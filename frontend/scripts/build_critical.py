@@ -91,7 +91,7 @@ def inject(html_path, mini):
         return None, None
     block = (
         '<style id="critical-css">' + mini + "</style>\n"
-        + m.group(0) + "\n"
+        + m.group(0)
     )
     html = html[: m.start()] + block + html[m.end():]
     with open(html_path, "w", encoding="utf-8") as f:

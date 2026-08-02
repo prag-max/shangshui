@@ -4,13 +4,13 @@
   "private": true,
   "description": "尚水数字官网前端（纯静态多页站点 MPA）。无框架/无打包器，构建由 Python 脚本完成。",
   "scripts": {
-    "split": "python scripts/split_css.py",
-    "mark": "python scripts/mark_critical.py",
-    "build": "python scripts/build_critical.py && python scripts/hash_assets.py",
-    "hash": "python scripts/hash_assets.py",
-    "push:baidu": "python scripts/baidu_push.py",
-    "push:baidu:dry": "python scripts/baidu_push.py --dry-run",
-    "serve": "python -m http.server 8099",
+    "split": "python3 scripts/split_css.py",
+    "mark": "python3 scripts/mark_critical.py",
+    "build": "python3 scripts/build_critical.py && python3 scripts/hash_assets.py",
+    "hash": "python3 scripts/hash_assets.py",
+    "push:baidu": "python3 scripts/baidu_push.py",
+    "push:baidu:dry": "python3 scripts/baidu_push.py --dry-run",
+    "serve": "python3 -m http.server 8099",
     "format": "prettier --write \"assets/**/*.{css,js,html}\""
   },
   "devDependencies": {
