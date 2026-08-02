@@ -68,14 +68,24 @@ def extract_critical(css):
 
 
 def minify(css):
+    # 先抽出字符串字面量（保护 content:" > " 等引号内内容，避免被空白压缩破坏）
+    slots = []
+    def _stash(m):
+        slots.append(m.group(0))
+        return "\x00" + str(len(slots) - 1) + "\x00"
+    css = re.sub(r'"(?:[^"\\]|\\.)*"', _stash, css)
+    css = re.sub(r"'(?:[^'\\]|\\.)*'", _stash, css)
     css = re.sub(r"/\*.*?\*/", "", css, flags=re.DOTALL)
     css = re.sub(r"\s+", " ", css)
     css = re.sub(r"\s*([{}:;,>])\s*", r"\1", css)
+    # 还原字符串字面量
+    css = re.sub(r"\x00(\d+)\x00", lambda m: slots[int(m.group(1))], css)
     return css.strip()
 
 
 # ---------- 3) 注入 HTML（幂等，同步加载） ----------
-MAIN_LINK_RE = re.compile(r'<link rel="(?:stylesheet|preload)" href="assets/css/style(?:\.[0-9a-f]{8})?\.css"[^>]*>')
+# 仅锚定真正的「主样式表」链接（rel=stylesheet），避免与 preload 等并行 link 混淆顺序语义。
+MAIN_LINK_RE = re.compile(r'<link rel="stylesheet" href="assets/css/style(?:\.[0-9a-f]{8})?\.css"[^>]*>')
 STYLE_RE = re.compile(r'<style id="critical-css">[\s\S]*?</style>\s*')
 NS_RE = re.compile(r'<noscript><link rel="stylesheet" href="assets/css/style\.css"></noscript>\s*')
 

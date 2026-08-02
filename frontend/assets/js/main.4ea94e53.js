@@ -41,21 +41,8 @@
     });
   }
 
-  /* ---- Header Scroll Effect (rAF throttled + passive) ---- */
-  const header = document.querySelector('.site-header');
-  if (header) {
-    let ticking = false;
-    const updateHeader = () => {
-      header.classList.toggle('scrolled', window.scrollY > 10);
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateHeader);
-        ticking = true;
-      }
-    }, { passive: true });
-  }
+  /* ---- Header Scroll Effect (由统一 scroll 处理器驱动) ---- */
+  const headerEl = document.querySelector('.site-header');
 
   /* ---- Scroll Spy: Active Nav Link ---- */
   const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -70,13 +57,14 @@
     });
     if (sections.length) {
       const visible = {};
+      const navLinkEls = document.querySelectorAll('.nav-links a');
       const observer = new IntersectionObserver(entries => {
         entries.forEach(e => { visible[e.target.id] = e.isIntersecting; });
         let activeId = null;
         for (let i = 0; i < sections.length; i++) {
           if (visible[sections[i].id]) { activeId = sections[i].id; break; }
         }
-        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        navLinkEls.forEach(a => a.classList.remove('active'));
         if (activeId && sectionMap[activeId]) {
           sectionMap[activeId].classList.add('active');
         } else if (homeLink) {
@@ -162,6 +150,7 @@
   const lbImg = document.getElementById('lightboxImg');
   if (lb && lbImg) {
     let lbTrigger = null;
+    let focusableEls = [];
 
     function getFocusable() {
       return lb.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
@@ -179,8 +168,8 @@
       lb.setAttribute('aria-hidden', 'false');
       document.body.classList.add('lb-lock');
       setTimeout(() => {
-        const focusable = getFocusable();
-        if (focusable.length > 0) focusable[0].focus();
+        focusableEls = getFocusable();
+        if (focusableEls.length > 0) focusableEls[0].focus();
       }, 100);
     }
 
@@ -215,7 +204,7 @@
       if (!lb.classList.contains('open')) return;
       if (e.key === 'Escape') { closeLightbox(); return; }
       if (e.key === 'Tab') {
-        const focusable = getFocusable();
+        const focusable = focusableEls;
         if (focusable.length === 0) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
@@ -259,15 +248,21 @@
   toTop.setAttribute('aria-label', '返回顶部');
   toTop.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M216,168a8,8,0,0,1-11.31,0L128,91.31,51.31,168a8,8,0,0,1-11.32-11.32l84-84a8,8,0,0,1,11.32,0l84,84A8,8,0,0,1,216,168Z"/></svg>';
   document.body.appendChild(toTop);
-  let topTicking = false;
-  const onScrollTop = () => {
-    toTop.classList.toggle('show', window.scrollY > 500);
-    topTicking = false;
+
+  /* ---- 统一滚动处理器（单一监听器 + rAF 节流，合并 header / back-to-top） ---- */
+  let scrollTicking = false;
+  const onScroll = () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 10);
+        toTop.classList.toggle('show', window.scrollY > 500);
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
   };
-  window.addEventListener('scroll', () => {
-    if (!topTicking) { requestAnimationFrame(onScrollTop); topTicking = true; }
-  }, { passive: true });
-  onScrollTop();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
   toTop.addEventListener('click', () => {
     if (prefersReducedMotion) {
       window.scrollTo(0, 0);

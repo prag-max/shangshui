@@ -110,14 +110,14 @@ def main():
 
     api = PUSH_URL_API.format(site=site, token=token)
     code, body = post_to_baidu(api, "\n".join(urls))
-    print(f"\n[主动推送] HTTP {code}")
+    print(f"\n[主动推送] HTTP {code if code is not None else 'N/A（网络/超时错误，详见下方）'}")
     print(body)
 
     if sitemap_push:
         sm_api = SITEMAP_API.format(site=site, token=token)
         sm_url = site.rstrip("/") + "/sitemap.xml"
         c2, b2 = post_to_baidu(sm_api, sm_url)
-        print(f"\n[sitemap 提交] HTTP {c2}")
+        print(f"\n[sitemap 提交] HTTP {c2 if c2 is not None else 'N/A（网络/超时错误）'}")
         print(b2)
 
 

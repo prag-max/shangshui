@@ -203,10 +203,37 @@ def build_rewrites(operations: list, mapping: dict) -> dict[str, list[tuple[str,
     return result
 
 
+def safe_remove(path: str) -> bool:
+    """删除文件；失败时给出警告而非中断构建。
+
+    注：本脚本的删除场景只针对「内容变更后产生的旧哈希副本」这类构建产物，
+    不会触碰源文件。返回是否成功删除。
+    """
+    try:
+        os.remove(path)
+        return True
+    except OSError as e:
+        print(f"  ⚠ 无法删除旧哈希副本 {os.path.basename(path)}: {e}")
+        return False
+
+
+def _ctx_replace(text: str, old: str, new: str) -> tuple[str, int]:
+    """仅在真实引用上下文中替换路径，避免误伤注释 / JSON-LD / data-* 字面量。
+
+    匹配的上下文：href="..."  src="..."  url(...)  url("...")  url('...')。
+    """
+    pat = re.compile(
+        r'(href="|src="|url\(\s*["\']?)'
+        + re.escape(old)
+        + r'(["\']?\s*\)|")'
+    )
+    return pat.subn(lambda m: m.group(1) + new + m.group(2), text)
+
+
 def apply(operations: list, rewrites: dict, dry_run: bool):
     changed_files = set()
 
-    # 阶段一：先改写引用（此时被改名的 style.css / fonts.css 等仍用原名存在）
+    # 阶段一：先改写引用（仅匹配 href=/src=/url() 上下文，此时资源仍用原名存在）
     for t, pairs in rewrites.items():
         if not pairs or not os.path.exists(t):
             continue
@@ -215,14 +242,16 @@ def apply(operations: list, rewrites: dict, dry_run: bool):
         orig = text
         for old, new in pairs:
             if old in text:
-                text = text.replace(old, new)
-                changed_files.add(t)
+                text, n = _ctx_replace(text, old, new)
+                if n:
+                    changed_files.add(t)
         if not dry_run and text != orig:
             with open(t, "w", encoding="utf-8") as f:
                 f.write(text)
 
     # 阶段二：再原子改名资源（引用已指向新名，原文件改名不会破坏引用）
     renamed = 0
+    deleted = 0
     for op in operations:
         src = op["source"]
         src_abs = src.abs
@@ -230,11 +259,17 @@ def apply(operations: list, rewrites: dict, dry_run: bool):
         if dry_run:
             print(f"  [hash] {src.logical_name} -> {op['new_name']}")
             continue
-        # os.replace 为原子改名（非删除操作），可绕过沙箱安全删除拦截；
-        # 目标已存在则覆盖，保证多次运行幂等。
+        # os.replace 为原子改名（非删除操作），目标已存在则覆盖，保证多次运行幂等。
         if os.path.abspath(src_abs) != os.path.abspath(dst_abs) and os.path.exists(src_abs):
             os.replace(src_abs, dst_abs)
             renamed += 1
+        # 【P1 修复】删除内容变更后产生的旧哈希副本，避免仓库/产物中堆积孤儿文件。
+        for old_a in op["old_hashed"]:
+            old_abs = old_a.abs
+            if os.path.abspath(old_abs) == os.path.abspath(dst_abs):
+                continue
+            if os.path.exists(old_abs) and safe_remove(old_abs):
+                deleted += 1
 
     if dry_run:
         n_rewrite = sum(1 for t in rewrites if rewrites[t])
@@ -243,7 +278,7 @@ def apply(operations: list, rewrites: dict, dry_run: bool):
         print(f"  改写引用的文件: {len(changed_files)}")
         for t in sorted(changed_files):
             print(f"    - {os.path.relpath(t, FRONTEND)}")
-        print(f"  重命名资源: {renamed}")
+        print(f"  重命名资源: {renamed}；删除旧哈希副本: {deleted}")
 
 
 def main():
