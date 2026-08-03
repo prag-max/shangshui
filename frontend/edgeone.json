@@ -32,7 +32,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
@@ -41,7 +41,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     }
@@ -50,7 +50,7 @@
     { "source": "/*", "cacheTtl": 300 },
     { "source": "/assets/css/*", "cacheTtl": 300 },
     { "source": "/assets/js/*", "cacheTtl": 300 },
-    { "source": "/assets/fonts/*", "cacheTtl": 86400 },
-    { "source": "/assets/images/*", "cacheTtl": 86400 }
+    { "source": "/assets/fonts/*", "cacheTtl": 31536000 },
+    { "source": "/assets/images/*", "cacheTtl": 31536000 }
   ]
 }
