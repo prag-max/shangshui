@@ -338,4 +338,30 @@
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---- Floating CTA: WeChat QR popover ---- */
+  const wxBtn = document.getElementById('wx-cta-btn');
+  const wxCard = document.getElementById('wx-cta-card');
+  if (wxBtn && wxCard) {
+    const setWx = (open) => {
+      wxCard.classList.toggle('open', open);
+      wxCard.setAttribute('aria-hidden', open ? 'false' : 'true');
+      wxBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    wxBtn.addEventListener('click', () => {
+      setWx(!wxCard.classList.contains('open'));
+    });
+    document.addEventListener('click', e => {
+      if (wxCard.classList.contains('open') &&
+          !wxCard.contains(e.target) && !wxBtn.contains(e.target)) {
+        setWx(false);
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && wxCard.classList.contains('open')) {
+        setWx(false);
+        wxBtn.focus();
+      }
+    });
+  }
+
 })();

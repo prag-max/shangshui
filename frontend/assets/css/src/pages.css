@@ -267,6 +267,9 @@
   .hero-btns .btn { width: 100%; }
   .float-cta { bottom: 20px; right: 16px; padding: 12px 20px; font-size: var(--text-sm); }
   .float-cta span { display: none; }
+  .float-cta-card { right: 16px; bottom: 80px; padding: 14px 14px 12px; }
+  .float-cta-card::after { right: 34px; }
+  .float-cta-card img { width: 120px; height: 120px; }
   .cta-btns { flex-direction: column; }
   .hero-sub { padding: 40px 0 50px; }
   .tbl { font-size: var(--text-xs); }
