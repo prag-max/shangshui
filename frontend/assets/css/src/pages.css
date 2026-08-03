@@ -271,6 +271,9 @@
   .float-cta-card::after { right: 34px; }
   .float-cta-card img { width: 120px; height: 120px; }
   .cta-btns { flex-direction: column; }
+  .cta-contact-inline { flex-direction: column; gap: 20px; }
+  .cta-divider { width: 60%; height: 1px; }
+  .cta-phone-num { font-size: 1.1rem; }
   .hero-sub { padding: 40px 0 50px; }
   .tbl { font-size: var(--text-xs); }
   .tbl th, .tbl td { padding: 8px 10px; }
