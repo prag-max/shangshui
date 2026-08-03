@@ -6,8 +6,7 @@
   "scripts": {
     "split": "python3 scripts/split_css.py",
     "mark": "python3 scripts/mark_critical.py",
-    "build": "python3 scripts/build_critical.py && python3 scripts/hash_assets.py",
-    "hash": "python3 scripts/hash_assets.py",
+    "build": "python3 scripts/build_critical.py",
     "push:baidu": "python3 scripts/baidu_push.py",
     "push:baidu:dry": "python3 scripts/baidu_push.py --dry-run",
     "serve": "python3 -m http.server 8099",

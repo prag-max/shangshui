@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+[DEPRECATED] 自 2026-08-03 起不再使用：资源已改为固定文件名，build 仅跑 build_critical.py。
 hash_assets.py — 为静态资源文件名注入内容哈希，消除强缓存导致的“发版不可控”。
 
 背景：edgeone.json 对 /assets/* 设置了长达 1 天(CSS/JS)~7 天(图片) 的强缓存，

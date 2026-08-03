@@ -11,7 +11,7 @@
   font-display: swap;
   src: local('Noto Sans SC'),
        local('Noto Sans SC Regular'),
-       url('../fonts/noto-sans-sc-400.37567c0b.woff2') format('woff2');
+       url('../fonts/noto-sans-sc-400.woff2') format('woff2');
 }
 
 @font-face {
@@ -21,7 +21,7 @@
   font-display: swap;
   src: local('Noto Sans SC Medium'),
        local('Noto Sans SC'),
-       url('../fonts/noto-sans-sc-500.1036fb4d.woff2') format('woff2');
+       url('../fonts/noto-sans-sc-500.woff2') format('woff2');
 }
 
 @font-face {
@@ -31,7 +31,7 @@
   font-display: swap;
   src: local('Noto Sans SC SemiBold'),
        local('Noto Sans SC'),
-       url('../fonts/noto-sans-sc-600.e94122b9.woff2') format('woff2');
+       url('../fonts/noto-sans-sc-600.woff2') format('woff2');
 }
 
 @font-face {
@@ -41,7 +41,7 @@
   font-display: swap;
   src: local('Noto Sans SC Bold'),
        local('Noto Sans SC'),
-       url('../fonts/noto-sans-sc-700.ba1195ca.woff2') format('woff2');
+       url('../fonts/noto-sans-sc-700.woff2') format('woff2');
 }
 
 @font-face {
@@ -51,5 +51,5 @@
   font-display: swap;
   src: local('Noto Sans SC ExtraBold'),
        local('Noto Sans SC'),
-       url('../fonts/noto-sans-sc-800.2ee8b06f.woff2') format('woff2');
+       url('../fonts/noto-sans-sc-800.woff2') format('woff2');
 }
