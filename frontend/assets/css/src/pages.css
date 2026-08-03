@@ -274,6 +274,9 @@
   .cta-contact-inline { flex-direction: column; gap: 20px; }
   .cta-divider { width: 60%; height: 1px; }
   .cta-phone-num { font-size: 1.1rem; }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .partner-item { padding: 14px 10px; border-radius: 10px; }
+  .partners-sub { margin-bottom: 28px; }
   .hero-sub { padding: 40px 0 50px; }
   .tbl { font-size: var(--text-xs); }
   .tbl th, .tbl td { padding: 8px 10px; }

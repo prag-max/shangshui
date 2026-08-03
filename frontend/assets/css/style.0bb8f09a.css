@@ -796,6 +796,51 @@ ul, ol { margin: 0 0 1em; padding-left: 1.5em; }
   font-family: var(--font-num); margin-bottom: 4px; line-height: 1.5;
 }
 
+/* ---------- Partners Section ---------- */
+.partners-section {
+  padding: var(--section-gap-mobile) 0 var(--section-gap);
+  background: var(--bg-soft);
+}
+.partners-header {
+  text-align: center; margin-bottom: 12px;
+}
+.partners-title {
+  font-size: var(--h2); font-weight: 700; color: var(--text);
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.partners-divider-dot {
+  color: var(--brand); font-weight: 400; font-size: 0.85em;
+}
+.partners-en {
+  font-family: var(--font-num); font-size: 0.75em; font-weight: 500;
+  color: var(--text-secondary); letter-spacing: 0.05em;
+}
+.partners-sub {
+  text-align: center; color: var(--text-secondary); font-size: 1.05rem;
+  margin-bottom: 48px;
+}
+.partners-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1080px; margin: 0 auto;
+}
+.partner-item {
+  background: #fff; border-radius: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  padding: 20px 16px; display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 4 / 3;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+.partner-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  border-color: var(--brand-light);
+}
+.partner-item img {
+  max-width: 100%; max-height: 100%; height: auto; width: auto;
+  object-fit: contain; display: block;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--bg-footer); padding: 72px 0 32px; color: var(--text-on-dark);
@@ -1203,6 +1248,9 @@ body.lb-lock { overflow: hidden; }
   .cta-contact-inline { flex-direction: column; gap: 20px; }
   .cta-divider { width: 60%; height: 1px; }
   .cta-phone-num { font-size: 1.1rem; }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .partner-item { padding: 14px 10px; border-radius: 10px; }
+  .partners-sub { margin-bottom: 28px; }
   .hero-sub { padding: 40px 0 50px; }
   .tbl { font-size: var(--text-xs); }
   .tbl th, .tbl td { padding: 8px 10px; }
