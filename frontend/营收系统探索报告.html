@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巴州焉耆自来水营收管理系统 — 营收系统探索报告</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1e293b; --panel2:#243449; --line:#334155;
+    --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --accent2:#22d3ee;
+    --green:#34d399; --amber:#fbbf24; --red:#f87171; --purple:#a78bfa; --orange:#fb923c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,Segoe UI,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;font-size:14px;padding:0 0 80px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header{background:linear-gradient(120deg,#0c4a6e,#0e7490 60%,#0f766e);padding:36px 24px 30px;margin-bottom:28px}
+  header .wrap{padding:0 24px}
+  header h1{font-size:26px;font-weight:700;letter-spacing:1px}
+  header .sub{color:#cffafe;margin-top:8px;font-size:14px}
+  header .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:999px;font-size:12.5px;color:#ecfeff}
+  h2{font-size:21px;margin:38px 0 16px;padding-left:12px;border-left:5px solid var(--accent);color:#f0f9ff}
+  h3{font-size:17px;margin:24px 0 10px;color:#bae6fd}
+  h4{font-size:14.5px;margin:14px 0 6px;color:#e2e8f0}
+  p{margin:8px 0;color:#cbd5e1}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
+  .grid{display:grid;gap:16px}
+  .grid2{grid-template-columns:repeat(2,1fr)}
+  .grid3{grid-template-columns:repeat(3,1fr)}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .stat .n{font-size:30px;font-weight:700;color:var(--accent)}
+  .stat .l{color:var(--muted);font-size:13px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:#bae6fd;font-weight:600}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:6px;font-size:11.5px;margin:2px 3px 2px 0;white-space:nowrap}
+  .t-mod{background:rgba(56,189,248,.16);color:#7dd3fc;border:1px solid rgba(56,189,248,.35)}
+  .t-sub{background:rgba(167,139,250,.16);color:#c4b5fd;border:1px solid rgba(167,139,250,.35)}
+  .t-r{background:rgba(52,211,153,.14);color:#6ee7b7;border:1px solid rgba(52,211,153,.3)}
+  .t-o{background:rgba(251,191,36,.14);color:#fcd34d;border:1px solid rgba(251,191,36,.3)}
+  .t-a{background:rgba(248,113,113,.14);color:#fca5a5;border:1px solid rgba(248,113,113,.3)}
+  .t-p{background:rgba(251,146,60,.14);color:#fdba74;border:1px solid rgba(251,146,60,.3)}
+  .mod-block{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+  .mod-block .head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .mod-block .idx{width:30px;height:30px;flex:0 0 30px;border-radius:8px;background:var(--accent);color:#06283d;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .mod-block .name{font-size:17px;font-weight:700;color:#f0f9ff}
+  .mod-block .count{color:var(--muted);font-size:12.5px}
+  .duty{margin:8px 0;display:grid;grid-template-columns:96px 1fr;gap:8px}
+  .duty .k{color:var(--accent2);font-weight:600;font-size:13px}
+  .duty .v{color:#cbd5e1}
+  .sublist{margin:10px 0 4px}
+  .sublist .si{margin:6px 0;padding:8px 12px;background:var(--panel2);border-radius:8px;border-left:3px solid var(--purple)}
+  .sublist .si .sn{color:#c4b5fd;font-weight:600;font-size:13.5px}
+  .sublist .si .sp{color:#94a3b8;font-size:12.5px;margin-top:2px}
+  .flow-wrap{background:#0b1220;border:1px solid var(--line);border-radius:14px;padding:10px;overflow-x:auto}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0;font-size:12.5px;color:var(--muted)}
+  .legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px}
+  .note{background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.3);border-radius:10px;padding:14px 16px;margin:14px 0;color:#cbd5e1}
+  .note b{color:#7dd3fc}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
+  .toc a{color:#7dd3fc;text-decoration:none;margin-right:18px;font-size:13.5px}
+  .toc a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>巴州焉耆自来水营收管理系统 — 营收系统探索报告</h1>
+    <div class="meta">
+      <span class="chip">技术栈：Vue3 + Element Plus + Pinia（微前端 billing 子应用）</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="toc">
+    <a href="#overview">① 系统概况</a>
+    <a href="#modules">② 功能模块梳理</a>
+    <a href="#duty">③ 模块职责描述</a>
+    <a href="#flow">④ 主线业务流程图</a>
+  </div>
+
+  <!-- ============ 1. 系统概况 ============ -->
+  <h2 id="overview">一、系统概况</h2>
+  <div class="grid grid3">
+    <div class="stat"><div class="n">9</div><div class="l">一级功能模块</div></div>
+    <div class="stat"><div class="n">50</div><div class="l">二级子模块</div></div>
+    <div class="stat"><div class="n">136</div><div class="l">功能页面入口（导航项）</div></div>
+  </div>
+  <div class="card">
+    <p>「营收系统」是巴州焉耆自来水营收管理平台的<b>核心业务子系统</b>（对应微前端子应用 <code>/billing/#/</code>），承载自来水从<b>用户开户建档</b>到<b>水费收缴、账务处理、票据开具</b>的全生命周期营收业务。其业务主线可概括为：<b>开户建档 → 立户 → 抄表 → 计费出账 → 收费 → 开票</b>，并配套表务资产管理、优惠政策、对账与报表分析能力。</p>
+  </div>
+
+  <!-- ============ 2. 功能模块梳理 ============ -->
+  <h2 id="modules">二、功能模块梳理</h2>
+  <p>以下为从系统权限菜单树中逐层提取的营收系统全部功能模块与子模块。共 <b>9 个一级模块</b>，下设 <b>50 个二级子模块</b>，合计 <b>136 个功能页面入口</b>。</p>
+  <div class="card">
+  <table>
+    <thead><tr><th style="width:34px">#</th><th style="width:150px">一级模块</th><th>二级子模块 / 功能页面入口</th><th style="width:70px">入口数</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td><td><span class="tag t-mod">用户管理</span></td>
+        <td>
+          <span class="tag t-sub">核心档案</span>用户档案管理 ·
+          <span class="tag t-sub">用户状态管理</span>申请状态变更 / 审核状态变更 / 状态变更记录 / 状态变更日志 ·
+          <span class="tag t-sub">用户资料处理</span>水价批量调整 / 档案快捷变更 / 档案变更记录 / 批量立户 / 档案编辑权限 ·
+          <span class="tag t-sub">优惠政策管理</span>优惠申请 / 优惠审核 / 优惠查询 / 优惠性质设置 ·
+          <span class="tag t-sub">合算号</span>合算号管理 ·
+          <span class="tag t-sub">定额阶梯管理</span>定额用水用户认定 / 定额用户管理 / 增长系数设置 / 定额用户用水查询 ·
+          <span class="tag t-sub">附加费管理</span>附加费类型设置 / 用户附加费设置 ·
+          <span class="tag t-sub">其他</span>用户征信管理 / 考核表管理 / 合同到期预警 / 财务序号管理
+        </td><td>25</td>
+      </tr>
+      <tr>
+        <td>2</td><td><span class="tag t-mod">抄表管理</span></td>
+        <td>
+          <span class="tag t-sub">抄表作业</span>抄表录入 / 校验水量审核 / 校验水量记录 / 开账计费 / 表册管理 / 抄表线路 / 催款管理 / 抄表复核 ·
+          <span class="tag t-sub">抄表修改（管理员）</span>抄表修改 / 抄表修改记录 ·
+          <span class="tag t-sub">抄表计划</span>抄表月结 / 月结日志 ·
+          <span class="tag t-sub">移动端</span>现场情况反馈
+        </td><td>13</td>
+      </tr>
+      <tr>
+        <td>3</td><td><span class="tag t-mod">收费管理</span></td>
+        <td>
+          <span class="tag t-sub">收费作业</span>窗口收费 / 收费结账 / 银行转账 / 营业外收入 / 银行代扣 / 撤销收费记录
+        </td><td>6</td>
+      </tr>
+      <tr>
+        <td>4</td><td><span class="tag t-mod">账务处理</span></td>
+        <td>
+          <span class="tag t-sub">撤销收费</span>撤销收费 / 撤销记录 ·
+          <span class="tag t-sub">应收减免</span>账单减免 / 减免审核 ·
+          <span class="tag t-sub">余额管理</span>余额处理 / 转移记录 ·
+          <span class="tag t-sub">呆坏账管理</span>呆坏账申请 / 呆坏账审核 / 历史记录 / 操作日志 ·
+          <span class="tag t-sub">账单冲正管理</span>账单冲正 / 账单冲正记录
+        </td><td>12</td>
+      </tr>
+      <tr>
+        <td>5</td><td><span class="tag t-mod">票据管理</span></td>
+        <td>
+          <span class="tag t-sub">开票</span>已收开票 / 作废·重开 / 未收开票 ·
+          <span class="tag t-sub">票号管理</span>票据入库 / 票据发放 / 票据接收 / 票据移交
+        </td><td>7</td>
+      </tr>
+      <tr>
+        <td>6</td><td><span class="tag t-mod">表务管理</span></td>
+        <td>
+          <span class="tag t-sub">换表管理</span>换表申请 / 换表确认 / 换表记录 / 批量换表 ·
+          <span class="tag t-sub">拆装表管理</span>拆装表申请 / 拆装表确认 ·
+          <span class="tag t-sub">库存管理</span>表具鉴定 / 仪表入库 / 仪表出库 / 库存调拨 / 调拨确认 / 库存查询 / 盘点管理 ·
+          <span class="tag t-sub">基础信息</span>仓库管理 / 水表产品管理 / 厂家管理 ·
+          <span class="tag t-sub">档案/其他</span>水表档案 ·
+          <span class="tag t-sub">开关阀管理</span>派工关阀 / 关阀登记 / 派工开阀 / 开阀登记 ·
+          <span class="tag t-sub">其他</span>周期调表
+        </td><td>22</td>
+      </tr>
+      <tr>
+        <td>7</td><td><span class="tag t-mod">报表中心</span></td>
+        <td>
+          <span class="tag t-sub">总览</span>数据总览 ·
+          <span class="tag t-sub">自定义报表</span>月水费汇总表 / 月水费明细表 / 月污水汇总表 / 月污水明细表 / 预存销账统计表 / 月水费明细实时表 / 同环比报表 ·
+          <span class="tag t-sub">应收分析</span>用户账单查询 ·
+          <span class="tag t-sub">实收分析</span>收费数据查询 / 收费汇总统计 / 预交款月报 / 每日余额报表 / 用水性质回收率 / 用水性质回收率(新) ·
+          <span class="tag t-sub">抄表分析</span>抄表数据查询 / 抄表情况统计 / 抄表率统计 / 抄表率统计（按抄表员）/ 用户年度用水情况 ·
+          <span class="tag t-sub">欠费统计</span>欠费数据查询 / 表册欠费汇总统计 ·
+          <span class="tag t-sub">其他统计</span>优惠减免水量 / 产销差报表 ·
+          <span class="tag t-sub">第三方对账</span>银行对账单 / 微信对账单 / 支付宝对账单 ·
+          <span class="tag t-sub">短信查询</span>短信记录 / 每日汇总
+        </td><td>29</td>
+      </tr>
+      <tr>
+        <td>8</td><td><span class="tag t-mod">业务参数</span></td>
+        <td>
+          <span class="tag t-sub">基础</span>区域管理 / 营业网点维护 ·
+          <span class="tag t-sub">价格管理</span>单价性质管理 / 基础单价设置 / 排污价设置 / 加价设置 / 阶梯价设置 / 帐目项 ·
+          <span class="tag t-sub">违约金/权限</span>违约金类型 / 数据权限管理 / 用户开户行管理 ·
+          <span class="tag t-sub">打印</span>打印插件下载 / 打印模板管理 ·
+          <span class="tag t-sub">移动端</span>抄表APP ·
+          <span class="tag t-sub">业务配置</span>业务参数配置 / 字典管理 / 计费规则管理 / 系统信息 ·
+          <span class="tag t-sub">数据验证</span>数据健康度验证 / 健康度验证1 / 上线验证
+        </td><td>21</td>
+      </tr>
+      <tr>
+        <td>9</td><td><span class="tag t-mod">快捷查询</span></td>
+        <td>
+          <span class="tag t-sub">综合查询</span>快捷查询（客户综合信息一站式查询）
+        </td><td>1</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ============ 3. 模块职责描述 ============ -->
+  <h2 id="duty">三、各模块职责描述</h2>
+  <p>以下对每个一级模块，从<b>核心职责、关键功能点、主要操作项、业务定位</b>四个维度进行描述，并拆解其子模块作用。</p>
+
+  <!-- 用户管理 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">1</div><div class="name">用户管理 <span class="count">（25 入口 · 营收业务起点）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">管理自来水用户的全生命周期档案，是营收业务的<b>起点与核心主数据</b>。负责开户建档（立户）、用户信息维护、状态管控、优惠政策与定额/附加费配置。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① 用户档案管理（含立户开户入口、档案查询、批量修改、短信通知、导出）；② 用户状态机（正常/报停/销户，含申请→审核→记录→日志）；③ 水价批量调整与档案快捷变更；④ 优惠政策的申请/审核/查询/性质设置；⑤ 合算号（合并缴费号）管理；⑥ 定额阶梯水价用户认定与系数；⑦ 附加费、征信、考核表、合同预警、财务序号。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">立户/开户、查询/重置/更多查询、批量修改、短信通知、导出档案资料、批量变更表册、申请/审核状态变更、优惠申请/审核、档案快捷变更、水价批量调整。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">所有营收业务（抄表、计费、收费）的<b>主数据来源</b>。一个用户必须先在此立户生成档案号/用户编号，后续抄表计费才得以关联。页面含 25+ 字段（档案号、用水性质、收费方式、价格、票据类型、银行账号、供水区域等）支撑精细计费。</div></div>
+    <div class="sublist">
+      <div class="si"><div class="sn">用户档案管理 /user/archives</div><div class="sp">核心档案页。筛选：自来水公司、档案号、用户名称、用户类型、收费方式、用户状态、立户时间、用水分类、供水区域等 20+ 条件；操作：立户、批量修改、短信通知、导出、批量变更表册；列表含 26 列明细。</div></div>
+      <div class="si"><div class="sn">用户状态管理（申请/审核/记录/日志）</div><div class="sp">报停、销户、复装等状态变更的「申请 → 审核」闭环，全程留痕，属需审批功能。</div></div>
+      <div class="si"><div class="sn">用户资料处理（水价批量调整/档案快捷变更/批量立户/变更记录/编辑权限）</div><div class="sp">批量与快捷维护工具，提升大批量用户建档/调价效率，编辑权限控制可改字段范围。</div></div>
+      <div class="si"><div class="sn">优惠政策管理（申请/审核/查询/性质设置）</div><div class="sp">困难户、政策性减免等优惠的「申请 → 审核」流程，性质设置定义优惠类型与规则。</div></div>
+      <div class="si"><div class="sn">定额阶梯管理（认定/用户管理/增长系数/用水查询）</div><div class="sp">对定额用水户（如农村/特定行业）的认定、阶梯与增长系数配置。</div></div>
+      <div class="si"><div class="sn">附加费管理 / 用户征信 / 考核表 / 合同预警 / 财务序号</div><div class="sp">附加费类型与用户级设置、征信评级、考核表（总表/考核计量）、合同到期预警、财务对接序号。</div></div>
+    </div>
+  </div>
+
+  <!-- 抄表管理 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">2</div><div class="name">抄表管理 <span class="count">（13 入口 · 计量与计费触发）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">完成用水量的采集、校验与<b>开账计费</b>，是营收从「实物计量」到「金额账单」的<b>转化中枢</b>。维护抄表册、线路、月结与催缴。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① 抄表录入（本月读数、本次用量、估抄、异常表况）；② 校验水量审核/记录（对异常水量二次确认）；③ <b>开账计费</b>（按表册/档案批量生成账单，拆分基本费/排污费/阶梯费/加价费/附加费/垃圾费）；④ 表册管理与抄表线路规划；⑤ 催款管理；⑥ 抄表复核与（管理员）抄表修改；⑦ 抄表月结与现场情况反馈（移动端）。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">抄表/追加抄表/抄表检查、设置抄表日期与人员、水量清零、导出 Excel；按档案/表册开账、取消计费；月结。抄表状态机：未抄 → 已抄 → 已计费 → 已收费。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">营收计费环的<b>触发点</b>。抄表录入产生「本月用量」，校验后由「开账计费」生成应收账单（出账），账单状态由「已抄」转为「已计费」，方可进入收费环节。</div></div>
+    <div class="sublist">
+      <div class="si"><div class="sn">抄表录入 /mrm/readmeter</div><div class="sp">核心抄表页。筛选：公司、档案号、抄表月份、表况、抄表状态、是否估抄等；操作：抄表、追加抄表、抄表检查、设置日期/人员、水量清零、导出；字段覆盖上次/本次读数、校验量、实际用量、表况、异常原因等。</div></div>
+      <div class="si"><div class="sn">校验水量审核 / 校验水量记录</div><div class="sp">对偏大/偏小/异常水量进行二次校验与确认，保证计费基数准确。</div></div>
+      <div class="si"><div class="sn">开账计费 /mrm/chargemanage</div><div class="sp">计费核心。按选中用户档案或表册开账，生成账单金额（基本费+排污费+阶梯费+加价费+附加费+垃圾费=合计），支持取消计费。列表展示各费用分项与计费时间。</div></div>
+      <div class="si"><div class="sn">表册管理 / 抄表线路 / 催款管理 / 抄表复核</div><div class="sp">抄表组织（册、线路）、欠费催缴、数据复核的质量控制环节。</div></div>
+      <div class="si"><div class="sn">抄表修改（管理员）/ 抄表计划（月结/日志）/ 现场情况反馈</div><div class="sp">管理员纠错通道、月度结算与移动端现场上报。</div></div>
+    </div>
+  </div>
+
+  <!-- 收费管理 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">3</div><div class="name">收费管理 <span class="count">（6 入口 · 资金收入入口）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">面向用户的<b>水费收缴</b>执行层，将「已计费账单」转化为「实收资金」。是营收资金流入的主通道。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① <b>窗口收费</b>（柜台现金/二维码/POS/转账支票，含欠费合计、违约金、预存、多户合计、减免申请、票据设置）；② 收费结账（收银日结）；③ 银行转账；④ 营业外收入；⑤ 银行代扣（批扣）；⑥ 撤销收费记录（查询已撤销）。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">按档案号/用户搜索 → 选择未收账单 → 选择收费渠道 → 录入实收/预存 → 收费 → 自动生成收据号/发票号 → 打印票据。支持减免申请、垃圾费拆分、合算号汇总、多户合计。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">营收闭环的<b>资金落点</b>。收费成功后账单状态由「已计费」转为「已收费」，并触发票据开具与实收统计。窗口收费与银行代扣/转账构成多通道收款体系。</div></div>
+    <div class="sublist">
+      <div class="si"><div class="sn">窗口收费 /charge/toll</div><div class="sp">核心收费页（详情/列表双视图）。用户信息面板 + 欠费账单明细（基础费/排污费/阶梯费/加价费/附加费/垃圾费/违约金/减免）+ 收费渠道（现金/二维码/POS/转账支票）+ 实收/预存 + 票据设置（收据号/发票号）+ 减免申请/多户合计/垃圾费拆分。含未收账单、已收账单、收费记录、合算号汇总多标签。</div></div>
+      <div class="si"><div class="sn">收费结账 / 银行转账 / 营业外收入 / 银行代扣 / 撤销收费记录</div><div class="sp">收银日结、单笔转账、非水费收入、批量代扣、撤销流水查询，覆盖各类收款与对账场景。</div></div>
+    </div>
+  </div>
+
+  <!-- 账务处理 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">4</div><div class="name">账务处理 <span class="count">（12 入口 · 账面调整与风控）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">对已完成/未完成的账单与资金进行<b>调整、冲减、减免、核销</b>，保证账面准确，是营收的「财务内控」层。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① 撤销收费（撤销 + 记录）；② 应收减免（账单减免申请 → 审核）；③ 余额管理（余额处理 + 转移记录，预存款划转）；④ 呆坏账管理（申请 → 审核 → 历史 → 日志，长期欠费核销）；⑤ 账单冲正（冲正 + 记录，纠错）。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">减免申请/审核、撤销收费、余额转移、呆坏账申请/审核、账单冲正。多数含「申请 → 审核」双步审批。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">营收账面的<b>纠错与风控中枢</b>。处理优惠减免、退费冲正、预存余额、呆账核销等异常账务，与收费管理、用户管理（优惠）形成联动。</div></div>
+  </div>
+
+  <!-- 票据管理 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">5</div><div class="name">票据管理 <span class="count">（7 入口 · 票证合规）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">管理水费票据的<b>库存与开具</b>，保证收费凭证合规可追溯。含收据/发票开具与票号生命周期管理。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① 已收开票（收费后开具收据/发票）；② 作废·重开（票据纠错）；③ 未收开票（预开票）；④ 票号管理（票据入库/发放/接收/移交，票号段全生命周期）。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">开票、作废、重开、补开、票据入库/发放/接收/移交；票据设置（起始票号段）。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">收费的<b>凭证闭环</b>。窗口收费产生「收据号/发票号」，此处完成正式票据开具与票号库存管控，满足财税合规。</div></div>
+  </div>
+
+  <!-- 表务管理 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">6</div><div class="name">表务管理 <span class="count">（22 入口 · 计量资产）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">管理水表<b>资产全生命周期</b>与阀门管控，是抄表计量的物理基础。含换表、拆装、库存、档案、开关阀。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① 换表管理（申请 → 确认 → 记录 → 批量换表，换表影响计费基数）；② 拆装表管理（申请/确认）；③ 库存管理（鉴定/入库/出库/调拨/调拨确认/查询/盘点）；④ 基础信息（仓库/水表产品/厂家）；⑤ 水表档案；⑥ 开关阀管理（派工关阀/关阀登记/派工开阀/开阀登记）；⑦ 周期调表。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">换表申请/确认、拆装申请/确认、表具出入库与调拨、库存盘点、阀门派工与登记、周期调表。换表/拆装含「申请 → 确认」审批。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">营收计量的<b>资产支撑</b>。水表是计费载体，换表/拆装直接触发计费参数变化；阀门管控支撑欠费关阀、复装开阀等催缴手段。</div></div>
+  </div>
+
+  <!-- 报表中心 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">7</div><div class="name">报表中心 <span class="count">（29 入口 · 数据洞察）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">对营收全链路数据进行<b>汇总、分析与对账</b>，为经营决策提供依据。是营收系统的「管理驾驶舱」。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① 数据总览（Dashboard）；② 自定义报表（月水费/污水汇总明细、预存销账、同环比）；③ 应收分析（用户账单查询）；④ 实收分析（收费数据/汇总、预交款月报、每日余额、回收率）；⑤ 抄表分析（抄表率、年度用水）；⑥ 欠费统计；⑦ 其他（优惠减免水量、产销差）；⑧ 第三方对账（银行/微信/支付宝）；⑨ 短信查询。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">条件查询、导出 Excel、报表钻取。对账模块用于与银行/第三方支付渠道核对实收。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">营收的<b>决策与监管层</b>。将抄表、计费、收费、账务数据转化为经营指标（回收率、产销差、欠费），并通过对账保障资金一致。</div></div>
+  </div>
+
+  <!-- 业务参数 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">8</div><div class="name">业务参数 <span class="count">（21 入口 · 系统配置底座）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">配置营收所需的<b>基础规则与参数</b>，是计费、收费、打印的「规则引擎」与系统运行底座。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">① 区域/营业网点基础数据；② <b>价格管理</b>（单价性质/基础单价/排污价/加价/阶梯价/帐目项，计费公式核心）；③ 违约金类型、数据权限、用户开户行；④ 打印插件与模板；⑤ 抄表APP；⑥ 业务配置（参数/字典/计费规则/系统信息）；⑦ 数据验证（健康度/上线验证）。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">新增/编辑价格、配置阶梯与加价规则、设置违约金、配置打印模板、维护字典与计费规则、数据校验。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">营收业务运行的<b>规则与配置底座</b>。开账计费时所用的单价、阶梯、加价、排污、违约金等全部来源于此模块，是计费准确性的根本保障。</div></div>
+  </div>
+
+  <!-- 快捷查询 -->
+  <div class="mod-block">
+    <div class="head"><div class="idx">9</div><div class="name">快捷查询 <span class="count">（1 入口 · 综合查询）</span></div></div>
+    <div class="duty"><div class="k">核心职责</div><div class="v">提供客户综合信息的<b>一站式查询</b>入口，整合档案、账单、抄表、收费等多维度数据。</div></div>
+    <div class="duty"><div class="k">关键功能点</div><div class="v">单一「快捷查询」页面（PanelCustomerBase），按客户聚合展示全量信息，便于客服/柜台快速响应。</div></div>
+    <div class="duty"><div class="k">主要操作</div><div class="v">条件检索、客户全景信息查看。</div></div>
+    <div class="duty"><div class="k">业务定位</div><div class="v">面向一线人员的<b>效率工具</b>，无需在各模块间跳转即可获取用户全貌。</div></div>
+  </div>
+
+  <!-- ============ 4. 主线业务流程图 ============ -->
+  <h2 id="flow">四、主线业务流程图：用户开户 → 缴费完成</h2>
+  <p>以下流程图基于实际页面（用户档案管理-立户、抄表录入、开账计费、窗口收费、票据管理）与状态机（未抄→已抄→已计费→已收费）绘制，标明各环节<b>先后顺序与流转关系</b>，并标注关键分支（减免、冲正、呆坏账、代扣、催缴）。</p>
+
+  <div class="legend">
+    <span><i style="background:#38bdf8"></i>主数据/建档</span>
+    <span><i style="background:#a78bfa"></i>抄表计量</span>
+    <span><i style="background:#fbbf24"></i>计费出账</span>
+    <span><i style="background:#34d399"></i>收费资金</span>
+    <span><i style="background:#f87171"></i>票据/账务调整</span>
+    <span><i style="background:#fb923c"></i>分支/异常</span>
+  </div>
+
+  <div class="flow-wrap">
+  <svg viewBox="0 0 1180 1180" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei, sans-serif">
+    <defs>
+      <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#94a3b8"/>
+      </marker>
+      <marker id="arrowO" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#fb923c"/>
+      </marker>
+      <marker id="arrowR" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#f87171"/>
+      </marker>
+    </defs>
+
+    <!-- ===== 阶段1：开户建档 ===== -->
+    <rect x="40" y="40" width="220" height="92" rx="12" fill="#0c4a6e" stroke="#38bdf8" stroke-width="2"/>
+    <text x="150" y="70" fill="#e0f2fe" font-size="16" font-weight="700" text-anchor="middle">① 开户建档</text>
+    <text x="150" y="93" fill="#bae6fd" font-size="12.5" text-anchor="middle">用户档案管理 → 立户</text>
+    <text x="150" y="113" fill="#7dd3fc" font-size="11.5" text-anchor="middle">生成档案号/用户编号</text>
+
+    <!-- ===== 阶段2：立户完成 ===== -->
+    <rect x="40" y="180" width="220" height="74" rx="12" fill="#0c4a6e" stroke="#38bdf8" stroke-width="2"/>
+    <text x="150" y="210" fill="#e0f2fe" font-size="15" font-weight="700" text-anchor="middle">② 立户完成（在册）</text>
+    <text x="150" y="233" fill="#7dd3fc" font-size="12" text-anchor="middle">用户状态：正常</text>
+
+    <!-- ===== 阶段3：抄表录入 ===== -->
+    <rect x="40" y="310" width="220" height="92" rx="12" fill="#3b2f63" stroke="#a78bfa" stroke-width="2"/>
+    <text x="150" y="340" fill="#ede9fe" font-size="16" font-weight="700" text-anchor="middle">③ 抄表录入</text>
+    <text x="150" y="363" fill="#ddd6fe" font-size="12.5" text-anchor="middle">上月读数 → 本月读数</text>
+    <text x="150" y="383" fill="#c4b5fd" font-size="11.5" text-anchor="middle">本次用量 = 本月-上月</text>
+
+    <!-- ===== 阶段4：校验审核 ===== -->
+    <rect x="40" y="450" width="220" height="74" rx="12" fill="#3b2f63" stroke="#a78bfa" stroke-width="2"/>
+    <text x="150" y="480" fill="#ede9fe" font-size="15" font-weight="700" text-anchor="middle">④ 校验水量审核</text>
+    <text x="150" y="503" fill="#c4b5fd" font-size="12" text-anchor="middle">异常水量二次确认</text>
+
+    <!-- ===== 阶段5：开账计费 ===== -->
+    <rect x="40" y="580" width="240" height="100" rx="12" fill="#78350f" stroke="#fbbf24" stroke-width="2"/>
+    <text x="160" y="612" fill="#fef3c7" font-size="16" font-weight="700" text-anchor="middle">⑤ 开账计费（出账）</text>
+    <text x="160" y="634" fill="#fde68a" font-size="11.5" text-anchor="middle">基本费+排污费+阶梯费</text>
+    <text x="160" y="652" fill="#fde68a" font-size="11.5" text-anchor="middle">+加价费+附加费+垃圾费</text>
+    <text x="160" y="670" fill="#fcd34d" font-size="11.5" text-anchor="middle">= 应收账单（已计费）</text>
+
+    <!-- ===== 阶段6：账单/应收 ===== -->
+    <rect x="40" y="730" width="240" height="78" rx="12" fill="#78350f" stroke="#fbbf24" stroke-width="2"/>
+    <text x="160" y="760" fill="#fef3c7" font-size="15" font-weight="700" text-anchor="middle">⑥ 账单生成（应收）</text>
+    <text x="160" y="783" fill="#fcd34d" font-size="12" text-anchor="middle">未收账单待收缴</text>
+
+    <!-- ===== 阶段7：收费 ===== -->
+    <rect x="40" y="870" width="240" height="92" rx="12" fill="#064e3b" stroke="#34d399" stroke-width="2"/>
+    <text x="160" y="900" fill="#d1fae5" font-size="16" font-weight="700" text-anchor="middle">⑦ 窗口收费</text>
+    <text x="160" y="923" fill="#a7f3d0" font-size="11.5" text-anchor="middle">渠道：现金/二维码/POS/转账</text>
+    <text x="160" y="943" fill="#6ee7b7" font-size="11.5" text-anchor="middle">含违约金/预存/减免</text>
+
+    <!-- ===== 阶段8：票据 ===== -->
+    <rect x="40" y="1020" width="240" height="78" rx="12" fill="#7f1d1d" stroke="#f87171" stroke-width="2"/>
+    <text x="160" y="1050" fill="#fee2e2" font-size="15" font-weight="700" text-anchor="middle">⑧ 票据开具</text>
+    <text x="160" y="1073" fill="#fca5a5" font-size="12" text-anchor="middle">已收开票 → 收据/发票号</text>
+
+    <!-- ===== 终点：缴费完成 ===== -->
+    <rect x="40" y="1130" width="240" height="34" rx="10" fill="#065f46" stroke="#34d399" stroke-width="2"/>
+    <text x="160" y="1152" fill="#ecfdf5" font-size="14" font-weight="700" text-anchor="middle">✓ 缴费完成（已收费）</text>
+
+    <!-- 主箭头 -->
+    <line x1="150" y1="132" x2="150" y2="178" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="150" y1="254" x2="150" y2="308" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="150" y1="402" x2="150" y2="448" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="150" y1="524" x2="150" y2="578" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="160" y1="680" x2="160" y2="728" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="160" y1="808" x2="160" y2="868" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="160" y1="962" x2="160" y2="1018" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <line x1="160" y1="1098" x2="160" y2="1128" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- 右列：状态机 -->
+    <rect x="430" y="40" width="320" height="150" rx="12" fill="#0b1220" stroke="#334155" stroke-width="1.5"/>
+    <text x="590" y="66" fill="#bae6fd" font-size="14" font-weight="700" text-anchor="middle">抄表状态机（数据状态流转）</text>
+    <rect x="450" y="84" width="80" height="34" rx="8" fill="#1e293b" stroke="#64748b"/>
+    <text x="490" y="106" fill="#e2e8f0" font-size="12" text-anchor="middle">未抄</text>
+    <rect x="545" y="84" width="80" height="34" rx="8" fill="#1e293b" stroke="#64748b"/>
+    <text x="585" y="106" fill="#e2e8f0" font-size="12" text-anchor="middle">已抄</text>
+    <rect x="640" y="84" width="80" height="34" rx="8" fill="#1e293b" stroke="#64748b"/>
+    <text x="680" y="106" fill="#e2e8f0" font-size="12" text-anchor="middle">已计费</text>
+    <rect x="540" y="138" width="80" height="34" rx="8" fill="#065f46" stroke="#34d399"/>
+    <text x="580" y="160" fill="#ecfdf5" font-size="12" text-anchor="middle">已收费</text>
+    <line x1="530" y1="101" x2="543" y2="101" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="625" y1="101" x2="638" y2="101" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="680" y1="118" x2="600" y2="136" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="590" y="195" fill="#94a3b8" font-size="11.5" text-anchor="middle">对应页面：抄表录入 / 开账计费 / 窗口收费 的数据状态字段</text>
+
+    <!-- 分支：优惠政策（在计费前/收费时） -->
+    <rect x="430" y="320" width="320" height="120" rx="12" fill="#1c1917" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="590" y="346" fill="#fed7aa" font-size="13.5" font-weight="700" text-anchor="middle">分支A：优惠政策 / 减免</text>
+    <text x="590" y="370" fill="#fdba74" font-size="12" text-anchor="middle">用户管理·优惠政策管理</text>
+    <text x="590" y="390" fill="#fdba74" font-size="12" text-anchor="middle">优惠申请 → 优惠审核</text>
+    <text x="590" y="412" fill="#fdba74" font-size="12" text-anchor="middle">收费时「减免申请」→ 账务处理·账单减免</text>
+    <!-- 连接分支A到主线的计费/收费 -->
+    <path d="M430,380 C360,380 320,620 280,620" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowO)"/>
+    <path d="M430,400 C360,400 320,910 280,910" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowO)"/>
+    <text x="340" y="600" fill="#fb923c" font-size="10.5" text-anchor="middle">影响计费</text>
+    <text x="340" y="890" fill="#fb923c" font-size="10.5" text-anchor="middle">收费冲减</text>
+
+    <!-- 分支：银行代扣/转账（替代窗口收费） -->
+    <rect x="430" y="500" width="320" height="96" rx="12" fill="#1c1917" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="590" y="526" fill="#fed7aa" font-size="13.5" font-weight="700" text-anchor="middle">分支B：银行代扣 / 转账</text>
+    <text x="590" y="550" fill="#fdba74" font-size="12" text-anchor="middle">收费管理·银行代扣 / 银行转账</text>
+    <text x="590" y="572" fill="#fdba74" font-size="12" text-anchor="middle">批量/单笔代收付，替代窗口收费</text>
+    <path d="M430,548 C360,548 320,890 280,890" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowO)"/>
+    <text x="345" y="800" fill="#fb923c" font-size="10.5" text-anchor="middle">并行收款</text>
+
+    <!-- 分支：催款 + 呆坏账（收费后/长期欠费） -->
+    <rect x="800" y="500" width="340" height="150" rx="12" fill="#2a1414" stroke="#f87171" stroke-width="1.5"/>
+    <text x="970" y="526" fill="#fecaca" font-size="13.5" font-weight="700" text-anchor="middle">分支C：催缴 / 呆坏账 / 冲正</text>
+    <text x="970" y="550" fill="#fca5a5" font-size="12" text-anchor="middle">抄表管理·催款管理（欠费催收）</text>
+    <text x="970" y="572" fill="#fca5a5" font-size="12" text-anchor="middle">账务处理·呆坏账：申请→审核→核销</text>
+    <text x="970" y="594" fill="#fca5a5" font-size="12" text-anchor="middle">账务处理·账单冲正（收费后纠错）</text>
+    <text x="970" y="616" fill="#fca5a5" font-size="12" text-anchor="middle">收费管理·撤销收费（退费/撤销）</text>
+    <line x1="970" y1="500" x2="970" y2="868" stroke="#f87171" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowR)"/>
+    <text x="1000" y="700" fill="#f87171" font-size="10.5">回环至账务/收费</text>
+
+    <!-- 分支：表务/换表（影响计费基数） -->
+    <rect x="800" y="40" width="340" height="120" rx="12" fill="#1c1917" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="970" y="66" fill="#fed7aa" font-size="13.5" font-weight="700" text-anchor="middle">分支D：表务管理（计量基础）</text>
+    <text x="970" y="90" fill="#fdba74" font-size="12" text-anchor="middle">换表申请 → 换表确认</text>
+    <text x="970" y="110" fill="#fdba74" font-size="12" text-anchor="middle">拆装表 / 阀门管控（关阀催缴）</text>
+    <text x="970" y="132" fill="#fdba74" font-size="12" text-anchor="middle">更换水表 → 新计费基数生效</text>
+    <path d="M800,150 C700,150 500,330 470,330" stroke="#fb923c" stroke-width="2" fill="none" marker-end="url(#arrowO)"/>
+    <text x="720" y="248" fill="#fb923c" font-size="10.5" text-anchor="middle">影响抄表计量</text>
+
+    <!-- 分支：报表/对账（事后监管） -->
+    <rect x="800" y="300" width="340" height="120" rx="12" fill="#0b1220" stroke="#334155" stroke-width="1.5"/>
+    <text x="970" y="326" fill="#bae6fd" font-size="13.5" font-weight="700" text-anchor="middle">事后：报表中心 / 第三方对账</text>
+    <text x="970" y="350" fill="#7dd3fc" font-size="12" text-anchor="middle">实收/应收/抄表/欠费分析</text>
+    <text x="970" y="372" fill="#7dd3fc" font-size="12" text-anchor="middle">银行/微信/支付宝对账单</text>
+    <text x="970" y="394" fill="#7dd3fc" font-size="12" text-anchor="middle">产销差、回收率监控</text>
+    <line x1="800" y1="360" x2="450" y2="360" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+    <!-- 业务参数底座 -->
+    <rect x="430" y="700" width="710" height="64" rx="12" fill="#0b1220" stroke="#334155" stroke-width="1.5"/>
+    <text x="785" y="726" fill="#bae6fd" font-size="13.5" font-weight="700" text-anchor="middle">底层支撑：业务参数（价格管理/阶梯价/加价/排污价/违约金/计费规则/打印模板）</text>
+    <text x="785" y="748" fill="#7dd3fc" font-size="12" text-anchor="middle">开账计费所用全部单价与规则均来源于此，是计费准确性的根本保障</text>
+    <line x1="470" y1="700" x2="160" y2="680" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+
+    <!-- 用户管理补充说明 -->
+    <rect x="430" y="840" width="710" height="64" rx="12" fill="#0b1220" stroke="#334155" stroke-width="1.5"/>
+    <text x="785" y="866" fill="#bae6fd" font-size="13.5" font-weight="700" text-anchor="middle">贯穿全程：用户管理（主数据）+ 快捷查询（客服一站式检索）</text>
+    <text x="785" y="888" fill="#7dd3fc" font-size="12" text-anchor="middle">用户状态变更（报停/复装/销户）由申请→审核控制，影响可抄表/可收费</text>
+  </svg>
+  </div>
+
+  <div class="note">
+    <b>流程要点说明：</b>
+    <br>1. <b>顺序严格性</b>：必须先「开户建档→立户」产生在册用户，才能「抄表→计费→收费→开票」，不可跳跃（账单状态机强制：<b>未抄→已抄→已计费→已收费</b>）。
+    <br>2. <b>计费拆分</b>：开账计费自动按价格规则拆分为基本费、排污费、阶梯费、加价费、附加费、垃圾费，合计为应收金额。
+    <br>3. <b>多渠道收款</b>：窗口收费（现金/二维码/POS/转账支票）与银行代扣/转账并行，均导向「已收费」。
+    <br>4. <b>调整闭环</b>：减免、冲正、撤销、呆坏账核销在收费后/欠费期发生，须「申请→审核」审批，保证账务可追溯。
+    <br>5. <b>资产联动</b>：换表/拆装/阀门操作由表务管理驱动，直接改变计费基数与可抄表/可收费状态。
+    <br>6. <b>监管闭环</b>：报表中心与第三方对账对所有环节的数据与资金进行事后校验。
+  </div>
+
+  <footer>本报告基于测试环境只读探索生成 · 巴州焉耆自来水营收管理系统 · 营收系统子系统 · 2026-07-20</footer>
+</div>
+</body>
+</html>

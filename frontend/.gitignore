@@ -12,3 +12,8 @@ node_modules/
 dist/
 build/
 .cache/
+
+# Agent internal memory / caches (do not commit)
+.workbuddy/
+__pycache__/
+scripts/captures/

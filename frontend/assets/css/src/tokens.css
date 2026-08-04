@@ -58,9 +58,12 @@
   --radius-pill: 100px;
 
   /* Typography */
-  --font-sans: "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "WenQuanYi Micro Hei", sans-serif;
-  --font-cjk: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "WenQuanYi Micro Hei", sans-serif;
-  --font-num: "SF Pro Display", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* 纯系统字体栈：零自托管字体、零构建依赖、永不脱节。字符由 OS 原生渲染。
+     各平台：mac/iOS→PingFang SC，Win→Microsoft YaHei，Linux→Source Han/WenQuanYi，
+     拉丁文/数字→ system-ui / Segoe UI / Roboto。 */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "WenQuanYi Micro Hei", sans-serif;
+  --font-cjk: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "WenQuanYi Micro Hei", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-num: "SF Pro Display", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* Type scale */
   --text-xs: 0.75rem;    /* 12px — 最小标签/徽章底线 */

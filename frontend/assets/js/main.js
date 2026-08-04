@@ -194,6 +194,7 @@
         }
       });
     });
+    window.__openLightbox = openLightbox; // 供架构图预览窗复用
     lb.addEventListener('click', e => {
       if (e.target === lb || e.target.classList.contains('lightbox-cap')) closeLightbox();
     });
@@ -364,4 +365,193 @@
     });
   }
 
+  /* ---- 抄表→收费回款 · 主线演示（自动播放 stepper） ---- */
+  const flowDemo = document.querySelector('[data-flow-demo]');
+  if (flowDemo) {
+    const steps = Array.from(flowDemo.querySelectorAll('.flow-step'));
+    const details = Array.from(flowDemo.querySelectorAll('.flow-detail__item'));
+    const fill = flowDemo.querySelector('[data-track-fill]');
+    const dot = flowDemo.querySelector('[data-track-dot]');
+    const playBtn = flowDemo.querySelector('[data-flow-play]');
+    const playLabel = playBtn ? playBtn.querySelector('.flow-demo__play-label') : null;
+    const statusEl = flowDemo.querySelector('[data-flow-status]');
+    const n = steps.length;
+    let current = 0;
+    let timer = null;
+    let playing = false;
+    const INTERVAL = 2200;
+
+    function render(i) {
+      current = i;
+      const pct = n > 1 ? (i / (n - 1)) * 100 : 0;
+      if (fill) fill.style.width = pct + '%';
+      if (dot) {
+        dot.style.left = pct + '%';
+        dot.classList.remove('is-pulsing');
+        void dot.offsetWidth; // 重新触发脉冲动画
+        dot.classList.add('is-pulsing');
+      }
+      steps.forEach((s, k) => {
+        s.classList.toggle('is-active', k === i);
+        s.classList.toggle('is-dim', k !== i);
+        s.setAttribute('aria-current', k === i ? 'step' : 'false');
+      });
+      details.forEach((d, k) => d.classList.toggle('is-active', k === i));
+      if (statusEl) statusEl.textContent = '第 ' + (i + 1) + ' / ' + n + ' 环节';
+    }
+
+    function start() {
+      if (playing || prefersReducedMotion) return;
+      playing = true;
+      if (playBtn) {
+        playBtn.classList.add('is-playing');
+        playBtn.setAttribute('aria-label', '暂停自动演示');
+      }
+      if (playLabel) playLabel.textContent = '暂停演示';
+      const tick = () => {
+        render(current);
+        timer = setTimeout(() => {
+          current = (current + 1) % n;
+          tick();
+        }, INTERVAL);
+      };
+      tick();
+    }
+
+    function stop() {
+      if (!playing) return;
+      playing = false;
+      clearTimeout(timer);
+      if (playBtn) {
+        playBtn.classList.remove('is-playing');
+        playBtn.setAttribute('aria-label', '开始自动演示');
+      }
+      if (playLabel) playLabel.textContent = '自动演示';
+    }
+
+    if (playBtn) {
+      playBtn.addEventListener('click', () => (playing ? stop() : start()));
+    }
+    steps.forEach((s, k) => {
+      s.addEventListener('click', () => { stop(); render(k); });
+    });
+
+    render(0);
+    if (!prefersReducedMotion) {
+      const flowIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) start();
+          else stop();
+        });
+      }, { threshold: 0.35 });
+      flowIO.observe(flowDemo);
+    }
+  }
+
+})();
+
+/* ---- 架构图 · 中心实景预览轮播（PC 管理端） ---- */
+(function () {
+  const wrap = document.querySelector('[data-arch-preview]');
+  if (!wrap) return;
+  const slides = Array.from(wrap.querySelectorAll('.arch-preview__slide'));
+  const n = slides.length;
+  if (!n) return;
+  const names = slides.map(s => s.getAttribute('data-name') || '');
+  const dots = Array.from(wrap.querySelectorAll('[data-preview-dots] button'));
+  const chips = Array.from(document.querySelectorAll('.arch-chips li[data-preview]'));
+  const countEl = wrap.querySelector('[data-preview-count]');
+  const nameEl = wrap.querySelector('[data-preview-name]');
+  const subEl = wrap.querySelector('[data-preview-sub]');
+  const badgeEl = wrap.querySelector('[data-preview-badge]');
+  const sideEl = wrap.querySelector('[data-preview-side]');
+  const playBtn = wrap.querySelector('[data-preview-play]');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const INTERVAL = 2800;
+  let current = 0;
+  let playing = false;
+  let timer = null;
+
+  function render(i) {
+    current = i;
+    const slide = slides[i];
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    dots.forEach((d, k) => {
+      d.classList.toggle('is-active', k === i);
+      d.setAttribute('aria-current', k === i ? 'true' : 'false');
+    });
+    const side = slide.getAttribute('data-side') || 'PC';
+    chips.forEach(c => {
+      const target = c.getAttribute('data-map') || c.getAttribute('data-preview');
+      c.classList.toggle('is-active', target === slide.getAttribute('data-name'));
+    });
+    const img = slide.querySelector('img');
+    if (img && !img.getAttribute('src')) img.src = img.getAttribute('data-src');
+    if (countEl) countEl.textContent = (i + 1) + ' / ' + n;
+    if (nameEl) nameEl.textContent = slide.getAttribute('data-name') || '';
+    if (subEl) subEl.textContent = slide.getAttribute('data-sub') || '';
+    if (badgeEl) badgeEl.classList.toggle('is-app', side === 'APP');
+    if (sideEl) sideEl.textContent = side + ' 实景';
+  }
+
+  function start() {
+    if (playing || prefersReducedMotion) return;
+    playing = true;
+    if (playBtn) {
+      playBtn.classList.add('is-playing');
+      playBtn.setAttribute('aria-label', '暂停自动播放');
+    }
+    const tick = () => {
+      timer = setTimeout(() => { render((current + 1) % n); tick(); }, INTERVAL);
+    };
+    tick();
+  }
+
+  function stop() {
+    if (!playing) return;
+    playing = false;
+    clearTimeout(timer);
+    if (playBtn) {
+      playBtn.classList.remove('is-playing');
+      playBtn.setAttribute('aria-label', '开始自动播放');
+    }
+  }
+
+  if (playBtn) playBtn.addEventListener('click', () => (playing ? stop() : start()));
+
+  chips.forEach(c => {
+    const go = () => {
+      const target = c.getAttribute('data-map') || c.getAttribute('data-preview');
+      const idx = names.indexOf(target);
+      if (idx >= 0) { stop(); render(idx); }
+    };
+    c.addEventListener('click', go);
+    c.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+  });
+
+  dots.forEach((d, k) => d.addEventListener('click', () => { stop(); render(k); }));
+
+  // 点击预览图 → 放大查看原图（复用既有 lightbox）
+  const stage = wrap.querySelector('.arch-preview__stage');
+  if (stage) {
+    stage.addEventListener('click', () => {
+      const slide = slides[current];
+      const zoom = slide.getAttribute('data-zoom');
+      if (!zoom) return;
+      if (typeof window.__openLightbox === 'function') {
+        const sub = slide.getAttribute('data-sub') || '';
+        window.__openLightbox(zoom, names[current] + (sub ? ' · ' + sub : ''));
+      }
+    });
+  }
+
+  render(0);
+  if (!prefersReducedMotion) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) start(); else stop(); });
+    }, { threshold: 0.35 });
+    io.observe(wrap);
+  }
 })();

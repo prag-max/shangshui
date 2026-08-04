@@ -27,7 +27,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_DIR = os.path.join(ROOT, "assets", "css", "src")
 STYLE = os.path.join(ROOT, "assets", "css", "style.css")
 CRIT = os.path.join(ROOT, "assets", "css", "critical.css")
-HTMLS = ["index.html", "solutions.html", "pricing.html", "contact.html", "404.html", "faq.html"]
+HTMLS = ["index.html", "pricing.html", "contact.html", "404.html", "faq.html"]
 
 SRC_FILES = ["tokens.css", "base.css", "components.css", "pages.css"]
 

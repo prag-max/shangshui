@@ -19,19 +19,8 @@
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-  <!-- 中文字体：自托管 Noto Sans SC（按站点字符子集化），彻底移除外部 CDN 依赖 -->
-  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/noto-sans-sc-400.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/fonts.css">
-  <style id="critical-css">:root{--brand:#0284C7;--brand-dark:#0369A1;--brand-deep:#0C4A6E;--brand-light:#E0F2FE;--brand-glow:#BAE6FD;--cyan:#06B6D4;--cyan-dark:#0891B2;--emerald:#10B981;--emerald-dark:#059669;--amber:#F59E0B;--red:#EF4444;--white:#FFFFFF;--bg:#FFFFFF;--bg-soft:#F0F9FF;--bg-alt:#F8FAFC;--bg-card:#FFFFFF;--bg-footer:#0F172A;--text:#0F172A;--text-secondary:#475569;--text-muted:#5B6678;--text-on-dark:#E2E8F0;--text-on-dark-muted:#94A3B8;--border:#E2E8F0;--border-light:#F1F5F9;--shadow-sm:0 1px 2px rgba(15,23,42,0.04);--shadow-md:0 4px 12px rgba(15,23,42,0.06);--shadow-lg:0 12px 40px rgba(15,23,42,0.08);--shadow-xl:0 20px 60px rgba(15,23,42,0.12);--shadow-blue:0 8px 30px rgba(2,132,199,0.15);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-pill:100px;--font-sans:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif;--font-cjk:"Noto Sans SC","PingFang SC","Microsoft YaHei","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif;--font-num:"SF Pro Display","Noto Sans SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--text-xs:0.75rem;--text-sm:0.875rem;--text-base:1rem;--text-md:0.9375rem;--text-lg:1.125rem;--text-xl:1.25rem;--h1:clamp(2.2rem,4.5vw,3.6rem);--h1-page:clamp(1.9rem,4vw,2.9rem);--h2:clamp(1.7rem,3vw,2.4rem);--h2-card:1.5rem;--h3:1.25rem;--h3-card:1.1rem;--h4:1rem;--leading-tight:1.2;--leading-snug:1.35;--leading-normal:1.5;--leading-relaxed:1.7;--leading-loose:1.8;--maxw:1200px;--header-h:72px;--section-gap:100px;--section-gap-mobile:64px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:100px;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-in-out:cubic-bezier(0.65,0,0.35,1);--duration-fast:0.2s;--duration-normal:0.3s;--duration:0.4s;--duration-slow:0.7s;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}section[id]{scroll-margin-top:var(--header-h);}body{font-family:var(--font-sans);color:var(--text);background:var(--bg);line-height:var(--leading-relaxed);font-size:var(--text-base);-moz-osx-font-smoothing:grayscale;text-rendering:optimizeSpeed;overflow-wrap:anywhere;overflow-x:hidden;}a{color:var(--brand);text-decoration:none;transition:color var(--duration-fast);}a:hover{color:var(--brand-dark);}img{max-width:100%;display:block;height:auto;}h1,h2,h3,h4{line-height:var(--leading-snug);color:var(--text);font-weight:700;}h1{font-size:var(--h1);letter-spacing:normal;}h2{font-size:var(--h2);letter-spacing:normal;}h3{font-size:var(--h3);}h4{font-size:var(--h4);}p{margin:0 0 1em;}p:last-child{margin-bottom:0;}ul,ol{margin:0 0 1em;padding-left:1.5em;}.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}.text-center,.center{text-align:center;}.text-gradient{background:linear-gradient(135deg,var(--brand),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.muted{color:var(--text-muted);}.hl{color:var(--brand);font-weight:700;}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:var(--radius-md);font-size:var(--text-md);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;border:none;transition:all var(--duration-fast) var(--ease-out);white-space:nowrap;font-family:inherit;}.btn-primary{background:linear-gradient(135deg,var(--brand),var(--cyan-dark));color:#fff;box-shadow:var(--shadow-blue);}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(2,132,199,0.25);color:#fff;}.btn-outline{background:transparent;color:var(--brand);border:2px solid var(--brand);}.btn-outline:hover{background:var(--brand);color:#fff;transform:translateY(-2px);}.btn-white{background:var(--white);color:var(--brand);box-shadow:var(--shadow-sm);}.btn-white:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}.btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid var(--border);padding:8px 18px;border-radius:var(--radius-sm);font-size:var(--text-sm);cursor:pointer;font-weight:500;font-family:inherit;transition:all var(--duration-fast);}.btn-ghost:hover{color:var(--brand);border-color:var(--brand);background:var(--brand-light);}.btn-lg{padding:16px 36px;font-size:1.05rem;border-radius:var(--radius-lg);}.btn-sm{padding:8px 18px;font-size:var(--text-sm);}.btn:disabled{opacity:0.6;cursor:not-allowed;transform:none !important;}.btn:active:not(:disabled){transform:translateY(0) scale(0.98);box-shadow:var(--shadow-sm);}.btn-primary:active:not(:disabled){box-shadow:0 4px 14px rgba(2,132,199,0.2);}@media (pointer:coarse){.btn{min-height:44px;}.nav-links a{min-height:44px;display:flex;align-items:center;}.hamburger{min-width:44px;min-height:44px;}.lightbox-close{width:56px;height:56px;}.back-to-top{width:52px;height:52px;}}.section{padding:var(--section-gap) 0;}.section-soft{padding:var(--section-gap) 0;background:var(--bg-soft);}.section-alt{padding:var(--section-gap) 0;background:var(--bg-alt);}.section-label{display:inline-block;font-size:var(--text-sm);font-weight:700;color:var(--brand-dark);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;padding:4px 12px;background:var(--brand-light);border-radius:var(--radius-pill);}.section-title{margin-bottom:16px;font-weight:700;}.section-sub{color:var(--text-secondary);font-size:1.125rem;max-width:640px;margin:0 auto 48px;line-height:var(--leading-relaxed);}.section-sub.left{margin-left:0;}.eyebrow{display:inline-block;font-size:var(--text-sm);font-weight:700;color:var(--brand-dark);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;padding:4px 12px;background:var(--brand-light);border-radius:var(--radius-pill);}.lead{font-size:1.15rem;color:var(--text-secondary);max-width:720px;margin:0 auto;line-height:var(--leading-loose);}.grid{display:grid;gap:24px;}.grid-2{grid-template-columns:repeat(2,1fr);}.ic{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--brand-light);border-radius:var(--radius-md);margin-bottom:16px;color:var(--brand);flex-shrink:0;}.ico{width:24px;height:24px;flex-shrink:0;}.ico-inline{width:20px;height:20px;display:inline-block;vertical-align:middle;margin-right:6px;margin-top:-2px;}.tag{display:inline-block;font-size:var(--text-sm);font-weight:500;color:var(--brand);background:var(--brand-light);padding:3px 10px;border-radius:var(--radius-pill);margin-top:8px;letter-spacing:0.02em;}.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:border-color var(--duration-normal),box-shadow var(--duration-normal);}.site-header.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 8px rgba(15,23,42,0.06);}.nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h);gap:32px;}.nav-left{display:flex;align-items:center;gap:40px;}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--text);text-decoration:none;flex-shrink:0;}.brand .logo-img{width:38px;height:38px;border-radius:10px;object-fit:contain;}.brand small{display:block;font-size:var(--text-xs);font-weight:500;color:var(--text-muted);letter-spacing:0.05em;}.nav-links{display:flex;gap:4px;align-items:center;}.nav-links a{padding:8px 14px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:var(--text-sm);font-weight:500;transition:all var(--duration-fast);text-decoration:none;}.nav-links a:hover{color:var(--brand);background:var(--brand-light);}.nav-links a.active{color:var(--brand);background:var(--brand-light);font-weight:600;}.nav-cta{display:flex;gap:10px;align-items:center;flex-shrink:0;}.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:101;}.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all var(--duration-normal) var(--ease-out);}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}@media (max-width:900px){.nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--white);flex-direction:column;gap:4px;padding:80px 24px 24px;box-shadow:-8px 0 30px rgba(15,23,42,0.12);transition:right var(--duration) var(--ease-out);z-index:100;}.nav-links.open{right:0;}.nav-links a{width:100%;padding:12px 16px;font-size:1rem;}.nav-cta{display:none;}.hamburger{display:flex;}}@media (min-width:901px){.nav-cta-mobile{display:none;}}.hero{position:relative;padding:80px 0 100px;overflow:hidden;background:linear-gradient(180deg,#F0F9FF 0%,#FFFFFF 100%);}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:800px;height:800px;background:radial-gradient(circle,rgba(6,182,212,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(2,132,199,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1;}.hero-copy{max-width:560px;}.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:800;color:var(--brand-dark);background:linear-gradient(135deg,rgba(2,132,199,0.12),rgba(6,182,212,0.10));border:1px solid rgba(2,132,199,0.25);padding:10px 22px;border-radius:var(--radius-pill);margin-bottom:24px;box-shadow:0 2px 12px rgba(2,132,199,0.10);white-space:nowrap;}.hero-eyebrow::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px rgba(16,185,129,0.6);animation:pulse-dot 2s ease-in-out infinite;}@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);}}.hero-title{font-size:var(--h1);font-weight:700;line-height:var(--leading-tight);letter-spacing:normal;margin-bottom:24px;color:var(--text);}.hero-title .highlight{background:linear-gradient(135deg,var(--brand),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.hero-desc{font-size:1.15rem;color:var(--text-secondary);line-height:var(--leading-loose);margin-bottom:36px;}.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:40px;}.hero-trust{display:flex;gap:24px;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;}.hero-trust-item{display:flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--text-secondary);}.hero-trust-item .check-icon{width:18px;height:18px;color:var(--emerald);flex-shrink:0;}.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}.browser-mockup{position:relative;width:100%;background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);overflow:hidden;transition:transform var(--duration) var(--ease-out),box-shadow var(--duration) var(--ease-out);}.browser-mockup:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(15,23,42,0.16),var(--shadow-blue);}.browser-mockup__bar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:linear-gradient(180deg,#F8FAFC 0%,#EEF2F6 100%);border-bottom:1px solid var(--border);}.bm-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}.bm-dot--r{background:#FF5F57;}.bm-dot--y{background:#FEBC2E;}.bm-dot--g{background:#28C840;}.browser-mockup__url{flex:1;margin-left:12px;display:flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:6px 14px;font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-sans);letter-spacing:0.01em;overflow:hidden;white-space:nowrap;}.browser-mockup__url .bm-lock{width:13px;height:13px;color:var(--emerald);flex-shrink:0;}.bm-url-text{overflow:hidden;text-overflow:ellipsis;}.browser-mockup__screen{position:relative;background:var(--white);line-height:0;}.browser-mockup__screen picture,.browser-mockup__screen img{width:100%;height:auto;display:block;border-radius:0;box-shadow:none;}.hero-visual::before{content:'';position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;background:linear-gradient(135deg,var(--brand),var(--cyan));border-radius:var(--radius-xl);opacity:0.08;z-index:-1;}.hero-sub{padding:60px 0 70px;}.stats{padding:0;margin-top:-40px;position:relative;z-index:10;}.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;background:var(--white);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);border:1px solid var(--border);padding:36px 40px;}.stat-item{text-align:center;}.stat-num{font-size:2.2rem;font-weight:800;color:var(--brand);line-height:1;margin-bottom:8px;font-variant-numeric:tabular-nums;}.stat-num .unit{font-size:1.2rem;font-weight:600;}.stat-label{font-size:var(--text-sm);color:var(--text-secondary);font-weight:500;}.float-cta{position:fixed;bottom:28px;right:28px;z-index:90;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--brand),var(--cyan-dark));color:#fff;padding:14px 24px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-family:inherit;box-shadow:0 8px 30px rgba(2,132,199,0.35);font-weight:700;font-size:var(--text-md);text-decoration:none;transition:all var(--duration-normal) var(--ease-out);}.float-cta:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(2,132,199,0.45);color:#fff;}.float-cta svg{width:20px;height:20px;flex-shrink:0;}.float-cta-card{position:fixed;right:28px;bottom:92px;z-index:89;display:flex;flex-direction:column;align-items:center;gap:12px;background:#fff;padding:18px 18px 16px;border-radius:16px;box-shadow:0 16px 48px rgba(15,23,42,0.18);border:1px solid rgba(2,132,199,0.12);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity var(--duration-normal) var(--ease-out),transform var(--duration-normal) var(--ease-out);}.float-cta-card::after{content:'';position:absolute;right:44px;bottom:-8px;width:14px;height:14px;background:#fff;border-right:1px solid rgba(2,132,199,0.12);border-bottom:1px solid rgba(2,132,199,0.12);transform:rotate(45deg);}.float-cta-card img{width:140px;height:140px;border-radius:8px;display:block;border:1px solid #E2E8F0;}.float-cta-card span{font-size:var(--text-sm);font-weight:600;color:var(--text);white-space:nowrap;}.float-cta-card.open{opacity:1;pointer-events:auto;transform:translateY(0);}@media (prefers-reduced-motion:reduce){.float-cta-card{transition:none;}}@media (max-width:1100px){.stats-inner{grid-template-columns:repeat(2,1fr);}.value-grid{grid-template-columns:1fr;}.flow--steps .flow-node{min-width:126px;padding:30px 10px 20px;}.flow--steps .flow-node h3{font-size:var(--h3-card);}.flow--steps .flow-node li{font-size:var(--text-md);}.flow--steps .flow-arrow{padding:0 2px;font-size:1.05rem;}}@media (max-width:980px){.hero-grid{grid-template-columns:1fr;text-align:center;gap:48px;}.hero-copy{max-width:100%;}.hero-btns{justify-content:center;}.hero-trust{justify-content:center;}.hero-visual{order:-1;}.hero-visual::before{display:none;}.grid-3{grid-template-columns:1fr;}.grid-4{grid-template-columns:repeat(2,1fr);}.grid-2{grid-template-columns:1fr;}.features-grid{grid-template-columns:repeat(2,1fr);}.solutions-grid{grid-template-columns:1fr;}.testimonial-cards{grid-template-columns:1fr;}.flow{flex-direction:column;align-items:center;}.flow-arrow{transform:rotate(90deg);padding:12px 0;}.flow--steps{max-width:560px;flex-direction:column;gap:14px;}.flow--steps .flow-node{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:18px;align-items:start;text-align:left;padding:24px 20px;}.flow--steps .flow-node-icon{margin:0;}.flow--steps .flow-node h3{grid-column:2;margin-bottom:8px;}.flow--steps .flow-node ul{grid-column:2;}.flow--steps .flow-node li{font-size:var(--text-md);line-height:var(--leading-loose);}.flow--steps .step-no{left:auto;right:14px;top:14px;}.flow--steps .flow-arrow{padding:9px 0;font-size:1.1rem;}.footer-grid{grid-template-columns:repeat(2,1fr);gap:32px;}.section{padding:var(--section-gap-mobile) 0;}.section-soft{padding:var(--section-gap-mobile) 0;}.section-alt{padding:var(--section-gap-mobile) 0;}.rule-grid{grid-template-columns:1fr;}.value-grid{grid-template-columns:1fr;}.wx-qrs{flex-direction:column;align-items:center;gap:24px;}}@media (max-width:640px){.stats-inner{grid-template-columns:1fr 1fr;padding:24px 20px;gap:16px;}.stat-num{font-size:1.6rem;}.grid-4{grid-template-columns:1fr;}.features-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr;gap:28px;}.footer-bottom{flex-direction:column;text-align:center;}.hero{padding:48px 0 64px;}.hero-btns{flex-direction:column;}.hero-btns .btn{width:100%;}.float-cta{bottom:20px;right:16px;padding:12px 20px;font-size:var(--text-sm);}.float-cta span{display:none;}.float-cta-card{right:16px;bottom:80px;padding:14px 14px 12px;}.float-cta-card::after{right:34px;}.float-cta-card img{width:120px;height:120px;}.cta-btns{flex-direction:column;}.cta-contact-inline{flex-direction:column;gap:20px;}.cta-divider{width:60%;height:1px;}.cta-phone-num{font-size:1.1rem;}.partners-grid{grid-template-columns:repeat(2,1fr);gap:14px;}.partner-item{padding:14px 10px;border-radius:10px;}.partners-sub{margin-bottom:28px;}.hero-sub{padding:40px 0 50px;}.tbl{font-size:var(--text-xs);}.tbl th,.tbl td{padding:8px 10px;}}.contact-hero{position:relative;padding:64px 0 80px;overflow:hidden;background:linear-gradient(180deg,#F0F9FF 0%,#FFFFFF 100%);color:var(--text);text-align:center;}.contact-hero::before{content:'';position:absolute;top:-40%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.contact-hero::after{content:'';position:absolute;bottom:-25%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(2,132,199,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.contact-hero .eyebrow{background:rgba(2,132,199,0.08);color:var(--brand);border:none;position:relative;z-index:1;}.contact-hero h1{color:var(--text);font-size:var(--h1-page);font-weight:700;letter-spacing:normal;line-height:var(--leading-tight);margin-bottom:14px;position:relative;z-index:1;}.contact-hero .lead{color:var(--text-secondary);font-size:1.1rem;max-width:580px;margin:0 auto;line-height:var(--leading-relaxed);position:relative;z-index:1;}.nav-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.45);opacity:0;visibility:hidden;transition:opacity var(--duration-normal) var(--ease-in-out),visibility var(--duration-normal);z-index:99;}.nav-overlay.show{opacity:1;visibility:visible;}body.nav-open{overflow:hidden;}@media (min-width:901px){.nav-overlay{display:none;}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}.reveal{opacity:1 !important;transform:none !important;}.card:hover,.feature-card:hover,.solution-card:hover,.price-card-new:hover,.flow-node:hover,.contact-card:hover,.browser-mockup:hover,.btn:hover,.btn-submit:hover{transform:none !important;}}</style>
+  <style id="critical-css">:root{--brand:#0284C7;--brand-dark:#0369A1;--brand-deep:#0C4A6E;--brand-light:#E0F2FE;--brand-glow:#BAE6FD;--cyan:#06B6D4;--cyan-dark:#0891B2;--emerald:#10B981;--emerald-dark:#059669;--amber:#F59E0B;--red:#EF4444;--white:#FFFFFF;--bg:#FFFFFF;--bg-soft:#F0F9FF;--bg-alt:#F8FAFC;--bg-card:#FFFFFF;--bg-footer:#0F172A;--text:#0F172A;--text-secondary:#475569;--text-muted:#5B6678;--text-on-dark:#E2E8F0;--text-on-dark-muted:#94A3B8;--border:#E2E8F0;--border-light:#F1F5F9;--shadow-sm:0 1px 2px rgba(15,23,42,0.04);--shadow-md:0 4px 12px rgba(15,23,42,0.06);--shadow-lg:0 12px 40px rgba(15,23,42,0.08);--shadow-xl:0 20px 60px rgba(15,23,42,0.12);--shadow-blue:0 8px 30px rgba(2,132,199,0.15);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-pill:100px;--font-sans:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif;--font-cjk:"PingFang SC","Microsoft YaHei","Source Han Sans SC","WenQuanYi Micro Hei",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--font-num:"SF Pro Display",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--text-xs:0.75rem;--text-sm:0.875rem;--text-base:1rem;--text-md:0.9375rem;--text-lg:1.125rem;--text-xl:1.25rem;--h1:clamp(2.2rem,4.5vw,3.6rem);--h1-page:clamp(1.9rem,4vw,2.9rem);--h2:clamp(1.7rem,3vw,2.4rem);--h2-card:1.5rem;--h3:1.25rem;--h3-card:1.1rem;--h4:1rem;--leading-tight:1.2;--leading-snug:1.35;--leading-normal:1.5;--leading-relaxed:1.7;--leading-loose:1.8;--maxw:1200px;--header-h:72px;--section-gap:100px;--section-gap-mobile:64px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:100px;--ease-out:cubic-bezier(0.16,1,0.3,1);--ease-in-out:cubic-bezier(0.65,0,0.35,1);--duration-fast:0.2s;--duration-normal:0.3s;--duration:0.4s;--duration-slow:0.7s;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}section[id]{scroll-margin-top:var(--header-h);}body{font-family:var(--font-sans);color:var(--text);background:var(--bg);line-height:var(--leading-relaxed);font-size:var(--text-base);-moz-osx-font-smoothing:grayscale;text-rendering:optimizeSpeed;overflow-wrap:anywhere;overflow-x:hidden;}a{color:var(--brand);text-decoration:none;transition:color var(--duration-fast);}a:hover{color:var(--brand-dark);}img{max-width:100%;display:block;height:auto;}h1,h2,h3,h4{line-height:var(--leading-snug);color:var(--text);font-weight:700;}h1{font-size:var(--h1);letter-spacing:normal;}h2{font-size:var(--h2);letter-spacing:normal;}h3{font-size:var(--h3);}h4{font-size:var(--h4);}p{margin:0 0 1em;}p:last-child{margin-bottom:0;}ul,ol{margin:0 0 1em;padding-left:1.5em;}.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}.text-center,.center{text-align:center;}.text-gradient{background:linear-gradient(135deg,var(--brand),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.muted{color:var(--text-muted);}.hl{color:var(--brand);font-weight:700;}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:var(--radius-md);font-size:var(--text-md);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;border:none;transition:all var(--duration-fast) var(--ease-out);white-space:nowrap;font-family:inherit;}.btn-primary{background:linear-gradient(135deg,var(--brand),var(--cyan-dark));color:#fff;box-shadow:var(--shadow-blue);}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(2,132,199,0.25);color:#fff;}.btn-outline{background:transparent;color:var(--brand);border:2px solid var(--brand);}.btn-outline:hover{background:var(--brand);color:#fff;transform:translateY(-2px);}.btn-white{background:var(--white);color:var(--brand);box-shadow:var(--shadow-sm);}.btn-white:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}.btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid var(--border);padding:8px 18px;border-radius:var(--radius-sm);font-size:var(--text-sm);cursor:pointer;font-weight:500;font-family:inherit;transition:all var(--duration-fast);}.btn-ghost:hover{color:var(--brand);border-color:var(--brand);background:var(--brand-light);}.btn-lg{padding:16px 36px;font-size:1.05rem;border-radius:var(--radius-lg);}.btn-sm{padding:8px 18px;font-size:var(--text-sm);}.btn:disabled{opacity:0.6;cursor:not-allowed;transform:none !important;}.btn:active:not(:disabled){transform:translateY(0) scale(0.98);box-shadow:var(--shadow-sm);}.btn-primary:active:not(:disabled){box-shadow:0 4px 14px rgba(2,132,199,0.2);}@media (pointer:coarse){.btn{min-height:44px;}.nav-links a{min-height:44px;display:flex;align-items:center;}.hamburger{min-width:44px;min-height:44px;}.lightbox-close{width:56px;height:56px;}.back-to-top{width:52px;height:52px;}}.section{padding:var(--section-gap) 0;}.section-soft{padding:var(--section-gap) 0;background:var(--bg-soft);}.section-alt{padding:var(--section-gap) 0;background:var(--bg-alt);}.section-label{display:inline-block;font-size:var(--text-sm);font-weight:700;color:var(--brand-dark);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;padding:4px 12px;background:var(--brand-light);border-radius:var(--radius-pill);}.section-title{margin-bottom:16px;font-weight:700;}.section-sub{color:var(--text-secondary);font-size:1.125rem;max-width:640px;margin:0 auto 48px;line-height:var(--leading-relaxed);}.section-sub.left{margin-left:0;}.eyebrow{display:inline-block;font-size:var(--text-sm);font-weight:700;color:var(--brand-dark);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;padding:4px 12px;background:var(--brand-light);border-radius:var(--radius-pill);}.lead{font-size:1.15rem;color:var(--text-secondary);max-width:720px;margin:0 auto;line-height:var(--leading-loose);}.grid{display:grid;gap:24px;}.grid-2{grid-template-columns:repeat(2,1fr);}.ic{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--brand-light);border-radius:var(--radius-md);margin-bottom:16px;color:var(--brand);flex-shrink:0;}.ico{width:24px;height:24px;flex-shrink:0;}.ico-inline{width:20px;height:20px;display:inline-block;vertical-align:middle;margin-right:6px;margin-top:-2px;}.tag{display:inline-block;font-size:var(--text-sm);font-weight:500;color:var(--brand);background:var(--brand-light);padding:3px 10px;border-radius:var(--radius-pill);margin-top:8px;letter-spacing:0.02em;}.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:border-color var(--duration-normal),box-shadow var(--duration-normal);}.site-header.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 8px rgba(15,23,42,0.06);}.nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h);gap:32px;}.nav-left{display:flex;align-items:center;gap:40px;}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;color:var(--text);text-decoration:none;flex-shrink:0;}.brand .logo-img{width:38px;height:38px;border-radius:10px;object-fit:contain;}.brand small{display:block;font-size:var(--text-xs);font-weight:500;color:var(--text-muted);letter-spacing:0.05em;}.nav-links{display:flex;gap:4px;align-items:center;}.nav-links a{padding:8px 14px;border-radius:var(--radius-sm);color:var(--text-secondary);font-size:var(--text-sm);font-weight:500;transition:all var(--duration-fast);text-decoration:none;}.nav-links a:hover{color:var(--brand);background:var(--brand-light);}.nav-links a.active{color:var(--brand);background:var(--brand-light);font-weight:600;}.nav-cta{display:flex;gap:10px;align-items:center;flex-shrink:0;}.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:101;}.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all var(--duration-normal) var(--ease-out);}.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}@media (max-width:900px){.nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--white);flex-direction:column;gap:4px;padding:80px 24px 24px;box-shadow:-8px 0 30px rgba(15,23,42,0.12);transition:right var(--duration) var(--ease-out);z-index:100;}.nav-links.open{right:0;}.nav-links a{width:100%;padding:12px 16px;font-size:1rem;}.nav-cta{display:none;}.hamburger{display:flex;}}@media (min-width:901px){.nav-cta-mobile{display:none;}}.hero{position:relative;padding:80px 0 100px;overflow:hidden;background:linear-gradient(180deg,#F0F9FF 0%,#FFFFFF 100%);}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:800px;height:800px;background:radial-gradient(circle,rgba(6,182,212,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(2,132,199,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1;}.hero-copy{max-width:560px;}.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:800;color:var(--brand-dark);background:linear-gradient(135deg,rgba(2,132,199,0.12),rgba(6,182,212,0.10));border:1px solid rgba(2,132,199,0.25);padding:10px 22px;border-radius:var(--radius-pill);margin-bottom:24px;box-shadow:0 2px 12px rgba(2,132,199,0.10);white-space:nowrap;}.hero-eyebrow::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px rgba(16,185,129,0.6);animation:pulse-dot 2s ease-in-out infinite;}@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);}}.hero-title{font-size:var(--h1);font-weight:700;line-height:var(--leading-tight);letter-spacing:normal;margin-bottom:24px;color:var(--text);}.hero-title .highlight{background:linear-gradient(135deg,var(--brand),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.hero-desc{font-size:1.15rem;color:var(--text-secondary);line-height:var(--leading-loose);margin-bottom:36px;}.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:40px;}.hero-trust{display:flex;gap:24px;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;}.hero-trust-item{display:flex;align-items:center;gap:8px;font-size:var(--text-sm);color:var(--text-secondary);}.hero-trust-item .check-icon{width:18px;height:18px;color:var(--emerald);flex-shrink:0;}.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}.browser-mockup{position:relative;width:100%;background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);overflow:hidden;transition:transform var(--duration) var(--ease-out),box-shadow var(--duration) var(--ease-out);}.browser-mockup:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(15,23,42,0.16),var(--shadow-blue);}.browser-mockup__bar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:linear-gradient(180deg,#F8FAFC 0%,#EEF2F6 100%);border-bottom:1px solid var(--border);}.bm-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}.bm-dot--r{background:#FF5F57;}.bm-dot--y{background:#FEBC2E;}.bm-dot--g{background:#28C840;}.browser-mockup__url{flex:1;margin-left:12px;display:flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:6px 14px;font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-sans);letter-spacing:0.01em;overflow:hidden;white-space:nowrap;}.browser-mockup__url .bm-lock{width:13px;height:13px;color:var(--emerald);flex-shrink:0;}.bm-url-text{overflow:hidden;text-overflow:ellipsis;}.browser-mockup__screen{position:relative;background:var(--white);line-height:0;}.browser-mockup__screen picture,.browser-mockup__screen img{width:100%;height:auto;display:block;border-radius:0;box-shadow:none;}.hero-visual::before{content:'';position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;background:linear-gradient(135deg,var(--brand),var(--cyan));border-radius:var(--radius-xl);opacity:0.08;z-index:-1;}.hero-sub{padding:60px 0 70px;}.stats{padding:0;margin-top:-40px;position:relative;z-index:10;}.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;background:var(--white);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);border:1px solid var(--border);padding:36px 40px;}.stat-item{text-align:center;}.stat-num{font-size:2.2rem;font-weight:800;color:var(--brand);line-height:1;margin-bottom:8px;font-variant-numeric:tabular-nums;}.stat-num .unit{font-size:1.2rem;font-weight:600;}.stat-label{font-size:var(--text-sm);color:var(--text-secondary);font-weight:500;}.float-cta{position:fixed;bottom:28px;right:28px;z-index:90;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--brand),var(--cyan-dark));color:#fff;padding:14px 24px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-family:inherit;box-shadow:0 8px 30px rgba(2,132,199,0.35);font-weight:700;font-size:var(--text-md);text-decoration:none;transition:all var(--duration-normal) var(--ease-out);}.float-cta:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(2,132,199,0.45);color:#fff;}.float-cta svg{width:20px;height:20px;flex-shrink:0;}.float-cta-card{position:fixed;right:28px;bottom:92px;z-index:89;display:flex;flex-direction:column;align-items:center;gap:12px;background:#fff;padding:18px 18px 16px;border-radius:16px;box-shadow:0 16px 48px rgba(15,23,42,0.18);border:1px solid rgba(2,132,199,0.12);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity var(--duration-normal) var(--ease-out),transform var(--duration-normal) var(--ease-out);}.float-cta-card::after{content:'';position:absolute;right:44px;bottom:-8px;width:14px;height:14px;background:#fff;border-right:1px solid rgba(2,132,199,0.12);border-bottom:1px solid rgba(2,132,199,0.12);transform:rotate(45deg);}.float-cta-card img{width:140px;height:140px;border-radius:8px;display:block;border:1px solid #E2E8F0;}.float-cta-card span{font-size:var(--text-sm);font-weight:600;color:var(--text);white-space:nowrap;}.float-cta-card.open{opacity:1;pointer-events:auto;transform:translateY(0);}@media (prefers-reduced-motion:reduce){.float-cta-card{transition:none;}}@media (max-width:1100px){.stats-inner{grid-template-columns:repeat(2,1fr);}.value-grid{grid-template-columns:1fr;}.flow--steps .flow-node{min-width:126px;padding:30px 10px 20px;}.flow--steps .flow-node h3{font-size:var(--h3-card);}.flow--steps .flow-node li{font-size:var(--text-md);}.flow--steps .flow-arrow{padding:0 2px;font-size:1.05rem;}.arch{padding:36px 24px 38px;}.arch-preview{width:470px;}.arch-zone{width:156px;padding:16px 12px 14px;}.arch-link{max-width:36px;}.arch-chips li{padding:6px 8px;font-size:0.74rem;}}@media (max-width:980px){.hero-grid{grid-template-columns:1fr;text-align:center;gap:48px;}.hero-copy{max-width:100%;}.hero-btns{justify-content:center;}.hero-trust{justify-content:center;}.hero-visual{order:-1;}.hero-visual::before{display:none;}.grid-3{grid-template-columns:1fr;}.grid-4{grid-template-columns:repeat(2,1fr);}.grid-2{grid-template-columns:1fr;}.solutions-grid{grid-template-columns:1fr;}.testimonial-cards{grid-template-columns:1fr;}.flow{flex-direction:column;align-items:center;}.flow-arrow{transform:rotate(90deg);padding:12px 0;}.flow--steps{max-width:560px;flex-direction:column;gap:14px;}.flow--steps .flow-node{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:18px;align-items:start;text-align:left;padding:24px 20px;}.flow--steps .flow-node-icon{margin:0;}.flow--steps .flow-node h3{grid-column:2;margin-bottom:8px;}.flow--steps .flow-node ul{grid-column:2;}.flow--steps .flow-node li{font-size:var(--text-md);line-height:var(--leading-loose);}.flow--steps .step-no{left:auto;right:14px;top:14px;}.flow--steps .flow-arrow{padding:9px 0;font-size:1.1rem;}.arch__top{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}.arch-preview{grid-column:1 / -1;grid-row:1;justify-self:center;width:min(100%,680px);}.arch-zone--left{grid-column:1;grid-row:2;width:auto;}.arch-zone--right{grid-column:2;grid-row:2;width:auto;}.arch-zone .arch-chips{grid-template-columns:repeat(2,1fr);}.arch-link--l,.arch-link--r{display:none;}.footer-grid{grid-template-columns:repeat(2,1fr);gap:32px;}.section{padding:var(--section-gap-mobile) 0;}.section-soft{padding:var(--section-gap-mobile) 0;}.section-alt{padding:var(--section-gap-mobile) 0;}.rule-grid{grid-template-columns:1fr;}.value-grid{grid-template-columns:1fr;}.wx-qrs{flex-direction:column;align-items:center;gap:24px;}}@media (max-width:640px){.stats-inner{grid-template-columns:1fr 1fr;padding:24px 20px;gap:16px;}.stat-num{font-size:1.6rem;}.grid-4{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr;gap:28px;}.footer-bottom{flex-direction:column;text-align:center;}.hero{padding:48px 0 64px;}.hero-btns{flex-direction:column;}.hero-btns .btn{width:100%;}.float-cta{bottom:20px;right:16px;padding:12px 20px;font-size:var(--text-sm);}.float-cta span{display:none;}.float-cta-card{right:16px;bottom:80px;padding:14px 14px 12px;}.float-cta-card::after{right:34px;}.float-cta-card img{width:120px;height:120px;}.cta-btns{flex-direction:column;}.cta-contact-inline{flex-direction:column;gap:20px;}.cta-divider{width:60%;height:1px;}.cta-phone-num{font-size:1.1rem;}.partners-grid{grid-template-columns:repeat(2,1fr);gap:14px;}.partner-item{padding:14px 10px;border-radius:10px;}.partners-sub{margin-bottom:28px;}.hero-sub{padding:40px 0 50px;}.tbl{font-size:var(--text-xs);}.tbl th,.tbl td{padding:8px 10px;}.flow-demo__rail{gap:6px;padding:4px 4px 0;}.flow-demo__track{top:58px;height:3px;}.flow-step{padding:12px 4px 10px;gap:5px;}.flow-step__icon{width:40px;height:40px;}.flow-step__icon svg{width:20px;height:20px;}.flow-step__name{font-size:0.75rem;}.flow-step__tag{display:none;}.flow-detail{padding:24px 18px;margin-top:20px;}.flow-detail__list{grid-template-columns:1fr;}.flow-detail__badge{margin-left:0;}.flow-value{grid-template-columns:1fr;}.arch{padding:26px 16px 24px;border-radius:24px;}.arch__top{grid-template-columns:1fr;gap:14px;}.arch-zone--left{grid-column:1;grid-row:2;}.arch-zone--right{grid-column:1;grid-row:3;}.arch-preview{grid-column:1;grid-row:1;width:100%;}.arch-zone .arch-chips{grid-template-columns:repeat(2,1fr);}.arch-zone{padding:18px 14px 16px;}}.contact-hero{position:relative;padding:64px 0 80px;overflow:hidden;background:linear-gradient(180deg,#F0F9FF 0%,#FFFFFF 100%);color:var(--text);text-align:center;}.contact-hero::before{content:'';position:absolute;top:-40%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.contact-hero::after{content:'';position:absolute;bottom:-25%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(2,132,199,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none;}.contact-hero .eyebrow{background:rgba(2,132,199,0.08);color:var(--brand);border:none;position:relative;z-index:1;}.contact-hero h1{color:var(--text);font-size:var(--h1-page);font-weight:700;letter-spacing:normal;line-height:var(--leading-tight);margin-bottom:14px;position:relative;z-index:1;}.contact-hero .lead{color:var(--text-secondary);font-size:1.1rem;max-width:580px;margin:0 auto;line-height:var(--leading-relaxed);position:relative;z-index:1;}.nav-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.45);opacity:0;visibility:hidden;transition:opacity var(--duration-normal) var(--ease-in-out),visibility var(--duration-normal);z-index:99;}.nav-overlay.show{opacity:1;visibility:visible;}body.nav-open{overflow:hidden;}@media (min-width:901px){.nav-overlay{display:none;}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}.reveal{opacity:1 !important;transform:none !important;}.card:hover,.solution-card:hover,.price-card-new:hover,.flow-node:hover,.contact-card:hover,.browser-mockup:hover,.btn:hover,.btn-submit:hover{transform:none !important;}}</style>
 <link rel="stylesheet" href="assets/css/style.css">
-
-
-
-
-
-
-
-
 
 <script type="application/ld+json">
   {
@@ -128,6 +117,7 @@
   <symbol id="ph-factory" viewBox="0 0 256 256" fill="currentColor"><path d="M240,208H224V96a8,8,0,0,0-8-8H144V40a8,8,0,0,0-8-8H120a8,8,0,0,0-8,8V80H40a16,16,0,0,0-16,16V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM128,48h16V88H128ZM40,96H112V208H40Zm104,112V176a16,16,0,0,1,32,0v32Z"/></symbol>
   <symbol id="ph-handshake" viewBox="0 0 256 256" fill="currentColor"><path d="M238.68,132.33l-26.59-53.18A16,16,0,0,0,197.78,71H128V40a8,8,0,0,0-8-8H56a16,16,0,0,0-16,16V208a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V139.33A16,16,0,0,0,238.68,132.33ZM216,200H56V48a8,8,0,0,1,16,0V200H216ZM200,200H88V80h32v16H96a8,8,0,0,0,0,16h24v16H104a8,8,0,0,0,0,16h24v16H112a8,8,0,0,0,0,16h40V120h32v80h16Z"/></symbol>
   <symbol id="ph-arrows-left-right" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,181.66l-32,32a8,8,0,0,1-11.32,0l-32-32a8,8,0,0,1,11.32-11.32L168,188.69V48a8,8,0,0,1,16,0V188.69l18.34-18.35a8,8,0,0,1,11.32,11.32Zm-96-96a8,8,0,0,0,11.32-11.32l-32-32a8,8,0,0,0-11.32,0l-32,32A8,8,0,0,0,65,85.66L83.34,67.31V208a8,8,0,0,0,16,0V67.31Z"/></symbol>
+  <symbol id="ph-arrow-right" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69l-58.35-58.34a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
 </svg>
 
 <!-- ======== Header ======== -->
@@ -140,8 +130,8 @@
       </a>
       <nav class="nav-links" id="navlinks">
         <a href="index.html" class="active">首页</a>
-        <a href="#features">产品功能</a>
-        <a href="solutions.html">解决方案</a>
+        <a href="#features-overview">产品功能</a>
+        <a href="#integrated-solution">解决方案</a>
         <a href="pricing.html">报价方案</a>
         <a href="faq.html">常见问题</a>
         <a href="contact.html">联系我们</a>
@@ -161,10 +151,10 @@
     <div class="hero-copy reveal">
       <div class="hero-eyebrow">专为中小型供水企业打造</div>
       <h1 class="hero-title">
-        水费<span class="highlight">应收尽收</span><br>账目<span class="highlight">一目了然</span>
+        高效<span class="highlight">抄表收费</span><br>保障水费<span class="highlight">足额回收</span>
       </h1>
       <p class="hero-desc">
-        覆盖抄表、核算、计费、收费、票据、报表全流程，专为乡镇水厂、县级供水公司与中小型水务企业打造。无需专职 IT、不必大动干戈，一套系统让营收"管得清、收得回、算得准"。
+        专为乡镇水厂、县级供水公司打造，一站式覆盖抄表、核算、计费、收费、票据、报表全业务。解决人工抄表低效、水费催收困难、财务对账繁杂等痛点，无需专职 IT 团队，轻量化快速部署，实现营收清晰可控。
       </p>
       <div class="hero-btns">
         <a class="btn btn-primary btn-lg" href="contact.html">
@@ -172,20 +162,6 @@
           预约免费演示
         </a>
         <a class="btn btn-outline btn-lg" href="pricing.html">查看报价方案</a>
-      </div>
-      <div class="hero-trust">
-        <div class="hero-trust-item">
-          <svg class="check-icon" viewBox="0 0 256 256" fill="currentColor"><use href="#ph-check-circle"/></svg>
-          30+家中小供水企业信赖
-        </div>
-        <div class="hero-trust-item">
-          <svg class="check-icon" viewBox="0 0 256 256" fill="currentColor"><use href="#ph-check-circle"/></svg>
-          其中 20+ 家为乡镇/县级水司
-        </div>
-        <div class="hero-trust-item">
-          <svg class="check-icon" viewBox="0 0 256 256" fill="currentColor"><use href="#ph-check-circle"/></svg>
-          抄表效率提升60%
-        </div>
       </div>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
@@ -216,277 +192,500 @@
   <div class="container">
     <div class="stats-inner">
       <div class="stat-item">
-        <div class="stat-num" data-count="30" data-suffix="+">30+</div>
-        <div class="stat-label">服务供水企业</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="300" data-suffix="万+户" data-prefix="">300万+户</div>
-        <div class="stat-label">覆盖用水户</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="60" data-suffix="+">60+</div>
-        <div class="stat-label">服务水厂/污水厂</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="99" data-suffix="%">99%</div>
+        <div class="stat-num" data-count="99.9" data-suffix="%">99.9%</div>
         <div class="stat-label">系统运行稳定性</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======== ③ 小水厂的难处，我们懂 ======== -->
-<section class="section-soft reveal" id="painpoints">
-  <div class="container">
-    <div class="text-center">
-      <h2 class="section-title">中小水厂的难处，我们懂</h2>
-      <p class="section-sub">没有专职 IT、老机械表居多、抄表靠腿催费靠嘴——这些日常，我们听得最多，也解决得最多。</p>
-    </div>
-    <div class="grid-2">
-      <div class="card reveal reveal-delay-1">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-chart-bar"/></svg></div>
-        <h3>水费难收、台账混乱</h3>
-        <p>现金收费风险高、月底对账对到崩溃、欠费催缴靠打电话。系统自动结账、逐笔留痕、欠费分级催缴，回收周期明显缩短。</p>
+      <div class="stat-item">
+        <div class="stat-num" data-count="95" data-suffix="%+">95%+</div>
+        <div class="stat-label">抄表到位率</div>
       </div>
-      <div class="card reveal reveal-delay-2">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-wrench"/></svg></div>
-        <h3>老机械表居多，抄表靠腿</h3>
-        <p>远传表还没上、抄表员上门漏抄错抄、水表故障难发现。移动抄表 APP + 异常预警，兼容存量机械表，不用先换表再上系统。</p>
+      <div class="stat-item">
+        <div class="stat-num" data-count="60" data-suffix="%">60%</div>
+        <div class="stat-label">抄表效率提升</div>
       </div>
-      <div class="card reveal reveal-delay-1">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-user"/></svg></div>
-        <h3>没有专职 IT，怕维护不了</h3>
-        <p>系统坏了没人管、数据怕丢、不敢上软件。我们提供全程陪跑式实施：参数帮你配、数据帮你迁、培训包教会，后续 7×12 小时响应。</p>
-      </div>
-      <div class="card reveal reveal-delay-2">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-calculator"/></svg></div>
-        <h3>预算有限，怕花冤枉钱</h3>
-        <p>功能太多用不上、按年付费越用越贵。我们按用户规模选版、软件一次买断，基础版几万元起步，把钱花在真正用得上的功能上。</p>
+      <div class="stat-item">
+        <div class="stat-num" data-count="7" data-suffix="×24h">7×24h</div>
+        <div class="stat-label">技术响应保障</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======== ④ 核心价值 ======== -->
-<section class="section reveal" id="values">
-  <div class="container">
-    <div class="text-center">
-      <h2 class="section-title">把营收"管得清、收得回、算得准"</h2>
-      <p class="section-sub">围绕供水企业三大核心诉求，一套系统即可落地，告别多工具拼凑，杜绝数据不一致。</p>
-    </div>
-    <div class="grid-3">
-      <div class="card reveal reveal-delay-1">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-gauge"/></svg></div>
-        <h3>精准计量，减少水量漏损</h3>
-        <p>移动抄表 + 物联网集抄双引擎驱动，异常水量自动预警，从源头减少估抄漏抄，抄表到位率显著提升，让每一滴水都有据可查。</p>
-      </div>
-      <div class="card reveal reveal-delay-2">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-calculator"/></svg></div>
-        <h3>阶梯水费自动核算，账单清晰可追溯</h3>
-        <p>基本费、排污费、阶梯费、加价费、附加费逐项拆分核算，账单构成清晰透明，用水户一目了然，从根源减少计费争议和客服投诉。</p>
-      </div>
-      <div class="card reveal reveal-delay-3">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-credit-card"/></svg></div>
-        <h3>多种缴费渠道，缩短水费回收周期</h3>
-        <p>窗口现金、扫码支付、收银端、银行代扣、托收多通道并行，预存与减免灵活组合，欠费催收全程可追踪，水费回收周期显著缩短。</p>
-      </div>
-    </div>
-    <div class="text-center mt-7">
-      <a href="contact.html" class="btn btn-outline">
-        想了解这三项在您企业如何落地？预约免费演示 →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ======== ④ 产品流程 ======== -->
+<!-- ======== ③ 产品流程 ======== -->
 <section class="section-soft" id="process">
   <div class="container">
     <div class="text-center reveal">
       <h2 class="section-title">一条主线，跑通抄表到收费</h2>
-      <p class="section-sub">从现场抄表到财务入账，四个环节自动衔接、步步可追溯。</p>
+      <p class="section-sub">从现场抄表到收费回款，五个环节自动衔接、数据一步到位——一屏看懂您的营收主线。</p>
     </div>
-    <div class="flow reveal">
+
+    <div class="flow-demo reveal" data-flow-demo>
+      <div class="flow-demo__rail" role="group" aria-label="抄表到收费五环节演示">
+        <div class="flow-demo__track" aria-hidden="true">
+          <span class="flow-demo__track-fill" data-track-fill></span>
+          <span class="flow-demo__dot" data-track-dot></span>
+        </div>
+
+        <button class="flow-step is-active" type="button" data-step="0" aria-current="step" aria-label="环节1：抄表">
+          <span class="flow-step__no">01</span>
+          <span class="flow-step__icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-device-mobile"/></svg></span>
+          <span class="flow-step__name">抄表</span>
+          <span class="flow-step__tag">提效率</span>
+        </button>
+        <button class="flow-step" type="button" data-step="1" aria-label="环节2：数据录入">
+          <span class="flow-step__no">02</span>
+          <span class="flow-step__icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-clipboard-text"/></svg></span>
+          <span class="flow-step__name">数据录入</span>
+          <span class="flow-step__tag">省人力</span>
+        </button>
+        <button class="flow-step" type="button" data-step="2" aria-label="环节3：计算">
+          <span class="flow-step__no">03</span>
+          <span class="flow-step__icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-calculator"/></svg></span>
+          <span class="flow-step__name">计算</span>
+          <span class="flow-step__tag">控成本</span>
+        </button>
+        <button class="flow-step" type="button" data-step="3" aria-label="环节4：账单生成">
+          <span class="flow-step__no">04</span>
+          <span class="flow-step__icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-receipt"/></svg></span>
+          <span class="flow-step__name">账单生成</span>
+          <span class="flow-step__tag">稳服务</span>
+        </button>
+        <button class="flow-step" type="button" data-step="4" aria-label="环节5：收费回款">
+          <span class="flow-step__no">05</span>
+          <span class="flow-step__icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-currency-cny"/></svg></span>
+          <span class="flow-step__name">收费回款</span>
+          <span class="flow-step__tag">保营收</span>
+        </button>
+      </div>
+
+      <div class="flow-detail" data-flow-detail>
+        <div class="flow-detail__item is-active" data-detail="0">
+          <div class="flow-detail__head">
+            <span class="flow-detail__no">01</span>
+            <h3>抄表 · 现场数据一站采集</h3>
+            <span class="flow-detail__badge">效率提升</span>
+          </div>
+          <p class="flow-detail__desc">抄表员用手机 APP 现场录入水表读数，兼容存量机械表，不用先换表再上系统；异常用水自动预警，抄表痕迹全程留痕。</p>
+          <ul class="flow-detail__list">
+            <li>移动端现场录入，兼容老机械表</li>
+            <li>异常用水自动预警，早发现早处置</li>
+            <li>抄表留痕可追溯，漏抄错抄有据可查</li>
+          </ul>
+        </div>
+        <div class="flow-detail__item" data-detail="1">
+          <div class="flow-detail__head">
+            <span class="flow-detail__no">02</span>
+            <h3>数据录入 · 一次录入全系统共享</h3>
+            <span class="flow-detail__badge">节省人力</span>
+          </div>
+          <p class="flow-detail__desc">集抄、移动、手工多通道数据自动归集进系统，统一入口、一次录入，杜绝二次录入和台账"打架"，数据即录即用。</p>
+          <ul class="flow-detail__list">
+            <li>多通道归集，统一数据入口</li>
+            <li>免二次录入，台账不再打架</li>
+            <li>一户一档，账实实时同步</li>
+          </ul>
+        </div>
+        <div class="flow-detail__item" data-detail="2">
+          <div class="flow-detail__head">
+            <span class="flow-detail__no">03</span>
+            <h3>计算 · 阶梯水价自动核算</h3>
+            <span class="flow-detail__badge">成本可控</span>
+          </div>
+          <p class="flow-detail__desc">基本费、阶梯费、排污费、附加费按政策规则自动算清，损耗分摊透明可查，从源头减少计费差错与收费争议。</p>
+          <ul class="flow-detail__list">
+            <li>阶梯水价多费项自动核算</li>
+            <li>规则内置，计费差错趋近于零</li>
+            <li>损耗分摊透明，争议有据可查</li>
+          </ul>
+        </div>
+        <div class="flow-detail__item" data-detail="3">
+          <div class="flow-detail__head">
+            <span class="flow-detail__no">04</span>
+            <h3>账单生成 · 账单自动出费用看得懂</h3>
+            <span class="flow-detail__badge">服务升级</span>
+          </div>
+          <p class="flow-detail__desc">系统自动生成逐户账单并多渠道推送，费用构成清晰透明，用水户看得明白，有效减少客服投诉与催缴成本。</p>
+          <ul class="flow-detail__list">
+            <li>逐户账单自动生成、批量推送</li>
+            <li>费用构成清晰，看得明白</li>
+            <li>电子票据一键开具</li>
+          </ul>
+        </div>
+        <div class="flow-detail__item" data-detail="4">
+          <div class="flow-detail__head">
+            <span class="flow-detail__no">05</span>
+            <h3>收费回款 · 多渠道收费应收尽收</h3>
+            <span class="flow-detail__badge">营收保障</span>
+          </div>
+          <p class="flow-detail__desc">窗口、扫码、银行代扣、托收多渠道并行收费，欠费分级催缴、收款实时核销，水费回收周期显著缩短、应收尽收。</p>
+          <ul class="flow-detail__list">
+            <li>多渠道缴费，欠费分级催缴</li>
+            <li>收款实时核销，账目不落空</li>
+            <li>回收周期缩短，水费应收尽收</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flow-demo__ctrl">
+        <button class="flow-demo__play" type="button" data-flow-play aria-label="开始自动演示">
+          <svg class="flow-demo__ic-play" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.44,114.34,88.32,26.22a16,16,0,0,0-16.19-.3A15.86,15.86,0,0,0,64,39.87V216.13a15.86,15.86,0,0,0,8.13,13.95,16,16,0,0,0,16.19-.3L232.44,141.66A15.86,15.86,0,0,0,232.44,114.34Z"/></svg>
+          <svg class="flow-demo__ic-pause" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,48V208a16,16,0,0,1-32,0V48a16,16,0,0,1,32,0Zm-112,0V208a16,16,0,0,1-32,0V48a16,16,0,0,1,32,0Z"/></svg>
+          <span class="flow-demo__play-label">自动演示</span>
+        </button>
+        <span class="flow-demo__status" data-flow-status aria-live="polite">第 1 / 5 环节</span>
+      </div>
+    </div>
+
+    <div class="flow-value reveal">
+      <div class="flow-value__item"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-gauge"/></svg>效率 · 抄表不再靠腿，台账自动成型</div>
+      <div class="flow-value__item"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-gear"/></svg>成本 · 免二次录入，差错人力双降</div>
+      <div class="flow-value__item"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-currency-cny"/></svg>营收 · 多渠道回收，水费应收尽收</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ④ 全链路功能架构 ======== -->
+<section class="section" id="features-overview">
+  <div class="container">
+    <div class="text-center reveal">
+      <h2 class="section-title">全链路功能，一目了然</h2>
+      <p class="section-sub">PC 管理端与抄表 APP 双端协同，九大模块覆盖营收全链路；点选任一功能节点，即可查看真实操作界面。</p>
+    </div>
+
+    <div class="arch reveal">
+      <div class="arch__top">
+        <div class="arch-zone arch-zone--left reveal reveal-delay-1">
+          <div class="arch-end">
+            <span class="arch-end__icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-buildings"/></svg></span>
+            <div>
+              <h4>PC 管理端</h4>
+            </div>
+          </div>
+          <ul class="arch-chips">
+            <li tabindex="0" role="button" data-preview="用户管理" aria-label="查看用户管理界面">用户管理</li>
+            <li tabindex="0" role="button" data-preview="抄表管理" aria-label="查看抄表管理界面">抄表管理</li>
+            <li tabindex="0" role="button" data-preview="计费管理" aria-label="查看计费管理界面">计费管理</li>
+            <li tabindex="0" role="button" data-preview="收费管理" aria-label="查看收费管理界面">收费管理</li>
+            <li tabindex="0" role="button" data-preview="账务处理" aria-label="查看账务处理界面">账务处理</li>
+            <li tabindex="0" role="button" data-preview="票据管理" aria-label="查看票据管理界面">票据管理</li>
+            <li tabindex="0" role="button" data-preview="表务管理" aria-label="查看表务管理界面">表务管理</li>
+            <li tabindex="0" role="button" data-preview="报表中心" aria-label="查看报表中心界面">报表中心</li>
+            <li tabindex="0" role="button" data-preview="业务参数" aria-label="查看业务参数界面">业务参数</li>
+          </ul>
+        </div>
+
+        <div class="arch-link arch-link--l" aria-hidden="true"></div>
+
+        <div class="arch-preview reveal reveal-delay-2" data-arch-preview>
+          <div class="arch-preview__bar">
+            <span class="arch-preview__badge" data-preview-badge>
+              <svg class="ic-side-pc" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><use href="#ph-buildings-fill"/></svg>
+              <svg class="ic-side-app" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><use href="#ph-device-mobile"/></svg>
+              <span data-preview-side>PC 管理端实景</span>
+            </span>
+            <span class="arch-preview__count" data-preview-count>1 / 11</span>
+          </div>
+          <div class="arch-preview__stage" data-preview-zoom>
+            <figure class="arch-preview__slide is-active" data-name="用户管理" data-sub="一户一档集中管理" data-side="PC" data-zoom="assets/images/PC/user-mgmt.jpg">
+              <img data-src="assets/images/PC/preview/user-mgmt.webp" alt="用户管理界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="抄表管理" data-sub="抄表任务全流程管控" data-side="PC" data-zoom="assets/images/PC/meter-mgmt.jpg">
+              <img data-src="assets/images/PC/preview/meter-mgmt.webp" alt="抄表管理界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="计费管理" data-sub="阶梯计费精准核算" data-side="PC" data-zoom="assets/images/PC/billing-mgmt.jpg">
+              <img data-src="assets/images/PC/preview/billing-mgmt.webp" alt="计费管理界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="收费管理" data-sub="多渠道收费应收尽收" data-side="PC" data-zoom="assets/images/PC/charging-mgmt.png">
+              <img data-src="assets/images/PC/preview/charging-mgmt.webp" alt="收费管理界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="账务处理" data-sub="对账结账逐笔留痕" data-side="PC" data-zoom="assets/images/PC/accounting-treatment.jpg">
+              <img data-src="assets/images/PC/preview/accounting-treatment.webp" alt="账务处理界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="票据管理" data-sub="票据开票统一管理" data-side="PC" data-zoom="assets/images/PC/invoice-mgmt.jpg">
+              <img data-src="assets/images/PC/preview/invoice-mgmt.webp" alt="票据管理界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="表务管理" data-sub="水表资产全生命周期" data-side="PC" data-zoom="assets/images/PC/meter-service.jpg">
+              <img data-src="assets/images/PC/preview/meter-service.webp" alt="表务管理界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="报表中心" data-sub="经营报表一键导出" data-side="PC" data-zoom="assets/images/PC/report-center.jpg">
+              <img data-src="assets/images/PC/preview/report-center.webp" alt="报表中心界面">
+            </figure>
+            <figure class="arch-preview__slide" data-name="业务参数" data-sub="参数配置灵活可靠" data-side="PC" data-zoom="assets/images/PC/business-parameters.jpg">
+              <img data-src="assets/images/PC/preview/business-parameters.webp" alt="业务参数界面">
+            </figure>
+            <figure class="arch-preview__slide arch-preview__slide--app" data-name="抄表业务" data-sub="移动抄表 · 轨迹留痕 · 在线复核" data-side="APP" data-zoom="assets/images/APP/meter-reading-statistics.jpg">
+              <div class="phone-frame">
+                <img data-src="assets/images/APP/preview/meter-reading-statistics.webp" alt="抄表业务界面">
+              </div>
+            </figure>
+            <figure class="arch-preview__slide arch-preview__slide--app" data-name="数据与统计" data-sub="数据同步 · 欠费查询 · 移动统计" data-side="APP" data-zoom="assets/images/APP/charge-summary.jpg">
+              <div class="phone-frame">
+                <img data-src="assets/images/APP/preview/charge-summary.webp" alt="数据与统计界面">
+              </div>
+            </figure>
+          </div>
+          <div class="arch-preview__foot">
+            <button class="arch-preview__play is-playing" type="button" aria-label="暂停自动播放" data-preview-play>
+              <svg class="ic-play" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M232.4 114.5 88.3 26.4A8 8 0 0 0 76 33.1v189.8a8 8 0 0 0 12.3 6.7l144.1-88.1a7.9 7.9 0 0 0 0-13.5Z"/></svg>
+              <svg class="ic-pause" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><rect x="156" y="40" width="56" height="176" rx="8"/><rect x="44" y="40" width="56" height="176" rx="8"/></svg>
+            </button>
+            <div class="arch-preview__cap">
+              <b data-preview-name>用户管理</b>
+              <span class="cap-sub" data-preview-sub>一户一档集中管理</span>
+            </div>
+            <div class="arch-preview__dots" data-preview-dots>
+              <button class="is-active" type="button" aria-label="第 1 张：用户管理"></button>
+              <button type="button" aria-label="第 2 张：抄表管理"></button>
+              <button type="button" aria-label="第 3 张：计费管理"></button>
+              <button type="button" aria-label="第 4 张：收费管理"></button>
+              <button type="button" aria-label="第 5 张：账务处理"></button>
+              <button type="button" aria-label="第 6 张：票据管理"></button>
+              <button type="button" aria-label="第 7 张：表务管理"></button>
+              <button type="button" aria-label="第 8 张：报表中心"></button>
+              <button type="button" aria-label="第 9 张：业务参数"></button>
+              <button type="button" aria-label="第 10 张：抄表业务"></button>
+              <button type="button" aria-label="第 11 张：数据与统计"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-link arch-link--r" aria-hidden="true"></div>
+
+        <div class="arch-zone arch-zone--right reveal reveal-delay-3">
+          <div class="arch-end">
+            <span class="arch-end__icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-device-mobile"/></svg></span>
+            <div>
+              <h4>抄表员 APP</h4>
+            </div>
+          </div>
+          <ul class="arch-chips">
+            <li tabindex="0" role="button" data-preview="抄表录入" data-map="抄表业务" aria-label="查看抄表业务界面">抄表录入</li>
+            <li tabindex="0" role="button" data-preview="抄表轨迹" data-map="抄表业务" aria-label="查看抄表业务界面">抄表轨迹</li>
+            <li tabindex="0" role="button" data-preview="抄表复核" data-map="抄表业务" aria-label="查看抄表业务界面">抄表复核</li>
+            <li tabindex="0" role="button" data-preview="追加抄表" data-map="抄表业务" aria-label="查看抄表业务界面">追加抄表</li>
+            <li tabindex="0" role="button" data-preview="欠费查询" data-map="数据与统计" aria-label="查看数据与统计界面">欠费查询</li>
+            <li tabindex="0" role="button" data-preview="数据下载" data-map="数据与统计" aria-label="查看数据与统计界面">数据下载</li>
+            <li tabindex="0" role="button" data-preview="数据上传" data-map="数据与统计" aria-label="查看数据与统计界面">数据上传</li>
+            <li tabindex="0" role="button" data-preview="抄表统计" data-map="数据与统计" aria-label="查看数据与统计界面">抄表统计</li>
+            <li tabindex="0" role="button" data-preview="收费统计" data-map="数据与统计" aria-label="查看数据与统计界面">收费统计</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ⑤ 抄表收费一体化解决方案 ======== -->
+<section class="section-soft" id="integrated-solution">
+  <div class="container">
+
+    <!-- ⑤-0 模块标题 -->
+    <div class="text-center reveal">
+      <h2 class="section-title sol-title">抄表收费一体化解决方案</h2>
+      <p class="section-sub">抄表、计费、收费、对账、开票全流程一个平台贯通：移动端现场作业，管理端全程管控，主流支付渠道全面接入。</p>
+    </div>
+
+    <!-- ⑤-1 抄表解决方案：玻璃面板（左文案 + 右实景大图 + 手机托盘） -->
+    <div class="sol-block reveal">
+      <div class="sol-glass">
+        <span class="sol-badge">抄表解决方案</span>
+        <div class="sol-row">
+          <div class="sol-row__text">
+            <h3>手机现场抄表，后台全程可控</h3>
+            <p>抄表员手机现场录入、轨迹留痕；管理端 PC 分配任务、复核校验、实时统计。估抄、漏抄、异常水量逐笔可查。</p>
+            <ul class="sol-list">
+              <li><b>移动抄表</b><span>手机现场录入，拍照留痕可追溯</span></li>
+              <li><b>PC 抄表管理</b><span>任务分配、在线复核一站完成</span></li>
+              <li><b>抄表统计</b><span>到位率、漏抄率一屏掌握</span></li>
+            </ul>
+          </div>
+          <div class="sol-row__media">
+            <figure class="sol-scene sol-scene--brand">
+              <picture>
+                <source type="image/webp" srcset="assets/images/APP/preview/outdoor-on-site.webp">
+                <img src="assets/images/APP/outdoor-on-site.jpg" alt="抄表员在户外现场用手机录入水表读数" width="2560" height="1440" loading="lazy" decoding="async">
+              </picture>
+              <span class="sol-scene__tag">现场实景</span>
+              <figcaption class="sol-scene__cap">抄表员户外作业 · 手机现场录入</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="sol-phones">
+            <figure class="sol-phone-card sol-phone-card--accent">
+              <div class="sol-phone-card__frame">
+                <div class="phone-frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/images/APP/preview/meter-data-entry.webp">
+                    <img src="assets/images/APP/meter-data-entry.png" alt="手机抄表录入界面" width="1376" height="2880" loading="lazy" decoding="async">
+                  </picture>
+                </div>
+              </div>
+              <figcaption>
+                <h4>抄表录入</h4>
+                <p>手机拍照录入，现场留痕</p>
+              </figcaption>
+            </figure>
+            <figure class="sol-phone-card">
+              <div class="sol-phone-card__frame">
+                <div class="phone-frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/images/APP/preview/meter-reading-statistics.webp">
+                    <img src="assets/images/APP/meter-reading-statistics.jpg" alt="手机抄表统计界面" width="1080" height="2259" loading="lazy" decoding="async">
+                  </picture>
+                </div>
+              </div>
+              <figcaption>
+                <h4>抄表统计</h4>
+                <p>到位率、漏抄率一屏掌握</p>
+              </figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+
+    <!-- 抄表 → 收费 渐变连接带 -->
+    <div class="sol-flow-link" aria-hidden="true">
+      <span class="sol-flow-link__line"></span>
+      <span class="sol-flow-link__label">抄表
+        <svg class="sol-flow-link__icon" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><use href="#ph-arrow-right"/></svg>
+        收费</span>
+      <span class="sol-flow-link__line"></span>
+    </div>
+
+    <!-- ⑤-2 收费解决方案：玻璃面板（右文案 + 左实景大图 + 手机卡） -->
+    <div class="sol-block reveal">
+      <div class="sol-glass">
+        <span class="sol-badge">收费解决方案</span>
+        <div class="sol-row sol-row--flip">
+          <div class="sol-row__text">
+            <h3>收费、对账、开票一气呵成</h3>
+            <p>窗口现金、扫码支付、银行代扣多渠道收款实时入账；账务逐笔核对、日清日结；收据、发票合规开具，资金应收尽收。</p>
+            <ul class="sol-list">
+              <li><b>PC 收费管理</b><span>现金、扫码、代扣全渠道收款</span></li>
+              <li><b>账务对账</b><span>银行、微信、支付宝逐笔核对</span></li>
+              <li><b>票据管理</b><span>收据、发票合规开具全程留痕</span></li>
+            </ul>
+          </div>
+          <div class="sol-row__media">
+            <figure class="sol-scene sol-scene--brand">
+              <picture>
+                <source type="image/webp" srcset="assets/images/APP/preview/business-hall.webp">
+                <img src="assets/images/APP/business-hall.jpg" alt="营业厅柜台收费场景" width="2560" height="1440" loading="lazy" decoding="async">
+              </picture>
+              <span class="sol-scene__tag">营业厅实景</span>
+              <figcaption class="sol-scene__cap">营业厅柜台收费 · 多渠道收款实时入账</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="sol-phones">
+            <figure class="sol-phone-card">
+              <div class="sol-phone-card__frame">
+                <div class="phone-frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/images/APP/preview/charge-summary.webp">
+                    <img src="assets/images/APP/charge-summary.jpg" alt="手机收费汇总界面" width="1080" height="2263" loading="lazy" decoding="async">
+                  </picture>
+                </div>
+              </div>
+              <figcaption>
+                <h4>收费汇总</h4>
+                <p>当日收款、欠费一屏了然</p>
+              </figcaption>
+            </figure>
+            <figure class="sol-phone-card sol-phone-card--accent">
+              <div class="sol-phone-card__frame">
+                <div class="phone-frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/images/APP/preview/wechat-pay.webp">
+                    <img src="assets/images/APP/wechat-pay.png" alt="微信支付界面" width="1440" height="3040" loading="lazy" decoding="async">
+                  </picture>
+                </div>
+              </div>
+              <figcaption>
+                <h4>微信支付</h4>
+                <p>扫码即付，实时到账可查</p>
+              </figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-7 reveal">
+      <a href="contact.html" class="btn btn-primary btn-lg">预约免费演示，看真实界面如何落地</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== ⑥ 方案交付路径 ======== -->
+<section class="section reveal" id="delivery-path">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">方案交付路径</h2>
+      <p class="section-sub">完整标准化落地流程，保障水务项目平稳上线。</p>
+    </div>
+    <div class="flow flow--steps reveal">
       <div class="flow-node">
+        <span class="step-no">1</span>
+        <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg></div>
+        <h3>需求诊断</h3>
+        <ul>
+          <li>水厂现状与规模调研</li>
+          <li>盘点现有系统与台账</li>
+          <li>确定版本与部署方案</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="step-no">2</span>
+        <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-gear"/></svg></div>
+        <h3>参数配置</h3>
+        <ul>
+          <li>水价与阶梯水价设定</li>
+          <li>违约金等计费规则</li>
+          <li>组织与权限初始化</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span class="step-no">3</span>
         <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-clipboard-text"/></svg></div>
-        <h3>抄表</h3>
+        <h3>数据迁移</h3>
         <ul>
-          <li>移动端现场录入</li>
-          <li>异常用水自动预警</li>
-          <li>抄表痕迹全程留痕</li>
+          <li>历史用户档案导入</li>
+          <li>抄表收费数据核对</li>
+          <li>迁移服务按需计费</li>
         </ul>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-node">
-        <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-calculator"/></svg></div>
-        <h3>计费</h3>
+        <span class="step-no">4</span>
+        <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-user"/></svg></div>
+        <h3>培训上线</h3>
         <ul>
-          <li>阶梯水价自动核算</li>
-          <li>污水费/附加费合并</li>
-          <li>损耗分摊规则透明</li>
+          <li>线上或上门操作培训</li>
+          <li>配套图文操作手册</li>
+          <li>业务平稳切换上线</li>
         </ul>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-node">
-        <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-credit-card"/></svg></div>
-        <h3>收费</h3>
+        <span class="step-no">5</span>
+        <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-wrench"/></svg></div>
+        <h3>持续运维</h3>
         <ul>
-          <li>柜台/银行/扫码多渠道</li>
-          <li>欠费实时核销对账</li>
-          <li>电子票据一键开具</li>
+          <li>7×12 小时技术保障</li>
+          <li>系统版本持续迭代</li>
+          <li>支持按需定制扩展</li>
         </ul>
       </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="flow-node-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-chart-bar"/></svg></div>
-        <h3>财务</h3>
-        <ul>
-          <li>已销/未销账目清晰</li>
-          <li>分账调正规范合规</li>
-          <li>经营报表实时统计</li>
-        </ul>
-      </div>
+    </div>
+    <div class="center mt-6">
+      <a class="btn btn-primary" href="contact.html">获取专属方案</a>
     </div>
   </div>
 </section>
 
-<!-- ======== ⑤ 功能模块展示 ======== -->
-<section class="section" id="features">
-  <div class="container">
-    <div class="text-center reveal">
-      <h2 class="section-title">九大业务模块，覆盖供水营收全链路</h2>
-      <p class="section-sub">全套供水营收系统核心功能，模块可独立启用，也可自由组合搭建完整水务业务平台。</p>
-    </div>
-    <div class="features-grid">
-      <!-- 1. 用户管理 -->
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-user"/></svg></div>
-        <h3>用户管理</h3>
-        <p>一户一档集中管理，状态变更一键完成，批量导入秒级立户，信息全程可追溯。为您带来：立户更快、档案更全、差错更少。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/user-mgmt.jpg" data-cap="用户管理 · 系统界面" aria-label="放大查看用户管理界面截图">
-          <img src="assets/images/instance/user-mgmt-thumb.jpg" alt="用户管理界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 2. 抄表管理 -->
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-clipboard-text"/></svg></div>
-        <h3>抄表管理</h3>
-        <p>人工/远传/表格多模式录入，月结催款自动生成，水量校验复核在线闭环。为您带来：抄表到位率提升、漏抄错抄大幅减少。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/meter-reading.jpg" data-cap="抄表管理 · 系统界面" aria-label="放大查看抄表管理界面截图">
-          <img src="assets/images/instance/meter-reading-thumb.jpg" alt="抄表管理界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 3. 收费管理 -->
-      <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-currency-cny"/></svg></div>
-        <h3>收费管理</h3>
-        <p>全渠道收款统一入账，结账自动平账，代扣托收批量处理，欠费催收实时可查。为您带来：钱账一目了然、回收周期缩短。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/fee-mgmt.jpg" data-cap="收费管理 · 系统界面" aria-label="放大查看收费管理界面截图">
-          <img src="assets/images/instance/fee-mgmt-thumb.jpg" alt="收费管理界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 4. 账务处理 -->
-      <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-book"/></svg></div>
-        <h3>账务处理</h3>
-        <p>撤销/冲红/减免/退费流程标准化，账目自动联动，每笔变更留痕可审。为您带来：对账轻松、审计无忧。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/accounting-treatment.jpg" data-cap="账务处理 · 系统界面" aria-label="放大查看账务处理界面截图">
-          <img src="assets/images/instance/accounting-treatment-thumb.jpg" alt="账务处理界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 5. 票据管理 -->
-      <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-receipt"/></svg></div>
-        <h3>票据管理</h3>
-        <p>票号全生命周期管理，已收未收一键开票，作废重开留痕，电子发票无缝对接。为您带来：开票合规、用户少跑腿。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/bill-mgmt.jpg" data-cap="票据管理 · 系统界面" aria-label="放大查看票据管理界面截图">
-          <img src="assets/images/instance/bill-mgmt-thumb.jpg" alt="票据管理界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 6. 表务管理 -->
-      <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-wrench"/></svg></div>
-        <h3>表务管理</h3>
-        <p>水表档案与周期管理一体化，换拆表在线登记，开关阀含远程关阀，状态全程可视。为您带来：表况清楚、异常早发现。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/meter-service.jpg" data-cap="表务管理 · 系统界面" aria-label="放大查看表务管理界面截图">
-          <img src="assets/images/instance/meter-service-thumb.jpg" alt="表务管理界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 7. 报表中心 -->
-      <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-chart-bar"/></svg></div>
-        <h3>报表中心</h3>
-        <p>应收账单、抄收欠费、回收率报表开箱即用，数据大屏驾驶舱实时总览，支撑经营决策。为您带来：数据说话、管理有底气。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/report-center.jpg" data-cap="报表中心 · 系统界面" aria-label="放大查看报表中心界面截图">
-          <img src="assets/images/instance/report-center-thumb.jpg" alt="报表中心界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 8. 业务参数 -->
-      <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-gear"/></svg></div>
-        <h3>业务参数</h3>
-        <p>区域/网点/价格/加价/违约金集中维护，一处配置全局生效，权限分级管控安全可靠。为您带来：规则统一、不怕改价。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/business-parameters.jpg" data-cap="业务参数 · 系统界面" aria-label="放大查看业务参数界面截图">
-          <img src="assets/images/instance/business-parameters-thumb.jpg" alt="业务参数界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-      <!-- 9. 快捷查询 -->
-      <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg></div>
-        <h3>快捷查询</h3>
-        <p>档案/抄表/账单/收费一键综合查询，用户全维度秒级定位，客服效率倍增。为您带来：用户来电即答、服务更专业。</p>
-        <button class="feature-shot mod-shot" type="button" data-zoom="assets/images/instance/quick-query.jpg" data-cap="快捷查询 · 系统界面" aria-label="放大查看快捷查询界面截图">
-          <img src="assets/images/instance/quick-query-thumb.jpg" alt="快捷查询界面截图" loading="lazy">
-          <span class="feature-shot-caption"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-magnifying-glass"/></svg>点击查看界面</span>
-        </button>
-      </div>
-    </div>
-    <div class="note-box reveal">
-      <strong>版本差异提示：</strong>基础版、标准版、专业版在优惠政策、代扣接口、抄表复核、数据大屏等功能存在差异，欢迎前往报价方案查看详细版本对比。
-    </div>
-    <div class="text-center mt-6">
-      <a class="btn btn-primary" href="pricing.html">查看完整报价方案 →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ======== ⑥ 客户案例（脱敏） ======== -->
-<section class="section reveal" id="cases">
-  <div class="container">
-    <div class="text-center reveal">
-      <h2 class="section-title">中小水司用得上的真实变化</h2>
-      <p class="section-sub">以下案例已脱敏，均来自同类中小型供水企业的实施反馈。</p>
-    </div>
-    <div class="grid-3">
-      <div class="card reveal reveal-delay-1">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-buildings"/></svg></div>
-        <h3>某县自来水公司 · 1.2 万户</h3>
-        <p>此前抄表靠纸质本子、月底对账靠人工。上线移动抄表 + 自动结账后，抄表到位率从 70% 提升到 95% 以上，结账时间从 2 天缩到 1 小时。</p>
-      </div>
-      <div class="card reveal reveal-delay-2">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-bank"/></svg></div>
-        <h3>某乡镇供水站 · 3,000 余户</h3>
-        <p>现金收费多、欠费难追。开通微信缴费与欠费分级催缴后，线上缴费占比超 60%，当月回收率提升约 15 个百分点。</p>
-      </div>
-      <div class="card reveal reveal-delay-3">
-        <div class="card-icon"><svg viewBox="0 0 256 256" fill="currentColor"><use href="#ph-receipt"/></svg></div>
-        <h3>某区级水司 · 8,000 户</h3>
-        <p>接电子发票 + 银行代扣后，开票从逐张手填改为批量自动开具，代扣覆盖三分之一用户，营业厅排队明显减少。</p>
-      </div>
-    </div>
-    <div class="text-center mt-6">
-      <a class="btn btn-outline" href="solutions.html">查看完整解决方案 →</a>
-    </div>
-  </div>
-</section>
 
 <!-- ======== ⑦ Bottom CTA ======== -->
 <section class="cta-section reveal">
@@ -521,14 +720,14 @@
     </div>
     <p class="partners-sub">生态合作，渠道与服务覆盖全国</p>
     <div class="partners-grid">
-      <div class="partner-item"><img src="assets/images/partners/china-unicom.png" alt="中国联通" loading="lazy" width="280" height="210"></div>
-      <div class="partner-item"><img src="assets/images/partners/china-telecom.png" alt="中国电信" loading="lazy" width="280" height="210"></div>
-      <div class="partner-item"><img src="assets/images/partners/cgn.png" alt="中广核 CGN" loading="lazy" width="280" height="210"></div>
+      <div class="partner-item"><img src="assets/images/partners/china-union.jpg" alt="中国联通" loading="lazy" width="280" height="210"></div>
+      <div class="partner-item"><img src="assets/images/partners/telecom.jpg" alt="中国电信" loading="lazy" width="280" height="210"></div>
+      <div class="partner-item"><img src="assets/images/partners/cgn.jpg" alt="中广核 CGN" loading="lazy" width="280" height="210"></div>
       <div class="partner-item"><img src="assets/images/partners/fufu.png" alt="中电福富" loading="lazy" width="280" height="210"></div>
-      <div class="partner-item"><img src="assets/images/partners/alipay.png" alt="支付宝 Alipay" loading="lazy" width="280" height="210"></div>
-      <div class="partner-item"><img src="assets/images/partners/wechat-pay.png" alt="微信支付 WeChat Pay" loading="lazy" width="280" height="210"></div>
-      <div class="partner-item"><img src="assets/images/partners/abc-bank.png" alt="中国农业银行 ABC" loading="lazy" width="280" height="210"></div>
-      <div class="partner-item"><img src="assets/images/partners/unionpay.png" alt="中国银联 UnionPay 闪付" loading="lazy" width="280" height="210"></div>
+      <div class="partner-item"><img src="assets/images/partners/alipay.gif" alt="支付宝 Alipay" loading="lazy" width="280" height="210"></div>
+      <div class="partner-item"><img src="assets/images/partners/wechat-pay.webp" alt="微信支付 WeChat Pay" loading="lazy" width="280" height="210"></div>
+      <div class="partner-item"><img src="assets/images/partners/icbc.jpg" alt="中国工商银行 ICBC" loading="lazy" width="280" height="210"></div>
+      <div class="partner-item"><img src="assets/images/partners/union-pay.jpg" alt="中国银联 UnionPay 闪付" loading="lazy" width="280" height="210"></div>
     </div>
   </div>
 </section>
@@ -547,13 +746,13 @@
       </div>
       <div class="footer-col">
         <h4>产品</h4>
-        <a href="#features">产品功能</a>
+        <a href="#features-overview">产品功能</a>
         <a href="#process">产品流程</a>
         <a href="pricing.html">报价方案</a>
       </div>
       <div class="footer-col">
         <h4>资源</h4>
-        <a href="solutions.html">解决方案</a>
+        <a href="#integrated-solution">解决方案</a>
         <a href="faq.html">常见问题</a>
         <a href="contact.html">联系我们</a>
       </div>
