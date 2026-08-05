@@ -582,13 +582,13 @@
 /* ---------- Contact Page ---------- */
 .contact-hero {
   position: relative; padding: 64px 0 80px; overflow: hidden;
-  background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);
+  background: linear-gradient(180deg, #E6F4FC 0%, #F0F9FF 45%, #FFFFFF 100%);
   color: var(--text); text-align: center;
 }
 .contact-hero::before {
   content: ''; position: absolute; top: -40%; right: -15%;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%);
   border-radius: 50%; pointer-events: none;
 }
 .contact-hero::after {
@@ -845,7 +845,7 @@
 
 /* ---------- Price Hero ---------- */
 .price-hero {
-  background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);
+  background: linear-gradient(180deg, #E6F4FC 0%, #F0F9FF 45%, #FFFFFF 100%);
   text-align: center;
   padding: 80px 20px 80px;
   position: relative;
@@ -856,7 +856,7 @@
   position: absolute;
   top: -40%; right: -15%;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%);
   border-radius: 50%; pointer-events: none;
 }
 .price-hero::after {

@@ -46,8 +46,8 @@
   --bg-soft: #F0F9FF;
   --bg-alt: #F8FAFC;
   --bg-card: #FFFFFF;
-  --bg-footer: rgba(15,23,42,.03);   /* 极淡深色叠加，页脚轻量化 */
-  --bg-footer-deep: rgba(15,23,42,.06);
+  --bg-footer: rgba(15,23,42,.02);   /* 极淡深色叠加，页脚轻量化 */
+  --bg-footer-deep: rgba(15,23,42,.04);
 
   /* Text */
   --text: #0F172A;
