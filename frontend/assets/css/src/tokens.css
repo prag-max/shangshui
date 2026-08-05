@@ -24,18 +24,36 @@
   --amber: #F59E0B;
   --red: #EF4444;
 
+  /* Semantic (浅色模式，完整信息/成功/警告/危险映射) */
+  --success: #059669;  --success-dark: #047857;
+  --success-bg: #ECFDF5; --success-border: #A7F3D0;
+  --warning: #D97706;  --warning-dark: #B45309;
+  --warning-bg: #FFFBEB; --warning-border: #FDE68A;
+  --info: #0284C7;     --info-dark: #0369A1;
+  --info-bg: #EFF6FF;  --info-border: #BFDBFE;
+  --danger: #DC2626;   --danger-dark: #B91C1C;
+  --danger-bg: #FEF2F2; --danger-border: #FECACA;
+
+  /* 对比表列色令牌（消除硬编码，统一 Slate→Sky→Emerald→Cyan） */
+  --col-1: #64748B; --col-1-bg: rgba(100, 116, 139, 0.09);
+  --col-2: #0284C7; --col-2-bg: rgba(2, 132, 199, 0.09);
+  --col-3: #047857; --col-3-bg: rgba(4, 120, 87, 0.09);
+  --col-4: #0891B2; --col-4-bg: rgba(8, 145, 178, 0.09);
+
   /* Neutral */
   --white: #FFFFFF;
   --bg: #FFFFFF;
   --bg-soft: #F0F9FF;
   --bg-alt: #F8FAFC;
   --bg-card: #FFFFFF;
-  --bg-footer: #0F172A;
+  --bg-footer: rgba(15,23,42,.03);   /* 极淡深色叠加，页脚轻量化 */
+  --bg-footer-deep: rgba(15,23,42,.06);
 
   /* Text */
   --text: #0F172A;
   --text-secondary: #475569;
-  --text-muted: #5B6678;
+  --text-muted: #64748B;  /* Slate-500，归一 Slate 系 */
+  --text-disabled: #94A3B8; /* Slate-400，弱化态 */
   --text-on-dark: #E2E8F0;
   --text-on-dark-muted: #94A3B8;
 
@@ -66,21 +84,21 @@
   --font-num: "SF Pro Display", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* Type scale */
-  --text-xs: 0.75rem;    /* 12px — 最小标签/徽章底线 */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px — 正文基准 */
-  --text-md: 0.9375rem;  /* 15px — 卡片正文 */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
+  --text-xs: 0.9375rem;  /* 15px — 最小标签/徽章底线 */
+  --text-sm: 0.9375rem;  /* 15px */
+  --text-base: 1.0625rem; /* 17px — 正文基准 */
+  --text-md: 1rem;       /* 16px — 卡片正文 */
+  --text-lg: 1.1875rem;  /* 19px */
+  --text-xl: 1.3125rem;  /* 21px */
 
   /* Heading scale */
-  --h1: clamp(2.2rem, 4.5vw, 3.6rem);    /* 35.2–57.6 — 首页 Hero */
-  --h1-page: clamp(1.9rem, 4vw, 2.9rem); /* 30.4–46.4 — 子页 Hero（联系/价格统一） */
-  --h2: clamp(1.7rem, 3vw, 2.4rem);      /* 27.2–38.4 */
-  --h2-card: 1.5rem;                      /* 24 — 卡片内区块标题（如联系表单） */
-  --h3: 1.25rem;                          /* 20 — 区块标题（含 .block-h） */
-  --h3-card: 1.1rem;                      /* 17.6 — 卡片标题统一档 */
-  --h4: 1rem;                             /* 16 — 小标题统一档 */
+  --h1: clamp(2.5rem, 5vw, 4rem);        /* 40–64 — 首页 Hero */
+  --h1-page: clamp(2.1rem, 4.4vw, 3.2rem); /* 33.6–51.2 — 子页 Hero（联系/价格统一） */
+  --h2: clamp(1.9rem, 3.4vw, 2.7rem);    /* 30.4–43.2 */
+  --h2-card: 1.65rem;                     /* 26.4 — 卡片内区块标题（如联系表单） */
+  --h3: 1.4rem;                           /* 22.4 — 区块标题（含 .block-h） */
+  --h3-card: 1.25rem;                     /* 20 — 卡片标题统一档 */
+  --h4: 1.1rem;                           /* 17.6 — 小标题统一档 */
 
   /* Line Height Scale */
   --leading-tight: 1.2;    /* 大标题 */

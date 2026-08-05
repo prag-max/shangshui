@@ -16,6 +16,7 @@ MAPPING = [
     ("wechat-pay.png", "wechat-pay.webp", 430),
     ("outdoor-on-site.jpg", "outdoor-on-site.webp", 960),
     ("business-hall.jpg", "business-hall.webp", 960),
+    ("pocket-micro-hall.jpg", "pocket-micro-hall.webp", 960),
 ]
 
 QUALITY = 80

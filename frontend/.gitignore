@@ -14,6 +14,7 @@ build/
 .cache/
 
 # Agent internal memory / caches (do not commit)
+.codebuddy/
 .workbuddy/
 __pycache__/
 scripts/captures/

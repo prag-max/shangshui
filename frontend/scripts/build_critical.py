@@ -20,6 +20,7 @@ subnav、移动端 nav-overlay、全局 prefers-reduced-motion，以及含首屏
 
 运行: python scripts/build_critical.py
 """
+import json
 import os
 import re
 
@@ -27,7 +28,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_DIR = os.path.join(ROOT, "assets", "css", "src")
 STYLE = os.path.join(ROOT, "assets", "css", "style.css")
 CRIT = os.path.join(ROOT, "assets", "css", "critical.css")
-HTMLS = ["index.html", "pricing.html", "contact.html", "404.html", "faq.html"]
+SITE = os.path.join(ROOT, "partials", "site.json")
+HTMLS = ["index.html", "pricing.html", "404.html", "faq.html"]
+
+# 公共 HTML 片段（改一处 -> 4 页全局生效）
+PARTIALS = {
+    "icons": os.path.join(ROOT, "partials", "icons.html"),
+    "footer": os.path.join(ROOT, "partials", "footer.html"),
+    "contact-pop": os.path.join(ROOT, "partials", "contact-pop.html"),
+}
 
 SRC_FILES = ["tokens.css", "base.css", "components.css", "pages.css"]
 
@@ -90,7 +99,7 @@ STYLE_RE = re.compile(r'<style id="critical-css">[\s\S]*?</style>\s*')
 NS_RE = re.compile(r'<noscript><link rel="stylesheet" href="assets/css/style\.css"></noscript>\s*')
 
 
-def inject(html_path, mini):
+def inject(html_path, mini, out_dir=None):
     with open(html_path, "r", encoding="utf-8") as f:
         html = f.read()
     html = STYLE_RE.sub("", html)
@@ -104,12 +113,51 @@ def inject(html_path, mini):
         + m.group(0)
     )
     html = html[: m.start()] + block + html[m.end():]
-    with open(html_path, "w", encoding="utf-8") as f:
+    # 支持输出到独立构建目录，避免覆写源 HTML（源保留 {{site.*}} / partial 占位符）
+    target = os.path.join(out_dir, os.path.basename(html_path)) if out_dir else html_path
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+    with open(target, "w", encoding="utf-8") as f:
         f.write(html)
     return len(mini.encode("utf-8")), len(html.encode("utf-8"))
 
 
-if __name__ == "__main__":
+def inject_site(html_path, mapping, out_dir=None):
+    """将 {{site.*}} 占位符替换为 partials/site.json 中的全局联系方式（幂等）。"""
+    with open(html_path, "r", encoding="utf-8") as f:
+        html = f.read()
+    for k, v in mapping.items():
+        html = html.replace("{{site.%s}}" % k, v)
+    target = os.path.join(out_dir, os.path.basename(html_path)) if out_dir else html_path
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+    with open(target, "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+def inject_partials(html_path, out_dir=None):
+    """将 <!--#footer--> / <!--#contact-pop--> 占位符替换为 partials/*.html 公共片段（幂等）。"""
+    with open(html_path, "r", encoding="utf-8") as f:
+        html = f.read()
+    for name, p in PARTIALS.items():
+        with open(p, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+        html = html.replace("<!--#%s-->" % name, content)
+    target = os.path.join(out_dir, os.path.basename(html_path)) if out_dir else html_path
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+    with open(target, "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+def main():
+    # 可选：构建产物输出到独立目录（默认覆写源 HTML，保持向后兼容）
+    import sys as _sys
+    out_dir = None
+    if "--dist" in _sys.argv:
+        i = _sys.argv.index("--dist")
+        out_dir = _sys.argv[i + 1] if i + 1 < len(_sys.argv) else os.path.join(ROOT, "dist")
+
     size = concat_style()
     print(f"✅ 拼接 style.css: {size} bytes（源 = src/*.css）")
     with open(STYLE, "r", encoding="utf-8") as f:
@@ -121,11 +169,33 @@ if __name__ == "__main__":
     with open(CRIT, "w", encoding="utf-8") as f:
         f.write(mini)
     print(f"✅ 抽取 critical.css: 源 {len(raw.encode('utf-8'))} bytes / 压缩内联 {len(mini.encode('utf-8'))} bytes")
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
     for fn in HTMLS:
         p = os.path.join(ROOT, fn)
         if not os.path.exists(p):
             print(f"  ⚠ 不存在: {fn}")
             continue
-        mb, total = inject(p, mini)
+        mb, total = inject(p, mini, out_dir=out_dir)
         if mb is not None:
             print(f"  ✅ {fn:<16} 内联 {mb:>6} bytes | 文件总 {total:>7} bytes")
+    # 公共片段注入：footer / contact-pop 改 partials/*.html 一处 -> 4 页同步
+    for fn in HTMLS:
+        p = os.path.join(ROOT, fn)
+        if os.path.exists(p):
+            inject_partials(p, out_dir=out_dir)
+    print(f"✅ 公共片段注入 partials -> {len(HTMLS)} 个页面")
+    # 联系方式全局注入：改 partials/site.json 一处，4 个页面同步生效
+    with open(SITE, "r", encoding="utf-8") as f:
+        site = json.load(f)
+    for fn in HTMLS:
+        p = os.path.join(ROOT, fn)
+        if os.path.exists(p):
+            inject_site(p, site, out_dir=out_dir)
+    print(f"✅ 联系方式注入 site.json -> {len(HTMLS)} 个页面")
+    if out_dir:
+        print(f"✅ 产物已输出到独立目录: {os.path.relpath(out_dir, ROOT)}（源 HTML 未被覆写）")
+
+
+if __name__ == "__main__":
+    main()

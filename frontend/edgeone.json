@@ -10,24 +10,6 @@
       ]
     },
     {
-      "source": "/assets/css/*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, stale-while-revalidate=60"
-        }
-      ]
-    },
-    {
-      "source": "/assets/js/*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, stale-while-revalidate=60"
-        }
-      ]
-    },
-    {
       "source": "/assets/fonts/*",
       "headers": [
         {
@@ -41,16 +23,14 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=86400"
         }
       ]
     }
   ],
   "caches": [
     { "source": "/*", "cacheTtl": 300 },
-    { "source": "/assets/css/*", "cacheTtl": 300 },
-    { "source": "/assets/js/*", "cacheTtl": 300 },
     { "source": "/assets/fonts/*", "cacheTtl": 31536000 },
-    { "source": "/assets/images/*", "cacheTtl": 31536000 }
+    { "source": "/assets/images/*", "cacheTtl": 86400 }
   ]
 }

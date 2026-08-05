@@ -3,7 +3,7 @@
 
 /* ---------- Reset & Base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
 section[id] { scroll-margin-top: var(--header-h); }
 body {
   font-family: var(--font-sans);
@@ -15,6 +15,7 @@ body {
   text-rendering: optimizeSpeed;
   overflow-wrap: anywhere;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 a { color: var(--brand); text-decoration: none; transition: color var(--duration-fast); }
 a:hover { color: var(--brand-dark); }

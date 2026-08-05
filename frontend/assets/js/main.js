@@ -53,7 +53,10 @@
     navAnchors.forEach(a => {
       const id = a.getAttribute('href').slice(1);
       const sec = document.getElementById(id);
-      if (sec) { sectionMap[id] = a; sections.push(sec); }
+      // 排除弹窗/对话框等非页面 section，避免被 Scroll Spy 误判高亮
+      if (sec && !sec.hasAttribute('role') && !sec.classList.contains('contact-pop') && sec.id !== 'contactPop') {
+        sectionMap[id] = a; sections.push(sec);
+      }
     });
     if (sections.length) {
       const visible = {};
@@ -144,6 +147,65 @@
     }, { threshold: 0.5 });
     observer.observe(el);
   });
+
+  /* ---- Contact Modal (联系我们 二级弹窗) ---- */
+  const cPop = document.getElementById('contactPop');
+  if (cPop) {
+    let cPopTrigger = null;
+    let cPopFocusable = [];
+
+    function cPopGetFocusable() {
+      return Array.from(cPop.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])'))
+        .filter(el => el.offsetParent !== null);
+    }
+
+    function openContactPop(trigger) {
+      cPopTrigger = trigger || document.activeElement;
+      cPop.classList.add('open');
+      cPop.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lb-lock');
+      setTimeout(() => {
+        cPopFocusable = cPopGetFocusable();
+        const closeBtn = cPop.querySelector('.contact-pop__close');
+        if (closeBtn) closeBtn.focus();
+      }, 100);
+    }
+
+    function closeContactPop() {
+      cPop.classList.remove('open');
+      cPop.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lb-lock');
+      if (cPopTrigger && typeof cPopTrigger.focus === 'function') cPopTrigger.focus();
+    }
+
+    document.querySelectorAll('[data-contact-pop]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        if (navLinks && navLinks.classList.contains('open')) setNav(false);
+        openContactPop(a);
+      });
+    });
+
+    const cPopClose = cPop.querySelector('.contact-pop__close');
+    if (cPopClose) cPopClose.addEventListener('click', closeContactPop);
+    cPop.addEventListener('click', e => {
+      if (e.target.classList.contains('contact-pop__overlay')) closeContactPop();
+    });
+    document.addEventListener('keydown', e => {
+      if (!cPop.classList.contains('open')) return;
+      if (e.key === 'Escape') { closeContactPop(); return; }
+      if (e.key === 'Tab') {
+        if (cPopFocusable.length === 0) return;
+        const first = cPopFocusable[0];
+        const last = cPopFocusable[cPopFocusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
+    });
+  }
 
   /* ---- Lightbox with Focus Trap ---- */
   const lb = document.getElementById('lightbox');
@@ -251,11 +313,15 @@
   document.body.appendChild(toTop);
 
   /* ---- 统一滚动处理器（单一监听器 + rAF 节流，合并 header / back-to-top） ---- */
+  const heroEl = document.getElementById('hero');
   let scrollTicking = false;
   const onScroll = () => {
     if (!scrollTicking) {
       requestAnimationFrame(() => {
-        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 10);
+        const pastHero = heroEl
+          ? window.scrollY > heroEl.offsetTop + heroEl.offsetHeight
+          : window.scrollY > 10;
+        if (headerEl) headerEl.classList.toggle('scrolled', pastHero);
         toTop.classList.toggle('show', window.scrollY > 500);
         scrollTicking = false;
       });
@@ -269,28 +335,6 @@
       window.scrollTo(0, 0);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-
-  /* ---- Comparison table: scroll shadow + hint fade ---- */
-  document.querySelectorAll('.table-wrap').forEach(wrap => {
-    if (wrap.scrollWidth > wrap.clientWidth + 4) {
-      wrap.classList.add('table-wrap--scroll');
-      const hint = document.createElement('p');
-      hint.className = 'tbl-scroll-hint';
-      hint.textContent = '← 左右滑动查看完整对比 →';
-      wrap.insertAdjacentElement('afterend', hint);
-      let hintVisible = true;
-      wrap.addEventListener('scroll', () => {
-        if (hintVisible && wrap.scrollLeft > 20) {
-          hint.style.opacity = '0';
-          hint.style.transition = 'opacity 0.3s';
-          hintVisible = false;
-        } else if (!hintVisible && wrap.scrollLeft <= 20) {
-          hint.style.opacity = '';
-          hintVisible = true;
-        }
-      }, { passive: true });
     }
   });
 
@@ -332,6 +376,55 @@
       input.addEventListener('input', function () {
         this.closest('.field')?.classList.remove('has-error');
       });
+    });
+
+    // Submit to API
+    const msg = document.getElementById('form-msg');
+    const API = (location.hostname === '127.0.0.1' || location.hostname === 'localhost')
+      ? location.origin
+      : 'https://api.shanwater.com:8443';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      // Honeypot 反爬：隐藏字段被填 = 机器人，直接忽略
+      const hp = form.querySelector('input[name="website"]');
+      if (hp && hp.value.trim()) return;
+      const btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      if (msg) {
+        msg.style.display = 'block';
+        msg.style.color = '';
+        msg.textContent = '提交中…';
+      }
+      const fd = new FormData(form);
+      Promise.resolve(fetch(API + '/api/inquiries', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      }))
+        .then(function (r) { return r.text().then(function (text) { var d = null; try { d = text ? JSON.parse(text) : null; } catch (e) { d = null; } return { ok: r.ok, status: r.status, d: d }; }); })
+        .then(function (res) {
+          if (msg) {
+            if (res.ok && res.d) {
+              msg.style.color = '#1a7f37';
+              msg.textContent = res.d.message ? res.d.message : '提交成功，我们会尽快与您联系。';
+              form.reset();
+            } else if (res.status === 0 || res.d === null) {
+              msg.style.color = '#b42318';
+              msg.textContent = '提交服务暂时无法连接，请稍后重试；紧急情况请直接致电 13860642706。';
+            } else {
+              msg.style.color = '#b42318';
+              msg.textContent = (res.d && res.d.message) ? res.d.message : '提交失败，请稍后重试。';
+            }
+          }
+        })
+        .catch(function () {
+          if (msg) {
+            msg.style.color = '#b42318';
+            msg.textContent = '网络连接失败，请检查网络后重试；或直接致电 13860642706 / 13110520413。';
+          }
+        })
+        .finally(function () { btn.disabled = false; });
     });
   }
 
