@@ -94,7 +94,7 @@ def minify(css):
 
 # ---------- 3) 注入 HTML（幂等，同步加载） ----------
 # 仅锚定真正的「主样式表」链接（rel=stylesheet），避免与 preload 等并行 link 混淆顺序语义。
-MAIN_LINK_RE = re.compile(r'<link rel="stylesheet" href="assets/css/style(?:\.[0-9a-f]{8})?\.css"[^>]*>')
+MAIN_LINK_RE = re.compile(r'<link rel="stylesheet" href="assets/css/style(?:\.[0-9a-f]{8})?\.css(?:\?[^"]*)?"[^>]*>')
 STYLE_RE = re.compile(r'<style id="critical-css">[\s\S]*?</style>\s*')
 NS_RE = re.compile(r'<noscript><link rel="stylesheet" href="assets/css/style\.css"></noscript>\s*')
 
